@@ -62,8 +62,8 @@ Done (each with tests):
 4. Model layer (`rfqinbox/model.py`, `tests/test_model.py`), as specified below.
 5a. Prompt v1 (`model.SYSTEM_PROMPT`, `tests/test_prompt.py`): teaches the general properties,
    contains nothing from dev (tested). The reply starts with an `analysis` field (the model's
-   reading, kept in the cache, never in parsed.json). **Not recorded yet** — the human runs
-   `parse` on dev once with the key, then we score and add the eval/history.md row.
+   reading, kept in the cache, never in parsed.json).
+5b. Dev recorded in `cache/` (24 answers, gpt-4.1, $0.26). Replays byte-identical with no key.
 
 Model layer as built (tests use a fake client / fake urlopen; no key needed):
    - OpenAI client over stdlib `urllib` (no SDK dependency), Chat Completions with
@@ -84,7 +84,6 @@ Model layer as built (tests use a fake client / fake urlopen; no key needed):
      failure mode degrades to a flagged record; cost totals add up.
 
 Next:
-5b. Record the cache for dev (the human runs `parse` once with the key), score, commit cache/.
 6. Code-side checks: duplicate detection (later Date = duplicate), revises via
    In-Reply-To/References/subject, every `raw` must appear in the source text, sizes are
    never quantities, needs_review rules (attachment mentioned but missing/unreadable/

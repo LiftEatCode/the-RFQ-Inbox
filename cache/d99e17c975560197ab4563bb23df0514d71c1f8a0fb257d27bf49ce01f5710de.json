@@ -1,0 +1,18 @@
+{
+  "email": "E022",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This is an RFQ email from Marisol Vega at Alden Marine Services requesting a quote for the pier 7 fire water repair project. The request is contained in an attached PDF ('AldenMarine_RFQ_AM-26-0412.pdf'), which is password-protected and cannot be read. No item details are provided in the body and the contents of the PDF are inaccessible at this time, so none of the requested items can be determined. No quoted history, forwarded content, or other attachments provide item data. The email explicitly states that the password for the file will be sent separately, so a human needs to review once the password is received.",
+    "classification": "rfq",
+    "line_items": [],
+    "needs_review": true,
+    "review_reason": "RFQ is contained in a password-protected PDF attachment that cannot be read; items cannot be identified until the file is opened."
+  },
+  "prompt_version": "v1",
+  "request": "061b8807f3a70b8e67429cbf0f612793139343f48c4722d8a434ef5aeeca0bfd",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 1940,
+    "output_tokens": 177
+  }
+}

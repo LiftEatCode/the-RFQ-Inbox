@@ -1,0 +1,61 @@
+{
+  "email": "E015",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender, Renee Castillo from Tidewater Process Systems, is issuing a purchase order for items previously quoted by Ridgeline last week. The itemized list is fully detailed in the attached PDF, each with a clear quantity, unit, and description. No additional notes or constraints are present in the body beyond a request for shipment confirmation. The POS covers pipe, fittings, flanges, gaskets, bolting and valves, matching Ridgeline's product lines. There are no ambiguous references, hidden or struck out content, or unreadable sections. No items have been left out: only subtotal, freight, tax and total, which are not line items, have been omitted; likewise, the quoted history is not present, so all details come from the current PO attachment.",
+    "classification": "purchase_order",
+    "line_items": [
+      {
+        "description": "2\" SCH 80 seamless A106B pipe, plain end, random lengths",
+        "qty": 210,
+        "raw": "1 210 FT 2\" SCH 80 SMLS A106B pipe, PE, random lengths",
+        "source": "PO_TPS-88213.pdf",
+        "uom": "FT"
+      },
+      {
+        "description": "2\" 90 degree elbow, long radius, butt weld, SCH 80, A234 WPB",
+        "qty": 24,
+        "raw": "2 24 EA 2\" 90 deg elbow, LR, BW, SCH 80, A234 WPB",
+        "source": "PO_TPS-88213.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" weld neck flange, 300# raised face, A105, SCH 80 bore",
+        "qty": 16,
+        "raw": "3 16 EA 2\" WN flange, 300# RF, A105, SCH 80 bore",
+        "source": "PO_TPS-88213.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" spiral wound gasket, 316/graphite, 300#, with inner ring",
+        "qty": 16,
+        "raw": "4 16 EA 2\" spiral wound gasket, 316/graphite, 300#, w/ inner ring",
+        "source": "PO_TPS-88213.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "Stud bolt B7, 5/8\"-11 x 3-3/4\", with 2 heavy hex nuts",
+        "qty": 64,
+        "raw": "5 64 EA Stud bolt B7, 5/8\"-11 x 3-3/4\", w/ 2 heavy hex nuts",
+        "source": "PO_TPS-88213.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" gate valve, 300# raised face, A216 WCB, bolted bonnet",
+        "qty": 6,
+        "raw": "6 6 EA 2\" gate valve, 300# RF, A216 WCB, bolted bonnet",
+        "source": "PO_TPS-88213.pdf",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v1",
+  "request": "8163ce85d910098789c839da288b4a403584dbd198a24252d6636f0ad1a58c93",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2311,
+    "output_tokens": 593
+  }
+}

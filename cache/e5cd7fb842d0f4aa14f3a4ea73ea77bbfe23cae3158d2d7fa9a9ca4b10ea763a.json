@@ -1,0 +1,18 @@
+{
+  "email": "E014",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This email is a promotional sales announcement from Gulf Pipe & Flange Warehouse. It lists sale prices for several flange and gasket products and invites recipients to place orders, but it does not request a quote or price check, nor does it commit to a purchase—it's a price list meant to solicit orders from Ridgeline (as a customer, not a vendor/supplier relationship). There are no explicit RFQ or purchase instructions and no indication that this is a response to a request or quote. No line items are being requested by Ridgeline; rather, Gulf Pipe & Flange is offering to sell these items to us. The lines in the table are not requests, they are the vendor’s stock/pricing. No further headers, notes, or defaults apply, and nothing is omitted except unsubscribe and contact info, which are not relevant.",
+    "classification": "vendor_quote",
+    "line_items": [],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v1",
+  "request": "e1f7bb1ed4952dfb983a3f07e57337da612c67dbcc88c0fded2202fd8a065996",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2080,
+    "output_tokens": 190
+  }
+}

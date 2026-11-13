@@ -1,7 +1,7 @@
 # Running
 
-> Prompt v1 stage: the prompt is written but no answers are recorded yet, so without a key
-> every email currently comes back flagged for review.
+> Prompt v1 stage: the dev inbox is recorded in `cache/`, so `parse` on dev runs with no key.
+> Code-side checks (duplicates, revisions, quantity rules) are not in yet.
 
 Requires Python 3.11+. Works natively on Windows, macOS and Linux.
 

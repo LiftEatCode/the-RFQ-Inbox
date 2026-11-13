@@ -1,0 +1,54 @@
+{
+  "email": "E002",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender, Danny Ruiz at Ruiz Industrial, is requesting prices or availability for several stainless steel threaded pipe fittings (90s, tees, caps, couplings, close nipples) in two sizes for a plant skid. All items are explicitly requested in the email body; there are no attachments, images, or quoted history. The only slightly ambiguous item is 'a couple caps,' which means 2. The description must specify 316 stainless steel threaded, as implied by the subject. There are no explicit units given, but quantities like '10 of the 1/2 90s' etc. imply 'EA' (each). No lines or information need to be left out. No review is needed as all information is present.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "10 each 1/2\" 316 stainless steel threaded 90 degree elbows",
+        "qty": 10,
+        "raw": "10 of the 1/2 90s",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "6 each 1/2\" 316 stainless steel threaded tees",
+        "qty": 6,
+        "raw": "6 tees same size",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2 each 1/2\" 316 stainless steel threaded caps",
+        "qty": 2,
+        "raw": "a couple caps",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "12 each 3/4\" 316 stainless steel threaded couplings",
+        "qty": 12,
+        "raw": "12 of the 3/4 couplings",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "20 each 3/4\" 316 stainless steel threaded close nipples",
+        "qty": 20,
+        "raw": "20 of the 3/4 close nipples",
+        "source": "body",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v1",
+  "request": "ff63160c26b6058df4cefeec84cf96a20c525e71596c98d889a4195ca7ded552",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 1905,
+    "output_tokens": 370
+  }
+}

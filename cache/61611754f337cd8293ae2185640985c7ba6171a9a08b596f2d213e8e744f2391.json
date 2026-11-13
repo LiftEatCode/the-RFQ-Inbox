@@ -1,0 +1,68 @@
+{
+  "email": "E007",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender, Cody Landry, is requesting prices for a list of galvanized fittings and pipe to be picked up Friday. The list is entirely in the attached, clearly legible image. The items are all described on the handwritten note. Ditto marks ('') are used, meaning values like 'galv' and the size from the line above should be repeated. One item (3 - 3/4\" bronze ball valve) is fully struck through and should not be included. Descriptions have been expanded to be self-contained, with repeated size/material as needed. Units of measure are inferred from common usage where stated (e.g., 'jts' means joints = EA). No lines are excluded except the struck line, and no quoted history or other content is present. No review is required as all items are fully readable in the attachment.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "2\" galvanized 90 degree elbow",
+        "qty": 8,
+        "raw": "8 - 2\" galv 90 elbow",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" galvanized tee",
+        "qty": 4,
+        "raw": "4 - ,, tee",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" x 3\" galvanized nipple",
+        "qty": 6,
+        "raw": "6 - 1\" x 3\" galv nipple",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" x 4\" galvanized nipple",
+        "qty": 6,
+        "raw": "6 - 1\" x 4\" ,,",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" galvanized coupling",
+        "qty": 12,
+        "raw": "12 - 2\" galv coupling",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" galvanized union",
+        "qty": 2,
+        "raw": "2 - 2\" galv union",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" galvanized pipe",
+        "qty": 5,
+        "raw": "5 jts - 2\" galv pipe",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v1",
+  "request": "47033424045b4c533e909ad6541c1584f90c09716709f7807f78172865bf1f8a",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2684,
+    "output_tokens": 455
+  }
+}

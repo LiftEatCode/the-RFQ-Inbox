@@ -1,0 +1,327 @@
+{
+  "email": "E006",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender, Marguerite Dubois of Pelican Fabrication, is issuing a new RFQ for a list of flanges as listed in an attached two-page PDF document, with a required-by date and specific material and rating requirements ('ASTM A105' and '150# RF') shown in the heading. The email body also requests additional spiral wound gaskets (2 sets of 4\" 150# 304 SS/graphite, and 6 sets of 6\" 150# 304 SS/graphite). The items in the attachment follow consistent defaults as indicated in the table headers and the heading: all flanges are to be 'ASTM A105' and '150# RF' unless a line states otherwise, but none does, so these defaults apply to all lines. The instructions to quote price and lead time, and provide MTRs, are general and not line-specific. Only the explicit lines from the PDF and the distinct requests in the body are taken as line_items. Totals, instructions, and any repeated or summary info (end of page footers) are not included.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "7 EA 1/2\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 7,
+        "raw": "1 7 EA 1/2\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "3 EA 3/4\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 3,
+        "raw": "2 3 EA 3/4\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "8 EA 1\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 8,
+        "raw": "3 8 EA 1\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "4 EA 1-1/4\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 4,
+        "raw": "4 4 EA 1-1/4\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "9 EA 1-1/2\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 9,
+        "raw": "5 9 EA 1-1/2\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "5 EA 2\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 5,
+        "raw": "6 5 EA 2\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "10 EA 2-1/2\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 10,
+        "raw": "7 10 EA 2-1/2\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "6 EA 3\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 6,
+        "raw": "8 6 EA 3\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2 EA 4\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 2,
+        "raw": "9 2 EA 4\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "7 EA 6\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 7,
+        "raw": "10 7 EA 6\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "3 EA 8\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 3,
+        "raw": "11 3 EA 8\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "8 EA 10\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 8,
+        "raw": "12 8 EA 10\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "4 EA 12\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 4,
+        "raw": "13 4 EA 12\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "9 EA 14\" ASTM A105 150# RF weld neck flange, standard bore",
+        "qty": 9,
+        "raw": "14 9 EA 14\" WELD NECK FLANGE, STD BORE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "5 EA 1/2\" ASTM A105 150# RF slip-on flange",
+        "qty": 5,
+        "raw": "15 5 EA 1/2\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "10 EA 3/4\" ASTM A105 150# RF slip-on flange",
+        "qty": 10,
+        "raw": "16 10 EA 3/4\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "6 EA 1\" ASTM A105 150# RF slip-on flange",
+        "qty": 6,
+        "raw": "17 6 EA 1\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2 EA 1-1/4\" ASTM A105 150# RF slip-on flange",
+        "qty": 2,
+        "raw": "18 2 EA 1-1/4\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "7 EA 1-1/2\" ASTM A105 150# RF slip-on flange",
+        "qty": 7,
+        "raw": "19 7 EA 1-1/2\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "3 EA 2\" ASTM A105 150# RF slip-on flange",
+        "qty": 3,
+        "raw": "20 3 EA 2\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "8 EA 2-1/2\" ASTM A105 150# RF slip-on flange",
+        "qty": 8,
+        "raw": "21 8 EA 2-1/2\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "4 EA 3\" ASTM A105 150# RF slip-on flange",
+        "qty": 4,
+        "raw": "22 4 EA 3\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "9 EA 4\" ASTM A105 150# RF slip-on flange",
+        "qty": 9,
+        "raw": "23 9 EA 4\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "5 EA 6\" ASTM A105 150# RF slip-on flange",
+        "qty": 5,
+        "raw": "24 5 EA 6\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "10 EA 8\" ASTM A105 150# RF slip-on flange",
+        "qty": 10,
+        "raw": "25 10 EA 8\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "6 EA 10\" ASTM A105 150# RF slip-on flange",
+        "qty": 6,
+        "raw": "26 6 EA 10\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2 EA 12\" ASTM A105 150# RF slip-on flange",
+        "qty": 2,
+        "raw": "27 2 EA 12\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "7 EA 14\" ASTM A105 150# RF slip-on flange",
+        "qty": 7,
+        "raw": "28 7 EA 14\" SLIP-ON FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "3 EA 1/2\" ASTM A105 150# RF blind flange",
+        "qty": 3,
+        "raw": "29 3 EA 1/2\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "8 EA 3/4\" ASTM A105 150# RF blind flange",
+        "qty": 8,
+        "raw": "30 8 EA 3/4\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "4 EA 1\" ASTM A105 150# RF blind flange",
+        "qty": 4,
+        "raw": "31 4 EA 1\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "9 EA 1-1/4\" ASTM A105 150# RF blind flange",
+        "qty": 9,
+        "raw": "32 9 EA 1-1/4\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "5 EA 1-1/2\" ASTM A105 150# RF blind flange",
+        "qty": 5,
+        "raw": "33 5 EA 1-1/2\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "10 EA 2\" ASTM A105 150# RF blind flange",
+        "qty": 10,
+        "raw": "34 10 EA 2\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "6 EA 2-1/2\" ASTM A105 150# RF blind flange",
+        "qty": 6,
+        "raw": "35 6 EA 2-1/2\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2 EA 3\" ASTM A105 150# RF blind flange",
+        "qty": 2,
+        "raw": "36 2 EA 3\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "7 EA 4\" ASTM A105 150# RF blind flange",
+        "qty": 7,
+        "raw": "37 7 EA 4\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "3 EA 6\" ASTM A105 150# RF blind flange",
+        "qty": 3,
+        "raw": "38 3 EA 6\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "8 EA 8\" ASTM A105 150# RF blind flange",
+        "qty": 8,
+        "raw": "39 8 EA 8\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "4 EA 10\" ASTM A105 150# RF blind flange",
+        "qty": 4,
+        "raw": "40 4 EA 10\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "9 EA 12\" ASTM A105 150# RF blind flange",
+        "qty": 9,
+        "raw": "41 9 EA 12\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "5 EA 14\" ASTM A105 150# RF blind flange",
+        "qty": 5,
+        "raw": "42 5 EA 14\" BLIND FLANGE",
+        "source": "RFQ_PF-26-3091.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2 SET 4\" 150# spiral wound gaskets, 304 stainless steel/graphite",
+        "qty": 2,
+        "raw": "2 sets of 4\" 150# spiral wound gaskets, 304 SS/graphite",
+        "source": "body",
+        "uom": "SET"
+      },
+      {
+        "description": "6 SET 6\" 150# spiral wound gaskets, 304 stainless steel/graphite",
+        "qty": 6,
+        "raw": "6 sets of 6\" 150# spiral wound gaskets, 304 SS/graphite",
+        "source": "body",
+        "uom": "SET"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v1",
+  "request": "42fc6e29f8f937656c81c0b00c634f449455bfdb755d16b7c8c96e08c58c5331",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2819,
+    "output_tokens": 2886
+  }
+}

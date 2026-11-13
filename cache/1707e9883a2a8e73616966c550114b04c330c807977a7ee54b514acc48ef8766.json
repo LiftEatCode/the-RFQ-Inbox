@@ -1,0 +1,54 @@
+{
+  "email": "E001",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Walt Pruitt from Pruitt Mechanical Contractors is requesting a quote for multiple specific pipe and fitting items for delivery to their Mobile yard. All items are listed in the body as separate lines, with clear specs and quantities. No heading applies beyond each line's own content; there are no stated defaults. The only context note is for delivery location and their internal reference number. There are no attachments; all quoted lines are present in the body. Quoted history, totals, and hidden content are not present. Totals and contact details are not requested as line items and are omitted accordingly.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "2\" SCH 40 A53B ERW black pipe, plain ends",
+        "qty": 12,
+        "raw": "12 jts - 2\" SCH 40 A53B ERW black pipe, PE",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" 3000# forged threaded 90 elbow, A105",
+        "qty": 30,
+        "raw": "(30) 2\" 3000# forged threaded 90 elbow, A105",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" 3000# forged threaded coupling, A105",
+        "qty": 30,
+        "raw": "(30) 2\" 3000# forged threaded coupling, A105",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "3/4\" SCH 40 galvanized pipe, threaded both ends",
+        "qty": 200,
+        "raw": "200 ft - 3/4\" SCH 40 galvanized pipe, TBE",
+        "source": "body",
+        "uom": "FT"
+      },
+      {
+        "description": "4\" 150# RF slip-on flange, A105",
+        "qty": 6,
+        "raw": "4\" 150# RF slip-on flange, A105 x 6",
+        "source": "body",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v1",
+  "request": "24a138a4bcc44e703aef7b3d61873c5eb6ddfbcfab62afda4238c7f02811b438",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2090,
+    "output_tokens": 387
+  }
+}

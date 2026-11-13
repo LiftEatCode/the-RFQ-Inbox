@@ -1,0 +1,61 @@
+{
+  "email": "E016",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This email comes from our inside sales rep Marcus Doyle, forwarding a customer's (Priya Raman at Hollis Mechanical) request. The actual items to quote are in the attached CSV from Priya—she is requesting pricing and lead time for material for a condensate return job, needing it by Friday. Marcus adds no changes or notes to the forwarded list, only instructs to quote it. The CSV attachment contains six lines, all consistent and self-contained, with quantity, UOM, size, and full description. No hidden, struck, or unreadable items; nothing omitted (quoted history is just the thread). Only the lines from HM-7716_material_list.csv are needed; no review required.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "1-1/2\" Pipe, SCH 80, A106B seamless, plain ends",
+        "qty": 60,
+        "raw": "60 | FT | 1-1/2\" | Pipe, SCH 80, A106B SMLS, PE",
+        "source": "HM-7716_material_list.csv",
+        "uom": "FT"
+      },
+      {
+        "description": "1-1/2\" 90 elbow, socket weld, 3000#, A105",
+        "qty": 12,
+        "raw": "12 | EA | 1-1/2\" | 90 elbow, SW, 3000#, A105",
+        "source": "HM-7716_material_list.csv",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/2\" tee, socket weld, 3000#, A105",
+        "qty": 6,
+        "raw": "6 | EA | 1-1/2\" | Tee, SW, 3000#, A105",
+        "source": "HM-7716_material_list.csv",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/2\" union, socket weld, 3000#, A105",
+        "qty": 8,
+        "raw": "8 | EA | 1-1/2\" | Union, SW, 3000#, A105",
+        "source": "HM-7716_material_list.csv",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/2\" gate valve, 800#, socket weld, A105",
+        "qty": 4,
+        "raw": "4 | EA | 1-1/2\" | Gate valve, 800#, SW, A105",
+        "source": "HM-7716_material_list.csv",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/2\" Y-strainer, 800#, socket weld, A105",
+        "qty": 2,
+        "raw": "2 | EA | 1-1/2\" | Y-strainer, 800#, SW, A105",
+        "source": "HM-7716_material_list.csv",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v1",
+  "request": "7e1911741ad37e5994dc239e9e84cbb9810efbb1c878efb5fa8c9f290a4fbf4e",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2214,
+    "output_tokens": 559
+  }
+}

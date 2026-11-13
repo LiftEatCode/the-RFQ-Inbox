@@ -1,0 +1,18 @@
+{
+  "email": "E017",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This email is from Dwayne Okafor at Cobalt Ridge Fabrication, requesting pricing for a bill of materials (BOM) for Job 2291. The email states that the items are in an attachment, but the only attachment present is an inline company logo (image001.png). There are no line items listed in the body of the email. Since the BOM attachment with the requested items is missing, a sales rep cannot proceed without review.",
+    "classification": "rfq",
+    "line_items": [],
+    "needs_review": true,
+    "review_reason": "BOM attachment referenced in the email is missing; only a logo is attached and there are no line items in the email body."
+  },
+  "prompt_version": "v1",
+  "request": "6e9571fc62f1b82b9b95735526ccf522fbd0b603d21612644461bd025f1bc164",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2058,
+    "output_tokens": 137
+  }
+}

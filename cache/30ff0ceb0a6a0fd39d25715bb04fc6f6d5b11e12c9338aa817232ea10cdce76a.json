@@ -1,0 +1,82 @@
+{
+  "email": "E019",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Tomas Reyes (South Fork Welding & Fabrication) is submitting an RFQ for various carbon steel pipe and socket weld fittings for the Tank Farm Phase 2 job. The RFQ is fully contained in the attached Word document ('TankFarm_Ph2_Materials.docx'), which organizes the material by type with clear default specifications specified by table headings. For the pipe section, the default 'Carbon Steel Pipe – SCH 80 SMLS A106B' applies to all rows unless a row overrides (none do). Ends are specified per line (PE = plain end, BE = beveled end). For fittings, all are 'Socket Weld Fittings – 3000# A105' as per the section heading. The list includes only material descriptions: no prices, totals, or hidden/struck content. The body and attachment both make clear this is a request for quote on all listed items. No lines are excluded; delivery instructions are not item requests.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "10 joints of 2\" carbon steel pipe SCH 80 SMLS A106B, plain end",
+        "qty": 10,
+        "raw": "10 jts | 2\" | PE",
+        "source": "TankFarm_Ph2_Materials.docx",
+        "uom": "EA"
+      },
+      {
+        "description": "6 joints of 3\" carbon steel pipe SCH 80 SMLS A106B, plain end",
+        "qty": 6,
+        "raw": "6 jts | 3\" | PE",
+        "source": "TankFarm_Ph2_Materials.docx",
+        "uom": "EA"
+      },
+      {
+        "description": "4 joints of 4\" carbon steel pipe SCH 80 SMLS A106B, beveled end",
+        "qty": 4,
+        "raw": "4 jts | 4\" | BE",
+        "source": "TankFarm_Ph2_Materials.docx",
+        "uom": "EA"
+      },
+      {
+        "description": "8 joints of 1\" carbon steel pipe SCH 80 SMLS A106B, plain end",
+        "qty": 8,
+        "raw": "8 jts | 1\" | PE",
+        "source": "TankFarm_Ph2_Materials.docx",
+        "uom": "EA"
+      },
+      {
+        "description": "24 pieces 1\" 90 degree socket weld elbow, 3000# A105",
+        "qty": 24,
+        "raw": "24 | 1\" | 90 elbow",
+        "source": "TankFarm_Ph2_Materials.docx",
+        "uom": "EA"
+      },
+      {
+        "description": "12 pieces 1\" socket weld tee, 3000# A105",
+        "qty": 12,
+        "raw": "12 | 1\" | Tee",
+        "source": "TankFarm_Ph2_Materials.docx",
+        "uom": "EA"
+      },
+      {
+        "description": "30 pieces 3/4\" full socket weld coupling, 3000# A105",
+        "qty": 30,
+        "raw": "30 | 3/4\" | Coupling, full",
+        "source": "TankFarm_Ph2_Materials.docx",
+        "uom": "EA"
+      },
+      {
+        "description": "16 pieces 1/2\" socket weld union, 3000# A105",
+        "qty": 16,
+        "raw": "16 | 1/2\" | Union",
+        "source": "TankFarm_Ph2_Materials.docx",
+        "uom": "EA"
+      },
+      {
+        "description": "20 pieces 2\" half socket weld coupling, 3000# A105",
+        "qty": 20,
+        "raw": "20 | 2\" | Half coupling",
+        "source": "TankFarm_Ph2_Materials.docx",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v1",
+  "request": "14f2d7cb7f76d832dddf98484b04fefbe06dcfbbcfe52b0fe751827057f2e8d4",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2075,
+    "output_tokens": 696
+  }
+}
