@@ -35,6 +35,7 @@ def answer(classification="rfq", lines=None, needs_review=False, reason=None) ->
         lines = [{"raw": '10 ea 2" 90 elbow', "description": '2" 90 elbow',
                   "qty": 10, "uom": "EA", "source": "body"}]
     return json.dumps({
+        "analysis": "The new message asks for a price on the listed items.",
         "classification": classification,
         "needs_review": needs_review,
         "review_reason": reason,
