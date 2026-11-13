@@ -1,6 +1,6 @@
 {
   "model": "gpt-4.1",
-  "prompt_version": "v0",
+  "prompt_version": "v1",
   "price_known": true,
   "totals": {
     "emails": 24,

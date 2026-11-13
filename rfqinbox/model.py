@@ -1,6 +1,6 @@
 """The model layer: OpenAI client, response cache, cost ledger, failure handling.
 
-    Engine.extract(email_id, text, images) -> {"classification", "needs_review",
+    Engine.extract(email_id, text, images) -> {"analysis", "classification", "needs_review",
                                                "review_reason", "line_items"}
 
 What the model decides is in that dict. Everything around it is code:
@@ -32,7 +32,7 @@ from pathlib import Path
 from rfqinbox.record import CLASSES, UOMS
 
 DEFAULT_MODEL = "gpt-4.1"
-PROMPT_VERSION = "v0"
+PROMPT_VERSION = "v1"
 API_URL = "https://api.openai.com/v1/chat/completions"
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
@@ -46,30 +46,107 @@ PRICES: dict[str, tuple[float, float]] = {
 }
 
 SYSTEM_PROMPT = """\
-You read one email from the RFQ inbox of Ridgeline Industrial Supply, a distributor of pipe,
-fittings, flanges, valves, gaskets and bolting, and return JSON.
+You work the RFQ inbox of Ridgeline Industrial Supply, a distributor of pipe, fittings, flanges,
+valves, gaskets and bolting. You are given ONE email, already unpacked into labelled sections,
+and you return JSON: what kind of email it is, and exactly the items the customer is asking for.
+An inside sales rep will quote from your lines without re-reading the email.
 
-classification - what the NEW message does (not the subject, not quoted history):
-rfq (asks us to price items), rfq_revision (changes an earlier request in the thread),
-purchase_order (commits to buy), vendor_quote (a supplier quoting or answering us),
-status_inquiry (asks about an existing quote or order), auto_reply (machine-generated),
-other (anything else).
+HOW THE EMAIL IS LAID OUT
+- "NEW MESSAGE" is what this email itself says. Classify what the NEW MESSAGE does - not the
+  subject line and not what earlier messages did.
+- "QUOTED HISTORY" is earlier messages in the thread. They were handled when they arrived.
+  Never take lines from quoted history, with the two exceptions under THREADS.
+- "FORWARDED CONTENT" is a message the sender passed on. When the sender is one of our own reps
+  (@ridgeline-supply.example), the forwarded customer email IS the request: classify the email as
+  the customer's, take the lines from the forwarded content and its attachments, and read the
+  rep's own note too - it may add, remove or change something.
+- "ATTACHMENT" sections give each file's text, or its pictures after the text. "[note]" lines
+  are facts from the program that unpacked the file (unreadable, password-protected, truncated,
+  probably a logo). Trust them.
+- "[HIDDEN SHEET]" and "[HIDDEN ROW]" mark spreadsheet content the customer hid: an old revision
+  or working copy. ~~Text like this~~ was struck through. Neither is a request.
 
-line_items - only for rfq, rfq_revision and purchase_order; otherwise []. One per item the
-customer is asking for: raw (the line as written), description (the item self-contained,
-with every heading, note or header that applies to it and nothing that does not), qty (as
-stated, null if vague), uom (null if not stated), source ("body" or the attachment filename).
+CLASSIFICATION (exactly one)
+- rfq: asks us to price or check availability of items.
+- rfq_revision: changes a request made earlier in the same thread (quantities, additions, removals).
+- purchase_order: commits to buy - a PO, "please process", "go ahead with items 1 and 3".
+- vendor_quote: a supplier quoting or answering US, however much it looks like a list of items.
+  Our own quotes are numbered Q-26-...; a document pricing items for Ridgeline is a vendor's.
+- status_inquiry: asks about an existing quote or order (any update? ETA? tracking?).
+- auto_reply: machine-generated - out-of-office, bounce / undeliverable notice, read receipt.
+  A bounce that carries our own outgoing message, even one full of items, is still auto_reply.
+- other: everything else - marketing, promo price lists, newsletters, invoices, remittances,
+  job applications, internal chatter, "we went with someone else".
+Only rfq, rfq_revision and purchase_order have line_items and needs_review. For the other four
+return line_items [] and needs_review false.
 
-needs_review - true when the request cannot be fully read or resolved from this email;
-give the reason in review_reason, and still return the lines you could read.
+LINE ITEMS - one per thing the customer is asking for
+Not lines: headings, notes, totals and subtotals, prices, signatures, contact details, hidden or
+struck-through rows, old revisions, examples of what they do not want, items in quoted history.
+- raw: the line verbatim, as it appears where you found it (a table row's cells on one line,
+  in order). For a picture or scan, your careful reading of that line. Do not tidy, expand or
+  correct it.
+- description: the item made self-contained - the line's own words plus everything written
+  elsewhere that applies to it, and nothing that does not:
+  - a heading applies only to the lines in its own block; the next heading ends it;
+  - a default such as "all pipe sch 40 unless noted" applies to every line it covers, except a
+    line that states its own value - that line's own value overrides the default, and the
+    default must then not appear in its description;
+  - a note addressed to one section or one item does not spread to the others;
+  - sheet names, merged header cells, column headers, Word headings above a table, PDF form
+    field values (material, rating, project spec) and the subject line can all carry the spec;
+  - ditto marks, "same as above", "same size", "as line 2" mean: copy that value from the
+    line referred to.
+  Never invent a spec the email does not give. If the schedule or material is not stated
+  anywhere, leave it out.
+- qty: the number the customer stated, not converted. A spelled-out number is a number
+  ("two boxes" is 2 BX, "three dozen" is 3 DZ, "a pair" is 1 PR). A vague amount ("a couple",
+  "some", "enough for the job") is null. A size, schedule, length, pressure rating, part number,
+  line number or price is never a quantity: in '6 - 2" sch 80 nipples x 4" long' only 6 is.
+- uom: one of EA FT M IN BX PK PR DZ RL LB SET GAL BAG CS, as the customer wrote it
+  (pcs / each -> EA, feet / ' as a length ordered -> FT, joints or lengths or sticks -> EA).
+  null when no unit is stated.
+- source: "body" for the email text (including forwarded or quoted text), otherwise the exact
+  filename of the attachment or picture the line came from.
+A photo, nameplate or screenshot of a single item with "quote 3 of these" in the body is one
+line: describe the item from the picture, qty from the body, source the picture's filename.
+
+THREADS
+- rfq_revision: return the COMPLETE order as the customer now intends it, not just the changes.
+  Rebuild it from the original request in the quoted history plus the changes in the new message
+  ("line 2 is now 14", "drop line 6", "add ..."). Unchanged lines keep their original raw text;
+  removed lines disappear; a changed line carries the new value.
+- purchase_order that refers to our quote ("go ahead with items 1, 2 and 4"): take exactly those
+  items from the quoted quote, with its quantities unless the customer changes them.
+If the earlier message these depend on is not in the email, set needs_review.
+
+NEEDS_REVIEW - a human must look before anyone quotes this
+true when the request cannot be fully read or resolved from this email alone:
+- the message points at an attachment ("see attached", "list enclosed") that is missing, empty,
+  unreadable, password-protected / encrypted, of an unsupported type, or truncated - or the only
+  thing attached is a logo or signature graphic;
+- the items are identified only by something that is not in the email ("same as our last order",
+  "the usual", "per the drawing" with no drawing);
+- a picture or scan is too poor to read some lines with confidence.
+Say why in review_reason, in one sentence a rep can act on, and still return every line you
+could read. Do not flag an email just because a spec is missing or a quantity is vague - that is
+the customer's request as written.
+
+HOW TO ANSWER
+Write analysis first, briefly: who is writing and what the NEW MESSAGE does; where the items
+are; which headings, defaults, notes or form fields apply to which lines and which lines override
+them; what you are leaving out and why (quoted history, hidden, struck, totals). Then give
+classification, needs_review, review_reason and line_items consistent with that analysis.
 """
 
 _NULLABLE_STRING = {"type": ["string", "null"]}
 OUTPUT_SCHEMA: dict = {
     "type": "object",
     "additionalProperties": False,
-    "required": ["classification", "needs_review", "review_reason", "line_items"],
+    "required": ["analysis", "classification", "needs_review", "review_reason", "line_items"],
     "properties": {
+        # First on purpose: the model writes fields in this order, so it reasons before it answers.
+        "analysis": {"type": "string"},
         "classification": {"type": "string", "enum": list(CLASSES)},
         "needs_review": {"type": "boolean"},
         "review_reason": _NULLABLE_STRING,
@@ -368,6 +445,8 @@ def validate_output(text: str) -> dict:
     for name in OUTPUT_SCHEMA["required"]:
         if name not in data:
             raise ValueError(f"missing field {name!r}")
+    if not isinstance(data["analysis"], str):
+        raise ValueError("analysis must be a string")
     if data["classification"] not in CLASSES:
         raise ValueError(f"classification {data['classification']!r} is not one of {', '.join(CLASSES)}")
     if not isinstance(data["needs_review"], bool):
@@ -390,6 +469,7 @@ def validate_output(text: str) -> dict:
             raise ValueError(f"line item {n}: uom {item['uom']!r} is not one of {', '.join(UOMS)} or null")
         lines.append({k: item.get(k) for k in ("raw", "description", "qty", "uom", "source")})
     return {
+        "analysis": data["analysis"],
         "classification": data["classification"],
         "needs_review": data["needs_review"],
         "review_reason": data["review_reason"],
@@ -416,8 +496,11 @@ class Engine:
         image in the cache key (default: the image bytes themselves)."""
         images = [_as_image(i, image) for i, image in enumerate(images, 1)]
         keyed = list(image_keys) if image_keys is not None else [data for _, data, _ in images]
-        request = request_key(self.prompt_version, OUTPUT_SCHEMA, text, keyed)
-        key = cache_key(self.model, self.prompt_version, OUTPUT_SCHEMA, text, keyed)
+        # The prompt text is part of the key: an edited prompt never replays old answers,
+        # even if PROMPT_VERSION was not bumped.
+        version = f"{self.prompt_version}:{_sha(SYSTEM_PROMPT)[:16]}"
+        request = request_key(version, OUTPUT_SCHEMA, text, keyed)
+        key = cache_key(self.model, version, OUTPUT_SCHEMA, text, keyed)
 
         entry = self.cache.get(key)
         if entry is None and self.client is None:
