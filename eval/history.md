@@ -17,6 +17,7 @@ in `rfqinbox/score.py`); the graders' own numbers may differ in detail.
 | model layer | client, cache, cost ledger wired in; run with no key and an empty cache, so every email takes the model-down path | 0 | 0 | 0 | 4 | 70.8% | 0.0% (0/210) | n/a | n/a | n/a | n/a | n/a | 0.0% | 8.3% / 100% |
 | prompt v1 | first recorded run: gpt-4.1, one call per email, $0.26 for 24 emails; no code-side checks yet | 0 | 45 | 0 | 0 | 95.8% | 99.5% (209/210) | 82.3% (209/254) | 93.8% | 100% | 100% | 100% | 0.0% | 100% / 100% |
 | code checks | duplicates, revises links, invented/hidden lines, source, vague and size-as-quantity rules, attachment review rules; same cached answers, no new calls | 0 | 1 | 0 | 0 | 95.8% | 99.5% (209/210) | 99.5% (209/210) | 94.3% | 100% | 100% | 100% | 100% | 100% / 100% |
+| checks v2 | size-as-quantity nulls without a review flag; duplicates also match when the content is the same but the model read it differently; no change on dev | 0 | 1 | 0 | 0 | 95.8% | 99.5% (209/210) | 99.5% (209/210) | 94.3% | 100% | 100% | 100% | 100% | 100% / 100% |
 
 Reading the baseline: flagging everything already gives zero silent losses —
 which is why silent losses alone can't be the target. Every later change has to

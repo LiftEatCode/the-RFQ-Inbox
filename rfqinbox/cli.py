@@ -54,7 +54,8 @@ def link_inbox(emails_dir: Path, results: dict[str, dict]) -> dict[str, dict]:
                 headers[path.stem] = reader.read_headers(path)
             except Exception:  # noqa: BLE001 — an unreadable email is simply not linked
                 continue
-        return checks.link_records(headers, results)
+        return checks.link_records(headers, results,
+                                   load=lambda i: reader.read_email(emails_dir / f"{i}.eml"))
     except Exception as exc:  # noqa: BLE001
         print(f"warning: could not link duplicates and revisions ({type(exc).__name__}: {exc})",
               file=sys.stderr)

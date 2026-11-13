@@ -7,11 +7,13 @@ check_record(packet, record)   one email
 - a line whose text is nowhere in the email was invented: dropped, email flagged
 - a line that exists only in hidden or struck-through content: dropped, no flag
 - `source` is "body" or a real attachment filename
-- a vague amount is null; a number that is only a size or rating is not a quantity
+- a vague amount is null; a number that is only a size or rating is not a quantity (null)
 - a request whose attachment is missing, unreadable, encrypted or truncated is flagged
 
 link_records(headers, records)   the whole inbox
-- the same request sent twice: the later Date is the duplicate
+- the same request sent twice: the later Date is the duplicate. "The same" means the
+  same sender, the same kind, and either identical lines or identical content (the same
+  attached file, the same lines of text) that the model happened to read differently
 - a revision points at the email it revises, when that email is in the inbox
 
 Neither function changes its input, and neither ever turns a request into a
@@ -59,16 +61,16 @@ def _split_visible(text: str) -> tuple[list[str], list[str]]:
 class _Block:
     """One piece of text (the body, or one attachment) as windows of word sets."""
 
-    def __init__(self, text: str):
+    def __init__(self, text: str, window: int = WINDOW):
         visible, excluded = _split_visible(text)
-        self.visible = self._windows(visible)
-        self.excluded = self._windows(excluded)
+        self.visible = self._windows(visible, window)
+        self.excluded = self._windows(excluded, window)
 
     @staticmethod
-    def _windows(lines: list[str]) -> list[set[str]]:
+    def _windows(lines: list[str], window: int) -> list[set[str]]:
         sets = [s for s in (_tokens(ln) for ln in lines) if s]
         out = list(sets)
-        for size in range(2, WINDOW + 1):
+        for size in range(2, window + 1):
             out += [set().union(*sets[i:i + size]) for i in range(len(sets) - size + 1)]
         return out
 
@@ -85,9 +87,9 @@ class _Block:
         return self._best(words, self.excluded)
 
 
-def _blocks(pk) -> tuple[_Block, dict[str, _Block]]:
+def _blocks(pk, window: int = WINDOW) -> tuple[_Block, dict[str, _Block]]:
     body = "\n".join([pk.subject, pk.body_new, *(q.text for q in pk.quoted)])
-    return _Block(body), {a.filename: _Block(a.text) for a in pk.attachments}
+    return _Block(body, window), {a.filename: _Block(a.text, window) for a in pk.attachments}
 
 
 # =========================================================================== source
@@ -217,7 +219,7 @@ def check_record(pk, record: dict) -> dict:
 
     body, files = _blocks(pk)
     has_pictures = any(a.images and a.status != "logo" for a in pk.attachments)
-    kept, invented, unsure_qty = [], 0, 0
+    kept, invented = [], 0
     for item in record["line_items"]:
         words = _tokens(item.get("raw") or "")
         item["source"] = _resolve_source(item.get("source"), words, pk, body, files)
@@ -235,8 +237,9 @@ def check_record(pk, record: dict) -> dict:
             if _VAGUE.search(raw):
                 item["qty"] = None            # "a couple", "some": the request as written
             elif evidence == "spec":
-                item["qty"] = None            # the number is a size or rating, not a count
-                unsure_qty += 1
+                # The number is a size or rating, not a count. Blank it for the rep to fill
+                # in; not a review flag (README: that is for emails we cannot read or resolve).
+                item["qty"] = None
         kept.append(item)
     record["line_items"] = kept
 
@@ -244,9 +247,6 @@ def check_record(pk, record: dict) -> dict:
     if invented:
         reasons.append(f"{invented} line{'s' if invented > 1 else ''} returned by the model "
                        f"{'were' if invented > 1 else 'was'} not found in the email and removed")
-    if unsure_qty:
-        reasons.append(f"the quantity on {unsure_qty} line{'s' if unsure_qty > 1 else ''} "
-                       "could not be confirmed (the number given is a size or rating)")
     reasons += _attachment_reasons(pk)
     if not kept and not reasons and not record["needs_review"]:
         reasons.append("no line items are left after removing hidden and struck-through content")
@@ -287,6 +287,28 @@ def _fingerprint(record: dict) -> tuple:
                         for i in record["line_items"]))
 
 
+def _all_in(lines: list[dict], own, other) -> bool:
+    """Is every one of these lines (read from `own`) also in the email `other`?
+    Either it came from a file that `other` carries byte-for-byte, or all of its words
+    sit on one single line of `other` - one line, so that a changed quantity is never
+    explained away by the same number appearing on a neighbouring line."""
+    own_files = {a.filename: a.source_sha for a in own.attachments}
+    other_files = {a.source_sha for a in other.attachments if a.source_sha}
+    body, files = _blocks(other, window=1)
+    for item in lines:
+        if own_files.get(item.get("source")) in other_files:
+            continue
+        words = _tokens(item.get("raw") or "")
+        if not words or max(b.seen(words) for b in (body, *files.values())) < 1.0:
+            return False
+    return True
+
+
+def _same_request(a_pk, a_rec: dict, b_pk, b_rec: dict) -> bool:
+    """Two readings of the same content: nothing in either email is missing from the other."""
+    return _all_in(a_rec["line_items"], a_pk, b_pk) and _all_in(b_rec["line_items"], b_pk, a_pk)
+
+
 def _message_ids(text: str) -> list[str]:
     return [m.strip().lower() for m in re.findall(r"<([^<>\s]+)>", text or "")]
 
@@ -301,22 +323,42 @@ def _subject(subject: str) -> str:
     return " ".join(re.findall(r"[a-z0-9]+", s.lower()))
 
 
-def link_records(headers: dict, records: dict[str, dict]) -> dict[str, dict]:
+def link_records(headers: dict, records: dict[str, dict], load=None) -> dict[str, dict]:
     """Set duplicate_of and revises across the inbox. headers: id -> reader Packet
-    (headers only is enough). Emails without readable headers are left as they are."""
+    (headers only is enough). load(id) -> the full Packet, or None; it is only called
+    for possible duplicate pairs whose lines differ. Emails without readable headers
+    are left as they are."""
     records = copy.deepcopy(records)
     ids = sorted((i for i in records if i in headers), key=lambda i: _order(headers, i))
+    loaded: dict[str, object] = {}
+
+    def full(email_id: str):
+        if email_id not in loaded:
+            try:
+                loaded[email_id] = load(email_id) if load else None
+            except Exception:  # noqa: BLE001 — an email we cannot re-read is simply not compared
+                loaded[email_id] = None
+        return loaded[email_id]
 
     # The same request sent twice: same sender, same kind, same lines. The later Date
     # is the duplicate. Emails with no lines are never duplicates: there is nothing to compare.
-    first_seen: dict[tuple, str] = {}
+    originals: dict[tuple, list[str]] = {}
     for email_id in ids:
         rec = records[email_id]
         if rec["classification"] not in ACTION_CLASSES or not rec["line_items"]:
             continue
-        key = (_address(headers[email_id].sender), rec["classification"], _fingerprint(rec))
-        original = first_seen.setdefault(key, email_id)
-        if original != email_id:
+        earlier = originals.setdefault((_address(headers[email_id].sender), rec["classification"]), [])
+        original = next((o for o in earlier if _fingerprint(records[o]) == _fingerprint(rec)), None)
+        if original is None:
+            # Not the same lines - but possibly the same content, read differently.
+            for o in earlier:
+                a_pk, b_pk = full(o), full(email_id)
+                if a_pk is not None and b_pk is not None and _same_request(a_pk, records[o], b_pk, rec):
+                    original = o
+                    break
+        if original is None:
+            earlier.append(email_id)
+        else:
             records[email_id] = make_record(rec["classification"], [], duplicate_of=original)
 
     by_message_id = {}

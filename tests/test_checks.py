@@ -387,21 +387,23 @@ def test_three_copies_all_point_at_the_first(tmp_path, monkeypatch):
 
 
 def not_a_duplicate_cases():
-    other_sender = dict(sender="Lee <lee@elsewhere.example>")
+    """(second email's headers, second email's body, first kind, second kind, second lines).
+    The first email is always BODY from Pat, read as TWO_LINES."""
+    more_elbows = line('12 ea 2" 90 elbow sch 40', 12)
     return {
-        "different-sender": (dict(), other_sender, "rfq", "rfq", TWO_LINES),
-        "different-kind": (dict(), dict(), "rfq", "purchase_order", TWO_LINES),      # they ordered what they asked for
-        "different-quantity": (dict(), dict(), "rfq", "rfq", [dict(ELBOW, qty=12), VALVE]),
-        "extra-line": (dict(), dict(), "rfq", "rfq", [*TWO_LINES, line("6 ea 4in cap", 6)]),
+        "different-sender": (dict(sender="Lee <lee@elsewhere.example>"), BODY, "rfq", "rfq", TWO_LINES),
+        "different-kind": (dict(), BODY, "rfq", "purchase_order", TWO_LINES),      # they ordered what they asked for
+        "different-quantity": (dict(), BODY.replace("10 ea", "12 ea"), "rfq", "rfq", [more_elbows, VALVE]),
+        "extra-line": (dict(), BODY + "\n6 ea 4in cap", "rfq", "rfq", [*TWO_LINES, line("6 ea 4in cap", 6)]),
     }
 
 
 @pytest.mark.parametrize("case", not_a_duplicate_cases().values(), ids=not_a_duplicate_cases().keys())
 def test_similar_emails_that_are_not_the_same_request_are_both_kept(tmp_path, monkeypatch, case):
-    first_kw, second_kw, first_class, second_class, second_lines = case
+    second_kw, second_body, first_class, second_class, second_lines = case
     inbox = tmp_path / "inbox"
-    eml(inbox, "A", "[first]\n" + BODY + "\n6 ea 4in cap", date=MON, **first_kw)
-    eml(inbox, "B", "[second]\n" + BODY + "\n6 ea 4in cap", date=TUE, **second_kw)
+    eml(inbox, "A", "[first]\n" + BODY, date=MON)
+    eml(inbox, "B", "[second]\n" + second_body, date=TUE, **second_kw)
 
     data = parse(tmp_path, monkeypatch, {"[first]": answer(first_class, TWO_LINES),
                                          "[second]": answer(second_class, second_lines)})

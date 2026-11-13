@@ -68,9 +68,10 @@ Done (each with tests):
 6. Code-side checks (`rfqinbox/checks.py`, `tests/test_checks.py`). Per email: a line not found
    in the email text is dropped + flagged (kept if the email has pictures); lines only in
    hidden/struck content are dropped; source normalised; vague amount -> null; a qty that is
-   only a size/rating -> null + flagged; attachment missing/unreadable/encrypted/truncated ->
+   only a size/rating -> null (no flag); attachment missing/unreadable/encrypted/truncated ->
    flagged. Across the inbox (`cli.link_inbox`): duplicate = same sender + class + identical
-   lines, later Date; revises via In-Reply-To, References, then subject + sender.
+   lines, or identical content read differently (same attachment bytes, or every line's words
+   on one line of the other email, both ways), later Date; revises via In-Reply-To, References, then subject + sender.
    Checks only use cached answers: changing them costs nothing to re-run.
 
 Model layer as built (tests use a fake client / fake urlopen; no key needed):
