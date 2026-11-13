@@ -34,6 +34,14 @@ def check_format():
     return _load_check_format()
 
 
+@pytest.fixture(autouse=True)
+def _no_key_no_shared_cache(monkeypatch, tmp_path):
+    """No test may spend money or touch the committed cache: the key is removed from
+    the environment and the default cache folder points into the test's temp dir."""
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.setenv("RFQINBOX_CACHE_DIR", str(tmp_path / "default-cache"))
+
+
 def make_eml(
     path: Path,
     body: str = "Please quote 10 ea 2\" 90 elbow.",
