@@ -1,0 +1,68 @@
+{
+  "email": "P08",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Dana Whitlock is submitting a revision to their earlier RFQ for a boiler feed rework project. In the new message, Dana specifies that item b (the 2\" pipe) should be 7 lengths (instead of 5), the 1-1/2\" couplings (item f) should be removed, and a new line (4 ea 3\" 150# RF weld neck flanges, A105) should be added. All other items from the original request remain unchanged. The original request included a default for all pipe: SCH 80 A106B seamless unless otherwise noted. SCH 40 is specified only for the 3\" pipe (item c), overriding the default. The message does not reference any attachments, and no lines from the quoted history are omitted except those specifically cancelled or revised. No hidden or struck content is present; totals and signatures are not included as line items. There are clear, unambiguous quantities and descriptions for each item requested after revision, so no review is needed.",
+    "classification": "rfq_revision",
+    "line_items": [
+      {
+        "description": "1-1/2\" pipe, SCH 80 A106B seamless",
+        "qty": 8,
+        "raw": "a) 8 lengths 1-1/2\"",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" pipe, SCH 80 A106B seamless",
+        "qty": 7,
+        "raw": "b) 5 lengths 2\"",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "3\" pipe, SCH 40",
+        "qty": 3,
+        "raw": "c) 3 lengths 3\" SCH 40",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/2\" 90 degree elbow, 3000# forged steel, socket weld",
+        "qty": 16,
+        "raw": "d) 16 - 1-1/2\" 90 ell",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" tee, 3000# forged steel, socket weld",
+        "qty": 6,
+        "raw": "e) 6 - 2\" tee",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" gate valve, class 800, socket weld ends",
+        "qty": 2,
+        "raw": "g) 2 ea 2\" gate valve, class 800, SW ends",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "3\" 150# RF weld neck flange, A105",
+        "qty": 4,
+        "raw": "4 ea 3\" 150# RF weld neck flanges, A105",
+        "source": "body",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v2",
+  "request": "559dffb89d852bd5b0e998d5ba5f75587553c3db611ad209115465254c842d72",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2243,
+    "output_tokens": 543
+  }
+}

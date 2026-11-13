@@ -1,0 +1,45 @@
+From: Mail Delivery Subsystem <mailer-daemon@mx.pinebluffpaper.example>
+To: Ridgeline RFQ Desk <rfq@ridgeline-supply.example>
+Subject: Undeliverable: RFQ R-5530 - bolting
+Date: Mon, 09 Nov 2026 09:15:00 -0600
+Message-ID: <p15.20261100@probe.example>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============7006261528403281503=="
+
+--===============7006261528403281503==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+This is an automatically generated delivery status notification.
+
+Delivery to the following recipient failed permanently:
+
+    purchasing@pinebluffpaper.example
+
+550 5.1.1 The email account that you tried to reach does not exist.
+
+The original message is attached.
+
+--===============7006261528403281503==
+Content-Type: message/rfc822
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
+Content-Disposition: attachment
+
+From: Priya Nair <pnair@ridgeline-supply.example>
+To: purchasing@pinebluffpaper.example
+Subject: RFQ R-5530 - bolting
+Date: Mon, 09 Nov 2026 09:14:00 -0600
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+Please quote price and delivery:
+
+200 ea 5/8" x 3-1/2" B7 stud w/ 2 2H nuts
+120 ea 3/4" x 4" B7 stud w/ 2 2H nuts
+
+Priya Nair
+Ridgeline Industrial Supply
+
+--===============7006261528403281503==--

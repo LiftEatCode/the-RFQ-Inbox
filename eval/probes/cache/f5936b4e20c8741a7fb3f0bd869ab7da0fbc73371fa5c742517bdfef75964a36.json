@@ -1,0 +1,18 @@
+{
+  "email": "P04",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This message from Theo Lindqvist is asking for the lead time (ETA) on basket strainers quoted on Q-26-1187, which Ridgeline previously sent. There are no requests for new pricing, changes to previous requests, or items to quote or purchase. The inquiry is strictly about the status of an existing quote, specifically the lead time for one of the quoted items. There are no attachments, and no line items to extract. No review needed as the request is clear and fully readable.",
+    "classification": "status_inquiry",
+    "line_items": [],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v2",
+  "request": "b1210959b9fc1226e60aeb7ac1b56f35486756764b4815de64597d3752bb5ec4",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 1989,
+    "output_tokens": 126
+  }
+}

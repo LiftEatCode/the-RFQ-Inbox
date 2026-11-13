@@ -1,0 +1,33 @@
+{
+  "email": "P10",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This message originates from Priya Nair (a Ridgeline rep) forwarding an RFQ from Glenrock Dairy's Sam Otero. Sam's original message requests pricing for 3 swing check valves and 10 ring gaskets. Priya's note in the new message section alters the order, stating that Glenrock called back and wants two more of the check valves, so the total is now 5. All necessary details are provided in the body and forwarded content with clear item lines. No lines are being taken from quoted history and there are no hidden, struck, or total/summary lines. The rep's note clearly changes the quantity on the check valves, so we apply that revision. No need for review as all content is present and legible.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "2\" swing check valve, 316SS, 150# flanged",
+        "qty": 5,
+        "raw": "3 - 2\" swing check valve, 316SS, 150# flanged",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "2\" 150# ring gasket, PTFE",
+        "qty": 10,
+        "raw": "10 - 2\" 150# ring gaskets, PTFE",
+        "source": "body",
+        "uom": null
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v2",
+  "request": "8d71a70a86f72a95a9eac3781d1f6c2cdf7daaf60b26bb97b468ebf809b90e2d",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2119,
+    "output_tokens": 271
+  }
+}

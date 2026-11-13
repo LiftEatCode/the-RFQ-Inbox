@@ -25,3 +25,24 @@ Reading the baseline: flagging everything already gives zero silent losses —
 which is why silent losses alone can't be the target. Every later change has to
 keep that at 0 while lifting recall, and remove the 4 phantoms (vendor quote,
 status inquiry, bounce, promo) without losing a real request.
+
+## Probe inbox (not dev)
+
+17 invented emails in `eval/probes/` (see `eval/make_probes.py`), written before the system was
+run on them. Same scorer, their own cache:
+
+```
+python -m rfqinbox parse --emails eval/probes/emails --out eval/probes/parsed.json --cache eval/probes/cache
+python -m rfqinbox score eval/probes/parsed.json --key eval/probes/answer_key.json --quiet
+```
+
+| commit | change | silent losses | halluc. lines | lost | phantom | class. acc | line R | line P | qty | uom | source | context | links | NR P / R |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| probes | first run, prompt v2, $0.12 for 17 emails | 0 | 1 | 0 | 0 | 100% | 97.4% (38/39) | 97.4% (38/39) | 100% | 100% | 100% | 94.7% | 100% | 100% / 100% |
+
+What the first run found (both are general, neither is a dev string):
+- A tag photo's `raw` comes back as every line of the tag joined (also dev's one remaining miss).
+- A line that overrides one attribute of a default ("all pipe SCH 80 A106B seamless unless
+  noted" ... "3 lengths 3 in SCH 40") lost the rest of the default: the description kept SCH 40
+  but dropped A106B seamless.
+

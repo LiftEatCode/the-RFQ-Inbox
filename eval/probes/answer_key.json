@@ -1,0 +1,715 @@
+{
+ "version": 1,
+ "emails": {
+  "P01": {
+   "classification": "rfq",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": false,
+   "line_items": [
+    {
+     "id": "P01-1",
+     "raw": "a) 8 lengths 1-1/2\"",
+     "qty": 8,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "pipe",
+      "a106",
+      "smls|seamless",
+      "sch 80"
+     ],
+     "must_not_mention": [
+      "3000"
+     ]
+    },
+    {
+     "id": "P01-2",
+     "raw": "b) 5 lengths 2\"",
+     "qty": 5,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "pipe",
+      "a106",
+      "smls|seamless",
+      "sch 80"
+     ],
+     "must_not_mention": [
+      "3000"
+     ]
+    },
+    {
+     "id": "P01-3",
+     "raw": "c) 3 lengths 3\" SCH 40",
+     "qty": 3,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "pipe",
+      "a106",
+      "smls|seamless",
+      "sch 40"
+     ],
+     "must_not_mention": [
+      "sch 80",
+      "3000"
+     ]
+    },
+    {
+     "id": "P01-4",
+     "raw": "d) 16 - 1-1/2\" 90 ell",
+     "qty": 16,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "3000",
+      "socket weld|sw"
+     ],
+     "must_not_mention": [
+      "sch 80",
+      "a106"
+     ]
+    },
+    {
+     "id": "P01-5",
+     "raw": "e) 6 - 2\" tee",
+     "qty": 6,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "3000",
+      "socket weld|sw"
+     ],
+     "must_not_mention": [
+      "sch 80",
+      "a106"
+     ]
+    },
+    {
+     "id": "P01-6",
+     "raw": "f) four 1-1/2\" couplings",
+     "qty": 4,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "3000",
+      "socket weld|sw"
+     ],
+     "must_not_mention": [
+      "sch 80",
+      "a106"
+     ]
+    },
+    {
+     "id": "P01-7",
+     "raw": "g) 2 ea 2\" gate valve, class 800, SW ends",
+     "qty": 2,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "gate",
+      "800"
+     ],
+     "must_not_mention": [
+      "3000",
+      "sch 80",
+      "a106"
+     ]
+    }
+   ]
+  },
+  "P02": {
+   "classification": "other",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": false,
+   "line_items": []
+  },
+  "P03": {
+   "classification": "vendor_quote",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": false,
+   "line_items": []
+  },
+  "P04": {
+   "classification": "status_inquiry",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": false,
+   "line_items": []
+  },
+  "P05": {
+   "classification": "auto_reply",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": false,
+   "line_items": []
+  },
+  "P06": {
+   "classification": "rfq",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": false,
+   "line_items": [
+    {
+     "id": "P06-1",
+     "raw": "1 | 24 | EA | 1\" 90 elbow",
+     "qty": 24,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "BOM_NG-7730.xlsx",
+     "must_mention": [
+      "malleable|mi",
+      "150",
+      "threaded|npt|thd"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P06-2",
+     "raw": "2 | 12 | EA | 1\" tee",
+     "qty": 12,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "BOM_NG-7730.xlsx",
+     "must_mention": [
+      "malleable|mi",
+      "150",
+      "threaded|npt|thd"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P06-3",
+     "raw": "4 | 10 | EA | 1-1/4\" x 1\" reducing coupling",
+     "qty": 10,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "BOM_NG-7730.xlsx",
+     "must_mention": [
+      "malleable|mi",
+      "150",
+      "threaded|npt|thd"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P06-4",
+     "raw": "5 | 40 | FT | 1\" pipe SCH 40 A53B T&C",
+     "qty": 40,
+     "qty_tol": 0,
+     "uom": "FT",
+     "source": "BOM_NG-7730.xlsx",
+     "must_mention": [
+      "pipe",
+      "sch 40",
+      "a53"
+     ],
+     "must_not_mention": [
+      "malleable"
+     ]
+    }
+   ]
+  },
+  "P07": {
+   "classification": "rfq",
+   "revises": null,
+   "duplicate_of": "P06",
+   "needs_review": false,
+   "line_items": []
+  },
+  "P08": {
+   "classification": "rfq_revision",
+   "revises": "P01",
+   "duplicate_of": null,
+   "needs_review": false,
+   "line_items": [
+    {
+     "id": "P08-1",
+     "raw": "a) 8 lengths 1-1/2\"",
+     "qty": 8,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "pipe",
+      "a106",
+      "smls|seamless",
+      "sch 80"
+     ],
+     "must_not_mention": [
+      "3000"
+     ]
+    },
+    {
+     "id": "P08-2",
+     "raw": "b) 5 lengths 2\"",
+     "qty": 7,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "pipe",
+      "a106",
+      "smls|seamless",
+      "sch 80"
+     ],
+     "must_not_mention": [
+      "3000"
+     ]
+    },
+    {
+     "id": "P08-3",
+     "raw": "c) 3 lengths 3\" SCH 40",
+     "qty": 3,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "pipe",
+      "a106",
+      "smls|seamless",
+      "sch 40"
+     ],
+     "must_not_mention": [
+      "sch 80",
+      "3000"
+     ]
+    },
+    {
+     "id": "P08-4",
+     "raw": "d) 16 - 1-1/2\" 90 ell",
+     "qty": 16,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "3000",
+      "socket weld|sw"
+     ],
+     "must_not_mention": [
+      "sch 80",
+      "a106"
+     ]
+    },
+    {
+     "id": "P08-5",
+     "raw": "e) 6 - 2\" tee",
+     "qty": 6,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "3000",
+      "socket weld|sw"
+     ],
+     "must_not_mention": [
+      "sch 80",
+      "a106"
+     ]
+    },
+    {
+     "id": "P08-6",
+     "raw": "g) 2 ea 2\" gate valve, class 800, SW ends",
+     "qty": 2,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "gate",
+      "800"
+     ],
+     "must_not_mention": [
+      "3000",
+      "sch 80",
+      "a106"
+     ]
+    },
+    {
+     "id": "P08-7",
+     "raw": "please add 4 ea 3\" 150# RF weld neck flanges, A105",
+     "qty": 4,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "weld neck|wn",
+      "150",
+      "a105"
+     ],
+     "must_not_mention": [
+      "3000",
+      "sch 80"
+     ]
+    }
+   ]
+  },
+  "P09": {
+   "classification": "purchase_order",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": false,
+   "line_items": [
+    {
+     "id": "P09-1",
+     "raw": "1) 6 ea 4\" butterfly valve, lug style, 150#, ductile iron body - $212.00 ea",
+     "qty": 6,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "butterfly",
+      "lug",
+      "150"
+     ],
+     "must_not_mention": [
+      "strainer"
+     ]
+    },
+    {
+     "id": "P09-2",
+     "raw": "3) 12 ea 4\" full face gasket, 1/8\" EPDM - $6.40 ea",
+     "qty": 12,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "gasket",
+      "epdm"
+     ],
+     "must_not_mention": [
+      "strainer"
+     ]
+    }
+   ]
+  },
+  "P10": {
+   "classification": "rfq",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": false,
+   "line_items": [
+    {
+     "id": "P10-1",
+     "raw": "3 - 2\" swing check valve, 316SS, 150# flanged",
+     "qty": 5,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "check",
+      "316",
+      "150"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P10-2",
+     "raw": "10 - 2\" 150# ring gaskets, PTFE",
+     "qty": 10,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "gasket",
+      "ptfe",
+      "150"
+     ],
+     "must_not_mention": []
+    }
+   ]
+  },
+  "P11": {
+   "classification": "rfq",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": true,
+   "line_items": []
+  },
+  "P12": {
+   "classification": "rfq",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": false,
+   "line_items": [
+    {
+     "id": "P12-1",
+     "raw": "MODEL DR-250-B",
+     "qty": 4,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "IMG_2291.jpg",
+     "must_mention": [
+      "regulator",
+      "brass",
+      "1 in|1\"|1 inch",
+      "25-75|25 to 75"
+     ],
+     "must_not_mention": []
+    }
+   ]
+  },
+  "P13": {
+   "classification": "rfq",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": false,
+   "line_items": [
+    {
+     "id": "P13-1",
+     "raw": "1 | 14 | EA | 1/2\" | ball valve",
+     "qty": 14,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "scan_rfq_0412.pdf",
+     "must_mention": [
+      "ball",
+      "brass",
+      "600"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P13-2",
+     "raw": "2 | 9 | EA | 3/4\" | ball valve",
+     "qty": 9,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "scan_rfq_0412.pdf",
+     "must_mention": [
+      "ball",
+      "brass",
+      "600"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P13-3",
+     "raw": "3 | 22 | EA | 1\" | ball valve",
+     "qty": 22,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "scan_rfq_0412.pdf",
+     "must_mention": [
+      "ball",
+      "brass",
+      "600"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P13-4",
+     "raw": "4 | 7 | EA | 1-1/4\" | ball valve",
+     "qty": 7,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "scan_rfq_0412.pdf",
+     "must_mention": [
+      "ball",
+      "brass",
+      "600"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P13-5",
+     "raw": "5 | 11 | EA | 1-1/2\" | ball valve",
+     "qty": 11,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "scan_rfq_0412.pdf",
+     "must_mention": [
+      "ball",
+      "brass",
+      "600"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P13-6",
+     "raw": "6 | 3 | EA | 2\" | ball valve",
+     "qty": 3,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "scan_rfq_0412.pdf",
+     "must_mention": [
+      "ball",
+      "brass",
+      "600"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P13-7",
+     "raw": "7 | 5 | EA | 1\" | Y-strainer",
+     "qty": 5,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "scan_rfq_0412.pdf",
+     "must_mention": [
+      "strainer",
+      "cast iron|ci",
+      "125"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P13-8",
+     "raw": "8 | 8 | EA | 1-1/2\" | Y-strainer",
+     "qty": 8,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "scan_rfq_0412.pdf",
+     "must_mention": [
+      "strainer",
+      "cast iron|ci",
+      "125"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P13-9",
+     "raw": "9 | 13 | EA | 2\" | Y-strainer",
+     "qty": 13,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "scan_rfq_0412.pdf",
+     "must_mention": [
+      "strainer",
+      "cast iron|ci",
+      "125"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P13-10",
+     "raw": "10 | 75 | FT | 3/4\" | water hose",
+     "qty": 75,
+     "qty_tol": 0,
+     "uom": "FT",
+     "source": "scan_rfq_0412.pdf",
+     "must_mention": [
+      "hose",
+      "epdm",
+      "150"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P13-11",
+     "raw": "11 | 120 | FT | 1\" | water hose",
+     "qty": 120,
+     "qty_tol": 0,
+     "uom": "FT",
+     "source": "scan_rfq_0412.pdf",
+     "must_mention": [
+      "hose",
+      "epdm",
+      "150"
+     ],
+     "must_not_mention": []
+    }
+   ]
+  },
+  "P14": {
+   "classification": "rfq",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": true,
+   "line_items": []
+  },
+  "P15": {
+   "classification": "auto_reply",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": false,
+   "line_items": []
+  },
+  "P16": {
+   "classification": "rfq",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": false,
+   "line_items": [
+    {
+     "id": "P16-1",
+     "raw": "two 6\" resilient wedge gate valves, MJ ends",
+     "qty": 2,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "gate",
+      "mj|mechanical joint"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P16-2",
+     "raw": "twelve 6\" MJ accessory kits",
+     "qty": 12,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "mj|mechanical joint"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P16-3",
+     "raw": "6\" DI pipe, class 350 - enough to run about 60 ft",
+     "qty": null,
+     "qty_tol": null,
+     "uom": null,
+     "source": "body",
+     "must_mention": [
+      "pipe",
+      "350"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P16-4",
+     "raw": "a couple 6\" MJ 45 bends",
+     "qty": null,
+     "qty_tol": 0,
+     "uom": null,
+     "source": "body",
+     "must_mention": [
+      "45"
+     ],
+     "must_not_mention": []
+    },
+    {
+     "id": "P16-5",
+     "raw": "1 - 6\" x 4\" MJ reducer",
+     "qty": 1,
+     "qty_tol": 0,
+     "uom": "EA",
+     "source": "body",
+     "must_mention": [
+      "reducer"
+     ],
+     "must_not_mention": []
+    }
+   ]
+  },
+  "P17": {
+   "classification": "rfq",
+   "revises": null,
+   "duplicate_of": null,
+   "needs_review": true,
+   "line_items": []
+  }
+ }
+}

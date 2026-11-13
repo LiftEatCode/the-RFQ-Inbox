@@ -1,0 +1,18 @@
+{
+  "email": "P17",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Gil Navarro from Lonestar Compress is sending a new RFQ, referencing RFQ LC-2209. The actual request is contained in a PDF attachment named 'RFQ_LC-2209.pdf'. The attachment is password-protected and could not be opened or read, so the contents of the customer's request are not visible. No items can be listed from the information provided in this email; only the fact of the RFQ is clear. There are no details in the body about what is being requested. Therefore, human review is required to unlock and read the attachment.",
+    "classification": "rfq",
+    "line_items": [],
+    "needs_review": true,
+    "review_reason": "Attachment 'RFQ_LC-2209.pdf' is password-protected and cannot be read; items requested are not visible."
+  },
+  "prompt_version": "v2",
+  "request": "c0e72cf732dbe425ba4e451dfce920604129574098f4f1eaa3000b236b17805a",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2009,
+    "output_tokens": 161
+  }
+}

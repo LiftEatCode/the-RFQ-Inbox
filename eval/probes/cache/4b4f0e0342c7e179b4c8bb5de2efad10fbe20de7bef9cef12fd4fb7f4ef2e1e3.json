@@ -1,0 +1,18 @@
+{
+  "email": "P02",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This email is an unsolicited promotional message from Brazos Valve Outlet advertising a clearance sale on specific valves, with prices and sizes listed. It is sent as a marketing email to a list of addresses. There is no request for Ridgeline to quote, purchase, or take action, nor does it reply to a previous inquiry or request from Ridgeline. The items and prices are part of an advertisement to a wide audience and are not a vendor quote specific to a Ridgeline request. No line items are to be extracted since this is not a request addressed to Ridgeline.",
+    "classification": "other",
+    "line_items": [],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v2",
+  "request": "52168e19e44ab66e592cd80f38c2fa3aeb2bbbcd1e5738c04d8df0e15de0dcae",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2097,
+    "output_tokens": 138
+  }
+}

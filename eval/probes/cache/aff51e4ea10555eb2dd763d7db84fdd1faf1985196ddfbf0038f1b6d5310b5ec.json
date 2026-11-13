@@ -1,0 +1,47 @@
+{
+  "email": "P06",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Omar Reyes is requesting a quote (RFQ) for items listed in an attached, readable Excel spreadsheet (BOM_NG-7730.xlsx), specifically on the 'BOM Rev 2' sheet. The block heading 'ALL FITTINGS BLACK MALLEABLE IRON 150# THREADED' applies to the fittings listed below it but not the pipe. The pipe line provides its own material/spec and overrides the block default. Struck-out line 3 for a '1-1/4\" union' is disregarded per instructions. Lines from the hidden/superseded sheet 'Rev 1' are not included. Totals and notes are not item requests and are omitted.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "1\" 90 elbow, black malleable iron 150# threaded",
+        "qty": 24,
+        "raw": "1 | 24 | EA | 1\" 90 elbow",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" tee, black malleable iron 150# threaded",
+        "qty": 12,
+        "raw": "2 | 12 | EA | 1\" tee",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/4\" x 1\" reducing coupling, black malleable iron 150# threaded",
+        "qty": 10,
+        "raw": "4 | 10 | EA | 1-1/4\" x 1\" reducing coupling",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" pipe SCH 40 A53B T&C",
+        "qty": 40,
+        "raw": "5 | 40 | FT | 1\" pipe SCH 40 A53B T&C",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "FT"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v2",
+  "request": "56a9dd58566d963ac8c9014f380e49c302c46cbe5d785243b3472e8afe1d88e0",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2282,
+    "output_tokens": 393
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "email": "P09",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This email is from Hal Brennan at Cypress Bend. The NEW MESSAGE is a purchase order authorizing Ridgeline to process only lines 1 and 3 from Quote Q-26-1191, which was included in the quoted history. Hal explicitly asks to 'hold off on the strainer,' so line 2 is not part of the order. The NEW MESSAGE contains no new specifications or changes to the quoted lines, and the quantities are drawn directly from lines 1 and 3 of the quoted quote. The quoted history itself is just the previously-sent quote and not an earlier PO or request for change, so only the specified lines are included here. No hidden, struck, or attachment lines are present; only the explicitly accepted lines are included, exactly as in the quote.",
+    "classification": "purchase_order",
+    "line_items": [
+      {
+        "description": "4\" butterfly valve, lug style, 150#, ductile iron body",
+        "qty": 6,
+        "raw": "6 ea 4\" butterfly valve, lug style, 150#, ductile iron body - $212.00 ea",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "4\" full face gasket, 1/8\" EPDM",
+        "qty": 12,
+        "raw": "12 ea 4\" full face gasket, 1/8\" EPDM - $6.40 ea",
+        "source": "body",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v2",
+  "request": "52fe769c327d409524d37e699112fa2fa708672bda1c7b2edac00673e917fe60",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2166,
+    "output_tokens": 293
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "email": "P07",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Omar Reyes from Northgate Mechanical is resending an RFQ, indicating this is the same as their previous request. The complete request is in the attached readable spreadsheet BOM_NG-7730.xlsx, Sheet 'BOM Rev 2.' All items are under the heading 'ALL FITTINGS BLACK MALLEABLE IRON 150# THREADED' except for the pipe, which has its own full specification in its row and does not inherit the header default about fittings. Hidden and struck-through items (row 5, sheet 'Rev 1', hidden sheet) are not requests and are left out, as are totals and unused cells. Each line in 'BOM Rev 2' that is not struck through or totaled is included, and their specs are applied per the instructions above.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "1\" 90 degree black malleable iron 150# threaded elbow",
+        "qty": 24,
+        "raw": "1 | 24 | EA | 1\" 90 elbow",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" black malleable iron 150# threaded tee",
+        "qty": 12,
+        "raw": "2 | 12 | EA | 1\" tee",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/4\" x 1\" black malleable iron 150# threaded reducing coupling",
+        "qty": 10,
+        "raw": "4 | 10 | EA | 1-1/4\" x 1\" reducing coupling",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" SCH 40 A53B T&C pipe",
+        "qty": 40,
+        "raw": "5 | 40 | FT | 1\" pipe SCH 40 A53B T&C",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "FT"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v2",
+  "request": "edb74a66c469a49e7848e3c71ded7f3568454da7b6cbbdacb7963d7231db8c90",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2296,
+    "output_tokens": 409
+  }
+}

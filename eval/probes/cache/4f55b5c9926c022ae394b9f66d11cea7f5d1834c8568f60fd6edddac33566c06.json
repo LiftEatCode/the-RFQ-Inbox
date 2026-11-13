@@ -1,0 +1,18 @@
+{
+  "email": "P14",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Joanne Pruitt from Red Clay Brick is asking us to requote the items they purchased in August for the north kiln line, in the same quantities. The specific items and quantities are not listed in this email. There are no attachments or detailed lines in the NEW MESSAGE, and the request refers to a previous PO/order that is not included in this email. No items are quoted in the message itself and without the referenced August order/PO or a list of items, the request cannot be fulfilled without further review.",
+    "classification": "rfq",
+    "line_items": [],
+    "needs_review": true,
+    "review_reason": "Customer refers to items purchased in August; request cannot be quoted without access to that previous order's list of items and quantities."
+  },
+  "prompt_version": "v2",
+  "request": "5c09d14551b93bfdeed9e34e5e37a4a06305b19c45ac7c66ceae32a8069e6a00",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 1985,
+    "output_tokens": 149
+  }
+}

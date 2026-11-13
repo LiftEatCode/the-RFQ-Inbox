@@ -1,0 +1,18 @@
+{
+  "email": "P11",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Ines Varga of Harborline Marine is requesting a quote for dock repair materials. She states that the material list is attached, but the only attachment is a logo image (image001.png) with no actual material list included. There are no items detailed in the body of the email. As the material list is referenced but not present, a human needs to review this request to secure the missing list before quoting. No line items can be extracted from this email.",
+    "classification": "rfq",
+    "line_items": [],
+    "needs_review": true,
+    "review_reason": "The material list needed to process the RFQ is missing; the only attachment is a logo image."
+  },
+  "prompt_version": "v2",
+  "request": "6d4428b15e3c8ba2cfdf3f0f42fe28704505f24af8e1f3a70c65777bdbaac699",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2136,
+    "output_tokens": 133
+  }
+}
