@@ -33,7 +33,7 @@ from pathlib import Path
 from rfqinbox.record import CLASSES, UOMS
 
 DEFAULT_MODEL = "gpt-4.1"
-PROMPT_VERSION = "v2"
+PROMPT_VERSION = "v3"
 API_URL = "https://api.openai.com/v1/chat/completions"
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
@@ -96,9 +96,12 @@ struck-through rows, old revisions, examples of what they do not want, items in 
 - description: the item made self-contained - the line's own words plus everything written
   elsewhere that applies to it, and nothing that does not:
   - a heading applies only to the lines in its own block; the next heading ends it;
-  - a default such as "all pipe sch 40 unless noted" applies to every line it covers, except a
-    line that states its own value - that line's own value overrides the default, and the
-    default must then not appear in its description;
+  - a default such as "all pipe sch 40 unless noted" applies to every line it covers. A line
+    that states its own value for one attribute overrides only that attribute: the line's value
+    replaces the default's value for it (which must then not appear in the description), and
+    the rest of the default still applies. If the default gives a schedule, a material and an
+    end finish, and one line gives a different schedule, that line's description carries its
+    own schedule with the default's material and end finish;
   - a note addressed to one section or one item does not spread to the others;
   - sheet names, merged header cells, column headers, Word headings above a table, PDF form
     field values (material, rating, project spec) and the subject line can all carry the spec;

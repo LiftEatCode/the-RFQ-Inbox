@@ -7,6 +7,7 @@ check_record(packet, record)   one email
 - a line whose text is nowhere in the email was invented: dropped, email flagged
 - a line that exists only in hidden or struck-through content: dropped, no flag
 - `source` is "body" or a real attachment filename
+- a tag or nameplate read as several lines keeps only its identifying line as `raw`
 - a vague amount is null; a number that is only a size or rating is not a quantity (null)
 - a request whose attachment is missing, unreadable, encrypted or truncated is flagged
 
@@ -118,6 +119,28 @@ def _resolve_source(given: str, words: set[str], pk, body: _Block, files: dict[s
     return best_name
 
 
+# =========================================================================== one line per raw
+
+# A tag or nameplate is several printed lines, and the model tends to return them all
+# joined as one raw. README: raw is the line as it appears. For a line read from a
+# picture that is clearly several lines or several labelled fields, keep the part that
+# carries the model, part, catalog or figure number. No such part: leave it alone.
+_LABELLED_FIELD = re.compile(r"[A-Za-z][A-Za-z /.]*:")
+_IDENTIFIER = re.compile(
+    r"(?<![A-Za-z])(?:MODEL|MOD|PART|P/N|CAT(?:ALOG(?:UE)?)?|FIG(?:URE)?)\b\.?"
+    r"(?:[ \t]*(?:NO|NUMBER|NUM)\b\.?|[ \t]*#)?[ \t]*:?[ \t]*([A-Za-z0-9][\w./-]*)", re.I)
+
+
+def _one_line(raw: str) -> str:
+    text = (raw or "").strip()
+    if "\n" not in text and len(_LABELLED_FIELD.findall(text)) < 2:
+        return raw
+    for m in _IDENTIFIER.finditer(text):
+        if re.search(r"\d", m.group(1)):
+            return m.group(0).strip().rstrip(".,;")
+    return raw
+
+
 # =========================================================================== quantities
 
 _VAGUE = re.compile(r"\b(a couple|couple of|a few|few|some|several|enough|a handful|handful of|"
@@ -218,11 +241,17 @@ def check_record(pk, record: dict) -> dict:
         return record
 
     body, files = _blocks(pk)
-    has_pictures = any(a.images and a.status != "logo" for a in pk.attachments)
+    picture_files = {a.filename for a in pk.attachments if a.images and a.status != "logo"}
+    has_pictures = bool(picture_files)
     kept, invented = [], 0
     for item in record["line_items"]:
         words = _tokens(item.get("raw") or "")
         item["source"] = _resolve_source(item.get("source"), words, pk, body, files)
+        from_tag = False
+        if item["source"] in picture_files:
+            one = _one_line(item.get("raw") or "")
+            from_tag = one != item.get("raw")
+            item["raw"], words = one, _tokens(one)
         blocks = [body, *files.values()]
         seen = max(b.seen(words) for b in blocks)
         if seen < FOUND:
@@ -233,7 +262,7 @@ def check_record(pk, record: dict) -> dict:
                 continue
         raw = item.get("raw") or ""
         evidence = _quantity_evidence(raw, item.get("qty"), item.get("uom"))
-        if item.get("qty") is not None and evidence != "count":
+        if item.get("qty") is not None and evidence != "count" and not from_tag:
             if _VAGUE.search(raw):
                 item["qty"] = None            # "a couple", "some": the request as written
             elif evidence == "spec":

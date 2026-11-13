@@ -69,6 +69,11 @@ Done (each with tests):
    line). v1 quoted three dev phrases as examples; v2 has none, and `tests/test_prompt.py` now
    fails on any 5-word run, name, identifier or quoted example taken from a dev email.
    **Prompt examples must be invented - never copy wording from the section below.**
+5d. Prompt v3 (found by the probe inbox): an override replaces only the attribute it restates;
+   the rest of the default still applies. Code: a picture-sourced `raw` that is several lines or
+   labelled fields is cut to its model/part/catalog/figure line (`checks._one_line`).
+   Probe inbox: `eval/probes/` (17 invented emails + key, own cache); `eval/make_probes.py`.
+   Never quote probe emails in the prompt either - the leak tests cover them.
 5b. Dev recorded in `cache/` (24 answers, gpt-4.1, $0.26). Replays byte-identical with no key.
 6. Code-side checks (`rfqinbox/checks.py`, `tests/test_checks.py`). Per email: a line not found
    in the email text is dropped + flagged (kept if the email has pictures); lines only in
