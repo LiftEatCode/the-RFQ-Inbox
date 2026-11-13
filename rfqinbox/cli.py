@@ -53,6 +53,25 @@ def cmd_parse(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_score(args: argparse.Namespace) -> int:
+    from rfqinbox import score as scoring
+
+    try:
+        pred = json.loads(Path(args.parsed).read_text(encoding="utf-8"))
+        key = scoring.load_key(Path(args.key))
+    except (OSError, ValueError, KeyError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
+    report = scoring.score(pred, key)
+    print(scoring.format_report(report, verbose=not args.quiet))
+    if args.json:
+        write_json_atomic(report, Path(args.json))
+    if args.gate and report["silent_losses"]:
+        print(f"GATE FAILED: {len(report['silent_losses'])} silent loss(es)", file=sys.stderr)
+        return 1
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     for stream in (sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
@@ -63,5 +82,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--emails", required=True, help="folder of .eml files")
     p.add_argument("--out", required=True, help="output JSON path")
     p.set_defaults(func=cmd_parse)
+    s = sub.add_parser("score", help="score a parsed.json against an answer key (README grading rules)")
+    s.add_argument("parsed", help="parsed.json to score")
+    s.add_argument("--key", default="data/dev/answer_key.json", help="answer key JSON")
+    s.add_argument("--gate", action="store_true", help="exit 1 if there is any silent loss")
+    s.add_argument("--json", help="also write the full report as JSON here")
+    s.add_argument("--quiet", action="store_true", help="headline numbers only")
+    s.set_defaults(func=cmd_score)
     args = ap.parse_args(argv)
     return args.func(args)
