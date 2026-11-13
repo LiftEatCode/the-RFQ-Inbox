@@ -32,8 +32,8 @@ PROMPT_NORM = norm(PROMPT)
 
 # ------------------------------------------------------------------ it is v1, and affordable
 
-def test_prompt_version_is_v1():
-    assert model.PROMPT_VERSION == "v1"
+def test_prompt_version_is_v2():
+    assert model.PROMPT_VERSION == "v2"
 
 
 def test_prompt_is_short_enough_to_send_with_every_email():
@@ -88,6 +88,11 @@ PROPERTIES = {
     "a logo is not the attachment": ["logo"],
     "items identified only by something not in the email": ["last order", "not in the email"],
     "a photo of one item, quantity in the body": ["photo", "nameplate", "picture"],
+    # v2
+    "a vendor quote answers something we asked for": ["we asked", "our request", "our rfq"],
+    "sales mail nobody asked for is not a vendor quote": ["unsolicited"],
+    "raw is one line of the source, never several joined": ["never join", "do not join", "not several lines"],
+    "on a tag or plate, raw is the line that identifies the item": ["identifies the item", "identifying line"],
 }
 
 
@@ -129,6 +134,80 @@ def test_prompt_contains_nothing_from_the_dev_inbox():
                 text = norm(str(line.get(field) or ""))
                 if len(text) >= 12 and text in PROMPT_NORM:
                     leaked.append(f"{email_id}: {field} {text!r}")
+    assert leaked == []
+
+
+def dev_texts() -> dict[str, str]:
+    """Everything a dev email says: subject, new text, quoted history and attachment
+    text - the customers' words only, without the reader's own section titles."""
+    out = {}
+    for path in sorted(DEV_EMAILS.glob("*.eml")):
+        pk = reader.read_email(path)
+        text = "\n".join([pk.subject, pk.body_new, *(q.text for q in pk.quoted),
+                          *(a.text for a in pk.attachments)])
+        # An attached email is rendered with the reader's section titles; those are ours.
+        out[path.stem] = "\n".join(ln for ln in text.splitlines() if not ln.startswith("=== "))
+    return out
+
+
+def brief_text() -> str:
+    """The public brief. Wording that is in the brief itself is not a dev leak."""
+    return "\n".join((ROOT / name).read_text(encoding="utf-8")
+                     for name in ("ASSESSMENT.md", "data/README.md"))
+
+
+def shingles(text: str, n: int) -> set[tuple[str, ...]]:
+    words = norm(text).split()
+    return {tuple(words[i:i + n]) for i in range(len(words) - n + 1)}
+
+
+def test_prompt_shares_no_phrase_with_any_dev_email():
+    """Stronger than checking answer-key lines: no run of five words from any dev email
+    (body, quoted history, attachments) may appear in the prompt, unless the brief itself
+    uses it. A rule learned from dev has to be restated as a rule, not quoted."""
+    allowed = shingles(brief_text(), 5)
+    prompt = shingles(PROMPT, 5) - allowed
+    leaked = {eid: sorted(" ".join(s) for s in prompt & shingles(text, 5))
+              for eid, text in dev_texts().items()}
+    assert {eid: hits for eid, hits in leaked.items() if hits} == {}
+
+
+def test_prompt_names_no_person_company_or_part_number_from_dev():
+    """Names and identifiers are the purest dev strings: sender names, company names,
+    and anything that looks like a model, RFQ or PO number (letters and digits mixed)."""
+    brief = norm(brief_text())
+    generic = {"sales", "purchasing", "supply", "pipe", "valve", "flange", "industrial", "team",
+               "desk", "warehouse", "company", "service", "services", "group", "steel", "mill"}
+    names, identifiers = set(), set()
+    for path in sorted(DEV_EMAILS.glob("*.eml")):
+        pk = reader.read_email(path)
+        display, _, address = pk.sender.rpartition("<")
+        domain = address.strip("> ").split("@")[-1]
+        if domain == reader.INTERNAL_DOMAIN:
+            continue
+        for word in norm(display).split() + norm(domain.split(".")[0]).split():
+            if len(word) >= 4 and word not in generic:
+                names.add(word)
+        for token in re.findall(r"[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+|[A-Za-z]+\d+[A-Za-z0-9]*", reader.render(pk)):
+            if len(token) >= 6 and re.search(r"[A-Za-z]", token) and re.search(r"\d{2,}", token):
+                identifiers.add(token.lower())
+    prompt_words = set(PROMPT_NORM.split())
+    leaked_names = sorted(n for n in names if n in prompt_words and n not in brief.split())
+    leaked_ids = sorted(i for i in identifiers if i in PROMPT.lower() and norm(i) not in brief)
+    assert (leaked_names, leaked_ids) == ([], [])
+
+
+def test_examples_in_the_prompt_are_not_dev_lines():
+    """Every quoted example in the prompt must be absent from every dev email."""
+    examples = [e for e in re.findall(r'"([^"\n]{12,})"|\'([^\'\n]{12,})\'', PROMPT)]
+    texts = {eid: norm(text) for eid, text in dev_texts().items()}
+    brief = norm(brief_text())
+    leaked = []
+    for pair in examples:
+        example = norm(pair[0] or pair[1])
+        if len(example.split()) < 3 or example in brief:
+            continue
+        leaked += [f"{eid}: {example!r}" for eid, text in texts.items() if example in text]
     assert leaked == []
 
 
