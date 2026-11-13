@@ -83,6 +83,10 @@ Model layer as built (tests use a fake client / fake urlopen; no key needed):
      which can differ between Pillow/pdfium builds). Committed to git. Hit → no call. Writes
      are atomic. With no key, an answer recorded with any model is replayed.
      The prompt text itself is hashed into the key, so any prompt edit means a fresh paid run.
+   - Large images: a page whose shorter side is over 900 px is sent as a reduced overview plus
+     overlapping full-width bands of at most 768 px (`model.split_image`), because OpenAI's high
+     detail mode shrinks the shorter side to 768 px and small digits get misread. The band
+     layout is part of the cache key. Logos (`detail: low`) are never split.
    - Cost ledger: calls, input/output tokens, $ per email (price table in code), written
      to `cost_report.json` (next to `--out`) and summarised on stderr. `calls`/`cost_usd` =
      what the answer cost when made or recorded; `new_*` = spent in this run.

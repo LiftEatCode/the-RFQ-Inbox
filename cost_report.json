@@ -5,11 +5,11 @@
   "totals": {
     "emails": 24,
     "calls": 24,
-    "new_calls": 0,
-    "input_tokens": 55963,
-    "output_tokens": 18921,
-    "cost_usd": 0.263294,
-    "new_cost_usd": 0
+    "new_calls": 1,
+    "input_tokens": 61939,
+    "output_tokens": 18822,
+    "cost_usd": 0.274454,
+    "new_cost_usd": 0.035318
   },
   "emails": {
     "E001": {
@@ -78,11 +78,11 @@
     },
     "E009": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 3511,
-      "output_tokens": 2142,
-      "cost_usd": 0.024158,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 9487,
+      "output_tokens": 2043,
+      "cost_usd": 0.035318,
+      "new_cost_usd": 0.035318
     },
     "E010": {
       "calls": 1,

@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import base64
 import hashlib
+import io
 import json
 import os
 import tempfile
@@ -283,16 +284,86 @@ def _as_image(i: int, image) -> tuple[str, bytes, str]:
     return image if isinstance(image, tuple) else (f"image {i}", image, "high")
 
 
+# In "high" detail the provider first shrinks an image so its shorter side is 768 px.
+# A full page of small text becomes unreadable at that size (digits get misread), so a
+# page that would be shrunk noticeably is sent as a reduced overview plus overlapping
+# full-width bands, each short enough not to be shrunk at all.
+PROVIDER_SHORT_SIDE = 768
+SPLIT_ABOVE = 900        # shorter side, px: below this the shrink is too mild to matter
+BAND_HEIGHT = 768
+BAND_OVERLAP = 96        # rows shared by neighbouring bands, so no text line is cut in both
+
+
+def band_plan(data: bytes) -> list[tuple[int, int]] | None:
+    """(top, bottom) rows of each band, or None when the image is sent whole."""
+    try:
+        from PIL import Image
+
+        with Image.open(io.BytesIO(data)) as im:
+            width, height = im.size
+    except Exception:  # noqa: BLE001 — not an image we can open: send it as it is
+        return None
+    if min(width, height) <= SPLIT_ABOVE or height <= BAND_HEIGHT:
+        return None
+    step = max(1, BAND_HEIGHT - BAND_OVERLAP)
+    tops = list(range(0, max(1, height - BAND_OVERLAP), step))
+    return [(top, min(top + BAND_HEIGHT, height)) for top in tops]
+
+
+def split_image(data: bytes) -> list[tuple[str, bytes]]:
+    """[(what this picture is, PNG bytes)]: the image itself, or an overview plus bands."""
+    plan = band_plan(data)
+    if not plan:
+        return [("", data)]
+    try:
+        from PIL import Image
+
+        im = Image.open(io.BytesIO(data))
+        if im.mode not in ("RGB", "L"):
+            im = im.convert("RGB")
+        scale = PROVIDER_SHORT_SIDE / min(im.size)
+        overview = im.resize((max(1, round(im.width * scale)), max(1, round(im.height * scale))),
+                             Image.LANCZOS)
+        out = [(" - whole page, reduced: for layout only, read the text from the parts that follow",
+                _png(overview))]
+        for k, (top, bottom) in enumerate(plan, 1):
+            out.append((f" - part {k} of {len(plan)}, top to bottom, full resolution. Parts overlap: "
+                        "a row at the bottom of one part and the top of the next is the same row, "
+                        "list it once", _png(im.crop((0, top, im.width, bottom)))))
+        return out
+    except Exception:  # noqa: BLE001
+        return [("", data)]
+
+
+def _png(im) -> bytes:
+    buf = io.BytesIO()
+    im.save(buf, format="PNG", optimize=True)
+    return buf.getvalue()
+
+
+def _band_signature(images) -> str:
+    """How the large images of a request are split - part of the cache key, so an answer
+    read from a shrunk page is never replayed for the banded one. Empty when nothing is split."""
+    plans = []
+    for _, data, detail in images:
+        plan = band_plan(data) if detail != "low" else None
+        if plan:
+            plans.append(",".join(f"{top}-{bottom}" for top, bottom in plan))
+    return f"\n[bands {PROVIDER_SHORT_SIDE} {';'.join(plans)}]" if plans else ""
+
+
 def build_messages(text: str, images=()) -> list[dict]:
     """images: (label, bytes, detail) as reader.images_for_model returns them."""
     parts: list[dict] = [{"type": "text", "text": text}]
     for i, image in enumerate(images, 1):
         label, data, detail = _as_image(i, image)
-        parts.append({"type": "text", "text": f"Image: {label}"})
-        parts.append({"type": "image_url", "image_url": {
-            "url": f"data:{_mime(data)};base64,{base64.b64encode(data).decode('ascii')}",
-            "detail": detail,
-        }})
+        pictures = split_image(data) if detail != "low" else [("", data)]
+        for what, picture in pictures:
+            parts.append({"type": "text", "text": f"Image: {label}{what}"})
+            parts.append({"type": "image_url", "image_url": {
+                "url": f"data:{_mime(picture)};base64,{base64.b64encode(picture).decode('ascii')}",
+                "detail": detail,
+            }})
     return [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": parts}]
 
 
@@ -499,8 +570,9 @@ class Engine:
         # The prompt text is part of the key: an edited prompt never replays old answers,
         # even if PROMPT_VERSION was not bumped.
         version = f"{self.prompt_version}:{_sha(SYSTEM_PROMPT)[:16]}"
-        request = request_key(version, OUTPUT_SCHEMA, text, keyed)
-        key = cache_key(self.model, version, OUTPUT_SCHEMA, text, keyed)
+        key_text = text + _band_signature(images)
+        request = request_key(version, OUTPUT_SCHEMA, key_text, keyed)
+        key = cache_key(self.model, version, OUTPUT_SCHEMA, key_text, keyed)
 
         entry = self.cache.get(key)
         if entry is None and self.client is None:
