@@ -1,17 +1,17 @@
 """Turns one .eml file into one output record.
 
-    reader (deterministic) -> model (decides class and lines) -> code checks
+    reader (deterministic) -> model (decides class and lines) -> code checks (rfqinbox.checks)
 
 If the model step fails for any reason the record is the safe default: a request
 flagged for review, with the reason. Cross-email links (revises, duplicate_of)
-are not decided here yet.
+are set afterwards by the CLI, once every email has a record.
 """
 
 from __future__ import annotations
 
 from pathlib import Path
 
-from rfqinbox import model, reader
+from rfqinbox import checks, model, reader
 from rfqinbox.record import ACTION_CLASSES, make_record, review_record
 
 
@@ -31,7 +31,15 @@ def process_email(path: Path, engine: model.Engine | None = None) -> dict:
                                 image_keys=reader.image_keys(packet))
     except model.ModelError as exc:
         return review_record(f"model step failed: {exc} ({_summary(packet)})")
-    return to_record(answer)
+    record = to_record(answer)
+    try:
+        return checks.check_record(packet, record)
+    except Exception as exc:  # noqa: BLE001 — a bug in a check must not cost the model's answer
+        if record["classification"] in ACTION_CLASSES:
+            own = f"{record['review_reason']}; " if record["needs_review"] else ""
+            record["needs_review"] = True
+            record["review_reason"] = f"{own}code checks failed ({type(exc).__name__}: {exc})"
+        return record
 
 
 def to_record(answer: dict) -> dict:

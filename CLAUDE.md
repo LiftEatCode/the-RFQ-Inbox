@@ -42,6 +42,7 @@ calls on a second run, never crash on a bad email, and report calls/tokens/$ per
 ```
 rfqinbox/cli.py       parse | score | inspect subcommands; per-email try/except; atomic write
 rfqinbox/pipeline.py  process_email(path, engine) -> record: reader -> model -> contract rules
+rfqinbox/checks.py    check_record (one email) + link_records (duplicates, revises) — no model
 rfqinbox/model.py     OpenAIClient (urllib), Cache, Ledger, Engine.extract (validate, 1 repair retry)
 rfqinbox/reader.py    .eml -> Packet (body_new, quoted[], attachments[]) + render() for the model
 rfqinbox/record.py    output record helpers; review_record() = the safe default
@@ -64,6 +65,13 @@ Done (each with tests):
    contains nothing from dev (tested). The reply starts with an `analysis` field (the model's
    reading, kept in the cache, never in parsed.json).
 5b. Dev recorded in `cache/` (24 answers, gpt-4.1, $0.26). Replays byte-identical with no key.
+6. Code-side checks (`rfqinbox/checks.py`, `tests/test_checks.py`). Per email: a line not found
+   in the email text is dropped + flagged (kept if the email has pictures); lines only in
+   hidden/struck content are dropped; source normalised; vague amount -> null; a qty that is
+   only a size/rating -> null + flagged; attachment missing/unreadable/encrypted/truncated ->
+   flagged. Across the inbox (`cli.link_inbox`): duplicate = same sender + class + identical
+   lines, later Date; revises via In-Reply-To, References, then subject + sender.
+   Checks only use cached answers: changing them costs nothing to re-run.
 
 Model layer as built (tests use a fake client / fake urlopen; no key needed):
    - OpenAI client over stdlib `urllib` (no SDK dependency), Chat Completions with
@@ -84,10 +92,6 @@ Model layer as built (tests use a fake client / fake urlopen; no key needed):
      failure mode degrades to a flagged record; cost totals add up.
 
 Next:
-6. Code-side checks: duplicate detection (later Date = duplicate), revises via
-   In-Reply-To/References/subject, every `raw` must appear in the source text, sizes are
-   never quantities, needs_review rules (attachment mentioned but missing/unreadable/
-   encrypted; items referenced but not present), model-down fallback.
 7. Fixes driven by `rfqinbox score`, each with a test of the general property.
 8. Docs: RUNNING.md (setup, model, cost), DECISIONS.md (<= 2 pages, 4 required
    sections), AI_USAGE.md (<= 1 page), ai-sessions/ logs.

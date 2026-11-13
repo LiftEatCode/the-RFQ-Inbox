@@ -237,6 +237,8 @@ def test_a_number_that_is_only_a_size_or_rating_is_not_a_quantity(tmp_path, raw,
     ('two 2" ball valves', 2),            # spelled out
     ('2" ball valve', 3),                 # the count came from somewhere else (body, column header)
     ('(6) 6" 150# RF weld neck flanges', 6),
+    ('3" 300# blind flange A105 x 8', 8),   # "x 8" after the item is a count, not a dimension
+    ('8 x 3" 300# blind flange', 8),
 ])
 def test_real_quantities_are_left_alone(tmp_path, raw, qty):
     out = checked(tmp_path, f"Need:\n{raw}\n", [line(raw, qty)])

@@ -1,7 +1,7 @@
 # Running
 
-> Prompt v1 stage: the dev inbox is recorded in `cache/`, so `parse` on dev runs with no key.
-> Code-side checks (duplicates, revisions, quantity rules) are not in yet.
+> The dev inbox is recorded in `cache/`, so `parse` on dev runs with no key. Code-side checks
+> (duplicates, revisions, invented lines, quantity rules) run on every email after the model.
 
 Requires Python 3.11+. Works natively on Windows, macOS and Linux.
 

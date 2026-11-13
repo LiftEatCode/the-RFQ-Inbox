@@ -9,7 +9,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from rfqinbox import model, pipeline
+from rfqinbox import checks, model, pipeline, reader
 from rfqinbox.record import review_record
 
 
@@ -41,7 +41,24 @@ def parse_inbox(emails_dir: Path, engine: model.Engine | None = None) -> dict[st
             results[path.stem] = review_record(
                 f"could not process this email ({type(exc).__name__}: {exc})"
             )
-    return results
+    return link_inbox(emails_dir, results)
+
+
+def link_inbox(emails_dir: Path, results: dict[str, dict]) -> dict[str, dict]:
+    """Duplicates and revisions need the whole inbox. If this step fails, the
+    per-email records are returned as they were."""
+    try:
+        headers = {}
+        for path in sorted(emails_dir.glob("*.eml")):
+            try:
+                headers[path.stem] = reader.read_headers(path)
+            except Exception:  # noqa: BLE001 — an unreadable email is simply not linked
+                continue
+        return checks.link_records(headers, results)
+    except Exception as exc:  # noqa: BLE001
+        print(f"warning: could not link duplicates and revisions ({type(exc).__name__}: {exc})",
+              file=sys.stderr)
+        return results
 
 
 def write_json_atomic(data: dict, out: Path) -> None:

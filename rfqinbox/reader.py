@@ -80,6 +80,24 @@ def read_email(path: Path) -> Packet:
     return _packet_from_message(path.stem, msg, depth=0)
 
 
+def read_headers(path: Path) -> Packet:
+    """Only the headers (sender, date, subject, thread ids): cheap, for linking emails."""
+    path = Path(path)
+    msg = BytesParser(policy=policy.default).parsebytes(path.read_bytes(), headersonly=True)
+    sender = _header(msg, "From")
+    return Packet(
+        id=path.stem,
+        sender=sender,
+        sender_internal=parseaddr(sender)[1].lower().endswith("@" + INTERNAL_DOMAIN),
+        to=_header(msg, "To"),
+        date=_header(msg, "Date"),
+        subject=_header(msg, "Subject"),
+        message_id=_header(msg, "Message-ID"),
+        in_reply_to=_header(msg, "In-Reply-To"),
+        references=_header(msg, "References"),
+    )
+
+
 def _header(msg, name: str) -> str:
     try:
         v = msg.get(name)
