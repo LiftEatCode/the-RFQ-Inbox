@@ -1,9 +1,8 @@
 # Running
 
-> The dev inbox is recorded in `cache/`, so `parse` on dev runs with no key. Code-side checks
-> (duplicates, revisions, invented lines, quantity rules) run on every email after the model.
-
-Requires Python 3.11+. Works natively on Windows, macOS and Linux.
+Requires **Python 3.11+**. No Docker, no shell-outs, no system packages: every dependency
+ships prebuilt wheels for Windows, macOS and Linux. Developed on Linux; written for native
+Windows (pathlib, explicit UTF-8, LF output) but **not yet run on Windows** — see DECISIONS.md.
 
 ## Setup (one step)
 
@@ -14,41 +13,66 @@ python -m pip install -r requirements.txt
 ## Run
 
 ```
+python -m rfqinbox parse --emails <dir> --out parsed.json
+```
+
+- Reads every `.eml` in `<dir>`, writes `parsed.json`, and writes `cost_report.json` next to it.
+- Reads `OPENAI_API_KEY` from the environment. For local runs a `.env` file in the current
+  folder is also loaded (`OPENAI_API_KEY=...`); a variable already set in the environment wins.
+  `.env` is git-ignored.
+- With **no key** it replays recorded answers from `cache/` and flags any email it has no
+  answer for (`rfq` + `needs_review`). It never crashes on a missing key or a failed call.
+- A second run on the same inbox makes **no model calls**: answers are cached under a hash of
+  everything the model was shown. New answers (for example the held-out inbox) are written to
+  `cache/`; `--cache <dir>` or `RFQINBOX_CACHE_DIR` moves it.
+
+Dev, exactly as committed (no key needed):
+
+```
 python -m rfqinbox parse --emails data/dev/emails --out parsed.json
 python data/check_format.py parsed.json --emails data/dev/emails
-```
-
-See what the model will be shown for one email:
-
-```
-python -m rfqinbox inspect data/dev/emails/E005.eml
-```
-
-Score against the dev answer key:
-
-```
 python -m rfqinbox score parsed.json
 ```
 
-## Tests (no API key needed)
+## Model and cost
+
+- **Model:** OpenAI `gpt-4.1`, Chat Completions, strict JSON-schema output, images sent inline.
+  One call per email (a second only if the reply is malformed). Override with `RFQINBOX_MODEL`.
+- **Dev run:** 24 emails, 24 calls, 66,139 input / 19,913 output tokens, **$0.29**
+  (about 1.2 cents per email; median 0.9 cents; the dearest are a 44-line PDF and a two-page
+  phone scan at about 3.5 cents each). About 2 minutes, sequential.
+- **Per email:** `cost_report.json` lists calls, tokens and dollars for every email;
+  `calls`/`cost_usd` are what the answer cost when it was made, `new_calls`/`new_cost_usd` are
+  what this run spent (zero on a replay). The totals are printed on stderr.
+- **Expect** roughly $0.50 and 3–4 minutes for a 40-email inbox.
+- Prices are a table in `rfqinbox/model.py` ($2.00 / $8.00 per million input / output tokens).
+
+## Other commands
+
+```
+python -m rfqinbox inspect data/dev/emails/E005.eml     # what the model is shown for one email
+python -m rfqinbox score parsed.json --gate             # exit 1 on any silent loss
+```
+
+## Tests (no key, no network)
 
 ```
 python -m pip install -r requirements-dev.txt
 python -m pytest
 ```
 
-## Model, cache and cost
+The tests remove `OPENAI_API_KEY` and switch `.env` loading off, so they can never spend money.
 
-- Model: OpenAI `gpt-4.1` (Chat Completions, strict JSON schema, images inline). Override with
-  the `RFQINBOX_MODEL` environment variable.
-- Every valid answer is saved to `cache/<sha256>.json` (committed). A second run makes no calls;
-  a run with no key replays the cache and flags any email it has no answer for. `--cache <dir>`
-  or `RFQINBOX_CACHE_DIR` moves the cache.
-- `parse` writes `cost_report.json` next to `--out` (calls, tokens and dollars per email) and
-  prints the totals on stderr.
+## The probe inbox
 
-## API key
+`eval/probes/` holds 17 invented emails (not dev) with their own key and cache; see
+`eval/make_probes.py` and `eval/history.md`.
 
-`parse` reads `OPENAI_API_KEY` from the environment. For local runs it also loads a `.env`
-file from the current folder if there is one (`OPENAI_API_KEY=...`); a variable already set
-in the environment wins. `.env` is git-ignored: never commit the key.
+```
+python -m rfqinbox parse --emails eval/probes/emails --out eval/probes/parsed.json --cache eval/probes/cache
+python -m rfqinbox score eval/probes/parsed.json --key eval/probes/answer_key.json
+```
+
+## Screen recording
+
+TODO: link.
