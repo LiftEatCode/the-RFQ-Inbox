@@ -665,7 +665,12 @@ def tag_line(raw, qty=2):
     ("STEAM TRAP\nCAT. NO. 88-204A\n150 PSI", "CAT. NO. 88-204A"),
     ("BRONZE GATE VALVE\nFIG. 1140B\nSIZE 2", "FIG. 1140B"),
     ("Type: gear pump Part No: GP-3310 Rating: 150 PSI", "Part No: GP-3310"),
-], ids=["lines", "labelled-fields", "part-number", "catalog-number", "figure-number", "mixed-case"])
+    # The same tag as one run of text: no line breaks, no colons - only the field names give it away.
+    ("ORBEX PUMP CO CENTRIFUGAL PUMP MODEL CX-40-2 SIZE 3 IN IMPELLER 6.5 IN SPEED 3500 RPM BODY CAST IRON",
+     "MODEL CX-40-2"),
+    ("KELTON ACTUATOR PART NO 7741-KX TORQUE 300 IN-LB VOLTAGE 24 VDC ENCLOSURE NEMA 4", "PART NO 7741-KX"),
+], ids=["lines", "labelled-fields", "part-number", "catalog-number", "figure-number", "mixed-case",
+        "one-run-of-text", "one-run-part-number"])
 def test_a_tag_read_as_several_lines_keeps_only_the_identifying_one(tmp_path, raw, expected):
     out = checked(tmp_path, "Need two like the one in the picture.", [tag_line(raw)], attachments=[PHOTO])
 
@@ -690,6 +695,7 @@ def test_a_tag_with_no_identifying_line_is_left_as_the_model_read_it(tmp_path, r
     "Qty: 4  2in ball valve model BV-22",               # one line that happens to mention a model
     '3 | 22 | EA | 1" | ball valve',                    # one row of a scanned form
     "6 - model 4410 hose clamps",
+    "10 ea 2in gate valve class 800 body A105 model GV-800",    # a list line with specs is still one line
 ])
 def test_an_ordinary_line_from_a_picture_is_not_cut_down(tmp_path, raw):
     out = checked(tmp_path, "List attached.", [line(raw, 4, source="tag.jpg")], attachments=[PHOTO])

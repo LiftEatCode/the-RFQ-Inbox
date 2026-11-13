@@ -131,9 +131,25 @@ _IDENTIFIER = re.compile(
     r"(?:[ \t]*(?:NO|NUMBER|NUM)\b\.?|[ \t]*#)?[ \t]*:?[ \t]*([A-Za-z0-9][\w./-]*)", re.I)
 
 
+# Words that name a field on a nameplate. Three or more of them in one run of text that
+# does not start with a count is a tag read out in full, not a line of a list.
+_PLATE_FIELDS = re.compile(
+    r"\b(model|mod|part|p/n|cat|catalog|fig|figure|size|class|body|trim|ends|rating|range|inlet|"
+    r"outlet|max|min|serial|s/n|type|mfg|mfr|pressure|temp|temperature|speed|impeller|voltage|"
+    r"volts|amps|phase|torque|enclosure|capacity|orifice|seat|stem|disc|bonnet)\b", re.I)
+_STARTS_WITH_COUNT = re.compile(r"\s*(?:qty\b|quantity\b|\(?\d)", re.I)
+
+
+def _is_tag_dump(text: str) -> bool:
+    if "\n" in text or len(_LABELLED_FIELD.findall(text)) >= 2:
+        return True
+    fields = {m.lower() for m in _PLATE_FIELDS.findall(text)}
+    return len(fields) >= 3 and not _STARTS_WITH_COUNT.match(text)
+
+
 def _one_line(raw: str) -> str:
     text = (raw or "").strip()
-    if "\n" not in text and len(_LABELLED_FIELD.findall(text)) < 2:
+    if not _is_tag_dump(text):
         return raw
     for m in _IDENTIFIER.finditer(text):
         if re.search(r"\d", m.group(1)):
