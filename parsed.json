@@ -4,7 +4,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (body only)",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (body only)",
     "line_items": []
   },
   "E002": {
@@ -12,7 +12,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (body only)",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (body only)",
     "line_items": []
   },
   "E003": {
@@ -20,7 +20,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (body only)",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (body only)",
     "line_items": []
   },
   "E004": {
@@ -28,7 +28,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (body only)",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (body only)",
     "line_items": []
   },
   "E005": {
@@ -36,7 +36,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: Tank14_Piping_RevB.xlsx [ok])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: Tank14_Piping_RevB.xlsx [ok])",
     "line_items": []
   },
   "E006": {
@@ -44,7 +44,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: RFQ_PF-26-3091.pdf [ok])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: RFQ_PF-26-3091.pdf [ok])",
     "line_items": []
   },
   "E007": {
@@ -52,7 +52,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: IMG_4172.jpeg [ok])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: IMG_4172.jpeg [ok])",
     "line_items": []
   },
   "E008": {
@@ -60,7 +60,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: RFQ_PF-26-3091.pdf [ok])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: RFQ_PF-26-3091.pdf [ok])",
     "line_items": []
   },
   "E009": {
@@ -68,7 +68,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: Scan_RFQ_SC-4418.pdf [scanned])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: Scan_RFQ_SC-4418.pdf [scanned])",
     "line_items": []
   },
   "E010": {
@@ -76,7 +76,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: image002.png [ok], image001.png [logo])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: image002.png [ok], image001.png [logo])",
     "line_items": []
   },
   "E011": {
@@ -84,7 +84,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (body only)",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (body only)",
     "line_items": []
   },
   "E012": {
@@ -92,7 +92,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (body only)",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (body only)",
     "line_items": []
   },
   "E013": {
@@ -100,7 +100,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: original_message.eml [ok])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: original_message.eml [ok])",
     "line_items": []
   },
   "E014": {
@@ -108,7 +108,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (body only)",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (body only)",
     "line_items": []
   },
   "E015": {
@@ -116,7 +116,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: PO_TPS-88213.pdf [ok])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: PO_TPS-88213.pdf [ok])",
     "line_items": []
   },
   "E016": {
@@ -124,7 +124,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: HM-7716_material_list.csv [ok])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: HM-7716_material_list.csv [ok])",
     "line_items": []
   },
   "E017": {
@@ -132,7 +132,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: image001.png [logo])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: image001.png [logo])",
     "line_items": []
   },
   "E018": {
@@ -140,7 +140,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (body only)",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (body only)",
     "line_items": []
   },
   "E019": {
@@ -148,7 +148,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: TankFarm_Ph2_Materials.docx [ok])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: TankFarm_Ph2_Materials.docx [ok])",
     "line_items": []
   },
   "E020": {
@@ -156,7 +156,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (body only)",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (body only)",
     "line_items": []
   },
   "E021": {
@@ -164,7 +164,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: SR-4-117_Unit4_BOM.xlsx [ok])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: SR-4-117_Unit4_BOM.xlsx [ok])",
     "line_items": []
   },
   "E022": {
@@ -172,7 +172,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: AldenMarine_RFQ_AM-26-0412.pdf [encrypted])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: AldenMarine_RFQ_AM-26-0412.pdf [encrypted])",
     "line_items": []
   },
   "E023": {
@@ -180,7 +180,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (attachments: IMG_4417.jpg [ok])",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (attachments: IMG_4417.jpg [ok])",
     "line_items": []
   },
   "E024": {
@@ -188,7 +188,7 @@
     "revises": null,
     "duplicate_of": null,
     "needs_review": true,
-    "review_reason": "not processed: no model step yet (body only)",
+    "review_reason": "model step failed: OPENAI_API_KEY is not set and this email has no cached answer (body only)",
     "line_items": []
   }
 }

@@ -11,6 +11,7 @@ bad attachment: it reports a status and a note instead.
 from __future__ import annotations
 
 import csv
+import hashlib
 import html
 import io
 import re
@@ -42,6 +43,7 @@ class Attachment:
     status: str = "ok"      # ok scanned logo encrypted unreadable empty unsupported
     text: str = ""
     images: list[bytes] = field(default_factory=list)   # PNG/JPEG bytes for the model
+    source_sha: str = ""   # sha256 of the file as attached (stable across platforms; cache key for images)
     notes: list[str] = field(default_factory=list)
 
 
@@ -179,6 +181,8 @@ def _read_attached_email(part, depth: int) -> Attachment:
         att.text = render(sub, header=False)
         for a in sub.attachments:
             att.images += a.images
+        att.source_sha = hashlib.sha256(
+            "".join(a.source_sha for a in sub.attachments if a.images).encode("ascii")).hexdigest()
     except Exception as exc:
         att.status = "unreadable"
         att.notes.append(f"attached email could not be read: {exc}")
@@ -373,7 +377,7 @@ def kind_of(filename: str, mime: str) -> str:
 
 def read_attachment(filename: str, mime: str, data: bytes, inline: bool = False) -> Attachment:
     att = Attachment(filename=filename, mime=mime, size=len(data), inline=inline,
-                     kind=kind_of(filename, mime))
+                     kind=kind_of(filename, mime), source_sha=hashlib.sha256(data).hexdigest())
     if not data.strip():
         att.status = "empty"
         att.notes.append("attachment is empty (0 bytes of content)")
@@ -734,4 +738,19 @@ def images_for_model(pk: Packet) -> list[tuple[str, bytes, str]]:
         for j, img in enumerate(a.images, 1):
             label = a.filename if len(a.images) == 1 else f"{a.filename} (page {j})"
             out.append((label, img, "low" if a.status == "logo" else "high"))
+    return out
+
+
+def image_keys(pk: Packet) -> list[bytes]:
+    """One cache-key token per image from images_for_model, in the same order.
+
+    The images themselves are re-encoded by Pillow/pdfium, and those bytes can differ
+    between library builds and platforms. The attached file's own bytes cannot, so the
+    cache is keyed on them: a cache recorded on one machine replays on another.
+    """
+    out = []
+    for a in pk.attachments:
+        for j, img in enumerate(a.images, 1):
+            src = a.source_sha or hashlib.sha256(img).hexdigest()
+            out.append(f"{src}:{j}/{len(a.images)}".encode("ascii"))
     return out

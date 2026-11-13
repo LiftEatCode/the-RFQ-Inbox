@@ -9,16 +9,18 @@ import sys
 import tempfile
 from pathlib import Path
 
-from rfqinbox import pipeline
+from rfqinbox import model, pipeline
 from rfqinbox.record import review_record
 
 
-def parse_inbox(emails_dir: Path) -> dict[str, dict]:
+def parse_inbox(emails_dir: Path, engine: model.Engine | None = None) -> dict[str, dict]:
     """Process every .eml in the folder. One bad email never stops the run."""
+    engine = engine or pipeline.default_engine()
     results: dict[str, dict] = {}
     for path in sorted(emails_dir.glob("*.eml")):
+        engine.ledger.touch(path.stem)
         try:
-            results[path.stem] = pipeline.process_email(path)
+            results[path.stem] = pipeline.process_email(path, engine)
         except Exception as exc:  # noqa: BLE001 — isolation is the point
             results[path.stem] = review_record(
                 f"could not process this email ({type(exc).__name__}: {exc})"
@@ -46,10 +48,27 @@ def cmd_parse(args: argparse.Namespace) -> int:
     if not emails_dir.is_dir():
         print(f"error: --emails {emails_dir} is not a directory", file=sys.stderr)
         return 2
-    results = parse_inbox(emails_dir)
-    write_json_atomic(results, Path(args.out))
+    client = model.make_client()
+    if client is None:
+        print("warning: OPENAI_API_KEY is not set - replaying from the cache only; "
+              "emails with no cached answer are flagged for review", file=sys.stderr)
+    cache_dir = Path(args.cache) if args.cache else model.default_cache_dir()
+    engine = model.Engine(client, model.Cache(cache_dir), model.Ledger())
+    results = parse_inbox(emails_dir, engine)
+    out = Path(args.out)
+    write_json_atomic(results, out)
     flagged = sum(1 for r in results.values() if r["needs_review"])
     print(f"{len(results)} emails -> {args.out} ({flagged} flagged for review)", file=sys.stderr)
+    cost_path = Path(args.cost_report) if args.cost_report else out.resolve().parent / "cost_report.json"
+    try:
+        engine.ledger.write(cost_path)
+    except OSError as exc:
+        print(f"warning: could not write {cost_path}: {exc}", file=sys.stderr)
+    t = engine.ledger.report()["totals"]
+    print(f"{t['new_calls']} model calls this run, {t['calls'] - t['new_calls']} replayed from cache; "
+          f"{t['input_tokens']:,} input / {t['output_tokens']:,} output tokens; "
+          f"${t['new_cost_usd']:.4f} spent now, ${t['cost_usd']:.4f} total as recorded "
+          f"({engine.model}) -> {cost_path.name}", file=sys.stderr)
     return 0
 
 
@@ -98,6 +117,9 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("parse", help="read every .eml in a folder and write parsed.json")
     p.add_argument("--emails", required=True, help="folder of .eml files")
     p.add_argument("--out", required=True, help="output JSON path")
+    p.add_argument("--cache", help="model response cache folder (default: cache/ in the repo)")
+    p.add_argument("--cost-report", help="where to write calls/tokens/$ per email "
+                                         "(default: cost_report.json next to --out)")
     p.set_defaults(func=cmd_parse)
     s = sub.add_parser("score", help="score a parsed.json against an answer key (README grading rules)")
     s.add_argument("parsed", help="parsed.json to score")

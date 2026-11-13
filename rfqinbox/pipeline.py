@@ -1,24 +1,53 @@
 """Turns one .eml file into one output record.
 
-Reader stage: every email is read into a Packet (rfqinbox.reader). There is no
-model step yet, so the record is still the safe default (flagged for review),
-but now with the reason a human would need.
+    reader (deterministic) -> model (decides class and lines) -> code checks
+
+If the model step fails for any reason the record is the safe default: a request
+flagged for review, with the reason. Cross-email links (revises, duplicate_of)
+are not decided here yet.
 """
 
 from __future__ import annotations
 
 from pathlib import Path
 
-from rfqinbox import reader
-from rfqinbox.record import review_record
+from rfqinbox import model, reader
+from rfqinbox.record import ACTION_CLASSES, make_record, review_record
 
 
-def process_email(path: Path) -> dict:
+def default_engine() -> model.Engine:
+    return model.Engine(model.make_client(), model.Cache(model.default_cache_dir()), model.Ledger())
+
+
+def process_email(path: Path, engine: model.Engine | None = None) -> dict:
+    engine = engine or default_engine()
+    engine.ledger.touch(path.stem)
     raw = path.read_bytes()
     if not raw.strip():
         return review_record("email file is empty")
     packet = reader.read_email(path)
-    return review_record(f"not processed: no model step yet ({_summary(packet)})")
+    try:
+        answer = engine.extract(path.stem, reader.render(packet), reader.images_for_model(packet),
+                                image_keys=reader.image_keys(packet))
+    except model.ModelError as exc:
+        return review_record(f"model step failed: {exc} ({_summary(packet)})")
+    return to_record(answer)
+
+
+def to_record(answer: dict) -> dict:
+    """The model's answer, held to the output contract's rules."""
+    classification = answer["classification"]
+    if classification not in ACTION_CLASSES:
+        return make_record(classification)   # no lines and no review flag for these kinds
+    lines = answer["line_items"]
+    needs_review = bool(answer["needs_review"])
+    reason = (answer["review_reason"] or "").strip()
+    if not lines and not needs_review:
+        # "A request, nothing found, nobody needs to look" is the silent loss. Never let it out.
+        needs_review, reason = True, "the model classified this as a request but found no line items"
+    if needs_review and not reason:
+        reason = "the model flagged this email for review without giving a reason"
+    return make_record(classification, lines, needs_review=needs_review, review_reason=reason)
 
 
 def _summary(pk: reader.Packet) -> str:

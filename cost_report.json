@@ -1,0 +1,208 @@
+{
+  "model": "gpt-4.1",
+  "prompt_version": "v0",
+  "price_known": true,
+  "totals": {
+    "emails": 24,
+    "calls": 0,
+    "new_calls": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cost_usd": 0,
+    "new_cost_usd": 0
+  },
+  "emails": {
+    "E001": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E002": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E003": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E004": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E005": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E006": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E007": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E008": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E009": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E010": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E011": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E012": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E013": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E014": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E015": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E016": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E017": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E018": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E019": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E020": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E021": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E022": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E023": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    },
+    "E024": {
+      "calls": 0,
+      "new_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cost_usd": 0,
+      "new_cost_usd": 0
+    }
+  }
+}

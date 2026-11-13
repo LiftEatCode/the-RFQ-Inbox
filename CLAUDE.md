@@ -39,7 +39,8 @@ calls on a second run, never crash on a bad email, and report calls/tokens/$ per
 
 ```
 rfqinbox/cli.py       parse | score | inspect subcommands; per-email try/except; atomic write
-rfqinbox/pipeline.py  process_email(path) -> record   (currently reader + stub output)
+rfqinbox/pipeline.py  process_email(path, engine) -> record: reader -> model -> contract rules
+rfqinbox/model.py     OpenAIClient (urllib), Cache, Ledger, Engine.extract (validate, 1 repair retry)
 rfqinbox/reader.py    .eml -> Packet (body_new, quoted[], attachments[]) + render() for the model
 rfqinbox/record.py    output record helpers; review_record() = the safe default
 rfqinbox/score.py     local scorer implementing data/README.md "What we grade"
@@ -56,21 +57,28 @@ Done (each with tests):
    docx (headings in order with tables), PDF (text, form fields, scans -> page images,
    encrypted, capped at 40 text / 6 scan pages), images (logo detection, downscale),
    CSV, HTML tables (colspan), attached .eml recursively. `python -m rfqinbox inspect <eml>`.
+4. Model layer (`rfqinbox/model.py`, `tests/test_model.py`), as specified below. Prompt is a
+   placeholder (`PROMPT_VERSION = "v0"`); nothing has been recorded yet.
 
-Next:
-4. **Model layer** (no key needed to test — use a fake client):
+Model layer as built (tests use a fake client / fake urlopen; no key needed):
    - OpenAI client over stdlib `urllib` (no SDK dependency), Chat Completions with
      `response_format: json_schema` (strict) and images as base64 data URLs
      (`detail: low` for logos, `high` otherwise; see `reader.images_for_model`).
    - Cache: `cache/<sha256>.json`, key = hash(model, prompt version, schema, rendered
-     packet, image bytes). Committed to git. Hit → no call. Writes are atomic.
+     packet, sha256 of each image's *original attachment bytes* — not the re-encoded image,
+     which can differ between Pillow/pdfium builds). Committed to git. Hit → no call. Writes
+     are atomic. With no key, an answer recorded with any model is replayed.
+     **Editing SYSTEM_PROMPT without bumping PROMPT_VERSION replays stale answers.**
    - Cost ledger: calls, input/output tokens, $ per email (price table in code), written
-     to `cost_report.json` and summarised on stderr.
+     to `cost_report.json` (next to `--out`) and summarised on stderr. `calls`/`cost_usd` =
+     what the answer cost when made or recorded; `new_*` = spent in this run.
    - Failures: no key, timeout, 429/5xx (retry with backoff, then give up), malformed JSON
      (schema-validate; one repair retry) → record flagged needs_review with the reason,
      run continues. Never crash.
    - Tests: second run makes zero calls; prompt-version change busts the cache; each
      failure mode degrades to a flagged record; cost totals add up.
+
+Next:
 5. Prompt v1 + recorded cache for dev (the human runs `parse` once with the key).
 6. Code-side checks: duplicate detection (later Date = duplicate), revises via
    In-Reply-To/References/subject, every `raw` must appear in the source text, sizes are

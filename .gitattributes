@@ -1,0 +1,3 @@
+# Emails and cached model answers are data: never convert their line endings.
+*.eml -text
+cache/*.json -text
