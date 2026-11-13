@@ -1,11 +1,13 @@
 # Decisions
 
-Time spent: TODO (hours). One model call per email; everything checkable without judgment is code.
+Time spent: about 3 hours hands-on, all on 13 November (commits run 09:59–11:34 and
+15:38–16:48), plus reading the brief. One model call per email; everything checkable without
+judgment is code.
 
 ## Something in the data that surprised me
 
 The biggest source of wrong output was an email the model read perfectly. A customer resent
-an RFQ a day later with different wording and the same PDF. The model extracted all 44 lines
+an RFQ a day later with different wording and the byte-identical PDF. The model extracted all 44 lines
 correctly, and every one of them was wrong, because the README says the later copy has no
 lines. 44 of the first run's 45 hallucinated lines were that one email. Whether an answer is
 right depended on a different email, so no prompt could fix it. That moved duplicates and
@@ -30,8 +32,8 @@ wrote the probes, so I discount both.
 
 | | prediction (~40 emails) |
 |---|---|
-| silent losses | 0 |
-| hallucinated lines | 0–8 (one missed duplicate would be most of it) |
+| silent losses | 0–1 (a request classified as a non-request is both lost and silent) |
+| hallucinated lines | 0–10; one missed duplicate of a long RFQ alone could add 40+ |
 | lost / phantom requests | 0–1 / 0–1 |
 | classification | 93–97% |
 | line recall / precision | 94–98% / 93–98% |
@@ -40,8 +42,8 @@ wrote the probes, so I discount both.
 | revises / duplicate links | 70–100% (few emails, so coarse) |
 | needs_review precision / recall | 75–100% / 80–100% |
 
-1. **Dense phone scans and photos.** The same scanned form gave 12 wrong quantities, then 0,
-   then 1 across three runs. Sending pages in full-resolution bands fixed most of it, but
+1. **Dense phone scans and photos.** One scanned form gave 12 wrong quantities; sending pages
+   in full-resolution bands brought that to 0, 0 and 1 over the next three runs. So
    small digits are still occasionally misread, and code cannot check a number that exists
    only in a picture.
 2. **Threads and resends that do not look like dev's.** Duplicates need the same sender and
@@ -58,7 +60,7 @@ wrote the probes, so I discount both.
 - **Provider down for two hours.** *Built:* timeouts, three retries with backoff on 429/5xx
   and network errors, then the email is flagged with the reason; failures are never cached,
   so the next run retries only those. *Not built:* a retry queue. In production I would park
-  the email and alert, not emit a flagged record after 15 seconds.
+  the email and alert, not emit a flagged record once the retries run out.
 - **A 300-page PDF.** *Built:* the reader stops at 40 text pages, 6 scanned pages and 60,000
   characters, says so in the text the model sees, and code flags the email for review with
   the lines it did read. *Not built:* splitting a long document across several calls.
@@ -90,10 +92,11 @@ or probe email. That guard caught three dev phrases I had used as examples in pr
 
 ## Rejected, broken, next
 
-- **Rejected:** the OpenAI SDK (one POST does not need it); local OCR (no wheels-only
-  option); separate classify and extract calls (double the cost, no gain on dev); a
-  rule-based classifier for when the model is down (a wrong confident answer is worse than
-  a flag); fuzzy duplicate thresholds (a real one-line change would vanish).
+- **Rejected:** the OpenAI SDK (one POST does not need it); a rule-based classifier for when
+  the model is down (a wrong confident answer is worse than a flag); fuzzy duplicate
+  thresholds (a real one-line change would vanish); flagging a doubtful quantity for review
+  (the README keeps that flag for emails we cannot read). *Not tried:* separate classify and
+  extract calls, a second model, local OCR. One call per email was enough on dev.
 - **Known broken or unverified:** not run on Windows; replay with no key depends on the
   reader producing the same text with the graders' library versions (unpinned); the tag rule
   relies on a list of field names; the price table is not checked against the live price list.

@@ -2,8 +2,11 @@
 
 ## Setup
 
-- **Tool:** Claude Code (desktop app). TODO: confirm tool and model for the sessions before
-  10:38 on 13 Nov (skeleton, scorer, reader, first CLAUDE.md).
+- **Tool and models:** Claude Code. I started on Claude Sonnet 5.5 for about ten minutes, then
+  switched to Claude Fable 5.2 in the desktop app for the rest (from 10:38 on 13 Nov: the model
+  layer onwards). The commits before that (skeleton, scorer, reader, first `CLAUDE.md`) predate
+  the session in `ai-sessions/`; the log of that first short session is not on this machine, so
+  it is not included. I can walk through it in the interview.
 - **Instruction file:** `CLAUDE.md` (in the repo): the task in one paragraph, hard rules
   (key never in the repo or logs, don't fit dev, flag when unsure), how we work (TDD, the
   human commits), layout, status, and what the dev data taught us.
