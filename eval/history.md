@@ -20,6 +20,7 @@ in `rfqinbox/score.py`); the graders' own numbers may differ in detail.
 | checks v2 | size-as-quantity nulls without a review flag; duplicates also match when the content is the same but the model read it differently; no change on dev | 0 | 1 | 0 | 0 | 95.8% | 99.5% (209/210) | 99.5% (209/210) | 94.3% | 100% | 100% | 100% | 100% | 100% / 100% |
 | page bands | large page images sent as a reduced overview plus full-resolution bands (the provider shrinks images to 768 px on the short side); one email re-read | 0 | 1 | 0 | 0 | 95.8% | 99.5% (209/210) | 99.5% (209/210) | 100% | 100% | 100% | 100% | 100% | 100% / 100% |
 | prompt v2 | vendor quote must answer our request (promo now `other`); raw is one source line; dev wording removed from the prompt; full re-run $0.28. The nameplate raw is still joined: rule stated, model did not follow it | 0 | 1 | 0 | 0 | 100% | 99.5% (209/210) | 99.5% (209/210) | 100% | 100% | 100% | 100% | 100% | 100% / 100% |
+| prompt v3 + tag rule | an override replaces only the attribute it restates; a tag read out in full is cut to its identifying line (code); full re-run $0.29. One digit on the scanned form misread this time (it was right under v2): scan reading is not perfectly repeatable | 0 | 0 | 0 | 0 | 100% | 100% (210/210) | 100% (210/210) | 99.5% | 100% | 100% | 100% | 100% | 100% / 100% |
 
 Reading the baseline: flagging everything already gives zero silent losses —
 which is why silent losses alone can't be the target. Every later change has to
@@ -39,6 +40,7 @@ python -m rfqinbox score eval/probes/parsed.json --key eval/probes/answer_key.js
 | commit | change | silent losses | halluc. lines | lost | phantom | class. acc | line R | line P | qty | uom | source | context | links | NR P / R |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | probes | first run, prompt v2, $0.12 for 17 emails | 0 | 1 | 0 | 0 | 100% | 97.4% (38/39) | 97.4% (38/39) | 100% | 100% | 100% | 94.7% | 100% | 100% / 100% |
+| prompt v3 + tag rule | same change as on dev; re-run $0.12. The one unit difference is a debatable key line ("enough to run about 60 ft": key says no unit, we say FT), left as written | 0 | 0 | 0 | 0 | 100% | 100% (39/39) | 100% (39/39) | 100% | 97.4% | 100% | 100% | 100% | 100% / 100% |
 
 What the first run found (both are general, neither is a dev string):
 - A tag photo's `raw` comes back as every line of the tag joined (also dev's one remaining miss).
@@ -46,3 +48,7 @@ What the first run found (both are general, neither is a dev string):
   noted" ... "3 lengths 3 in SCH 40") lost the rest of the default: the description kept SCH 40
   but dropped A106B seamless.
 
+After the first probe run, two things changed because of it: prompt v3 (partial override) and
+the code rule for tags. The tag rule was widened once more when the v3 run returned the tag in
+a third format. So the probes are no longer fully unseen for those two properties; they are
+still unseen for everything else they cover.

@@ -1,0 +1,18 @@
+{
+  "email": "P15",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This email is an auto-generated bounce (auto_reply) notifying us that a message sent by our own rep, Priya Nair, to the customer at Pine Bluff Paper could not be delivered because the recipient does not exist. It includes the original outbound customer quote request from our rep to the customer, listing two bolting items. Because this is a delivery failure notice and not a customer request, this does not need to be quoted, nor are items to be interpreted from the attached.eml. No line items parsed, as requested by the instructions for auto_reply.",
+    "classification": "auto_reply",
+    "line_items": [],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "066877ee86f1938316f5d726d1e1fdbfb349cdfdbc867e1db457828a037fea7d",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2244,
+    "output_tokens": 135
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "email": "P02",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This email is a marketing blast from Brazos Valve Outlet advertising overstock valves with their sizes and prices. It is not a direct response to one of our inquiries or a personalized quote, and it is not specifically addressed as a quote to Ridgeline but rather appears to be a general sales newsletter. There is no request for us to act, no indication this is a special price for Ridgeline, and no commitment or customer request for pricing; rather, it is promotional content. There are no lines to process for quoting or order entry. Totals, prices, and headings are excluded as per instructions. No review is needed.",
+    "classification": "other",
+    "line_items": [],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "7bbfb704a3c37d24c6ee593b99afaa5dc68f01cd804806ac06a978ebb44b4cbf",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2158,
+    "output_tokens": 148
+  }
+}

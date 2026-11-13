@@ -1,0 +1,61 @@
+{
+  "email": "E016",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Marcus Doyle, a Ridgeline inside sales rep, is forwarding a direct RFQ from Priya Raman at Hollis Mechanical. Priya requests pricing and lead times for a specific list of condensate return material, which comes as a CSV attachment. Marcus's note reinforces this is a quote request due Friday. The CSV table lists six line items, each with a quantity, size, description, and material specs. There are no defaults, headers only apply to listed rows, and all lines show complete specification. Nothing from the quoted history or other sections needs inclusion. Totals, pricing, and contact lines are omitted as per instructions.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "1-1/2\" Pipe, SCH 80, A106B seamless, plain end",
+        "qty": 60,
+        "raw": "60, FT, 1-1/2\", Pipe, SCH 80, A106B SMLS, PE",
+        "source": "HM-7716_material_list.csv",
+        "uom": "FT"
+      },
+      {
+        "description": "1-1/2\" 90 degree elbow, socket weld, 3000#, A105",
+        "qty": 12,
+        "raw": "12, EA, 1-1/2\", 90 elbow, SW, 3000#, A105",
+        "source": "HM-7716_material_list.csv",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/2\" tee, socket weld, 3000#, A105",
+        "qty": 6,
+        "raw": "6, EA, 1-1/2\", Tee, SW, 3000#, A105",
+        "source": "HM-7716_material_list.csv",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/2\" union, socket weld, 3000#, A105",
+        "qty": 8,
+        "raw": "8, EA, 1-1/2\", Union, SW, 3000#, A105",
+        "source": "HM-7716_material_list.csv",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/2\" gate valve, 800#, socket weld, A105",
+        "qty": 4,
+        "raw": "4, EA, 1-1/2\", Gate valve, 800#, SW, A105",
+        "source": "HM-7716_material_list.csv",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/2\" Y-strainer, 800#, socket weld, A105",
+        "qty": 2,
+        "raw": "2, EA, 1-1/2\", Y-strainer, 800#, SW, A105",
+        "source": "HM-7716_material_list.csv",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "8858deddf754cb2a2acd4de4c014dbd7994f80beeb3b4ba066161c3f91f7bff8",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2389,
+    "output_tokens": 540
+  }
+}

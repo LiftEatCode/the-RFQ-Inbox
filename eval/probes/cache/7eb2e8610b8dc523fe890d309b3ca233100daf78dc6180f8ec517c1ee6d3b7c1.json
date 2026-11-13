@@ -1,0 +1,18 @@
+{
+  "email": "P05",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The email is an automatic out-of-office reply from Marta Kowalczyk, stating she will be out until November 16. It does not contain any item requests or changes, and there are no attachments or forwarded contents. No RFQ or purchase order actions are present in this message, and there are no lines to process. The message is machine-generated and requires no human attention or quoting.",
+    "classification": "auto_reply",
+    "line_items": [],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "0fae83b6c908781cec779a06cad5e6f8a22331f9c8f5f9156d12b1b78801cdbb",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2065,
+    "output_tokens": 100
+  }
+}

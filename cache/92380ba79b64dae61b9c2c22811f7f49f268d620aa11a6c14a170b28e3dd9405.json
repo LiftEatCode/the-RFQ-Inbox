@@ -1,0 +1,18 @@
+{
+  "email": "E014",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This email is a marketing promotion from Gulf Pipe & Flange Warehouse, announcing a fall sale with per-piece prices on select flanges and gaskets. There is a list of sale items and prices, but there is no request for a quote, no inquiry, and no commitment to sell to Ridgeline—it's an unsolicited promotion. No customer request to process. No need for review, since this is not an action item. All lines are excluded, as they are listed as available inventory in a sales flyer, not a request from Ridgeline or one of our customers.",
+    "classification": "other",
+    "line_items": [],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "d474b761af033d7e4133d07a91a5919e8145b08ed1defe121ce1cfd2260e8dbc",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2255,
+    "output_tokens": 137
+  }
+}

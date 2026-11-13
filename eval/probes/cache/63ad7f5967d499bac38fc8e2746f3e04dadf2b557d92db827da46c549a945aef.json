@@ -1,0 +1,47 @@
+{
+  "email": "P06",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Omar Reyes from Northgate Mechanical is requesting pricing for a list of items, attaching a readable Excel spreadsheet (BOM_NG-7730.xlsx) with the bill of material. All items relevant to the request are found on 'BOM Rev 2' sheet. There is a default heading specifying that all fittings are black malleable iron 150# threaded; this applies to the fittings listed unless specifically overridden for other items (pipe). Line 5 (1-1/4\" union) is struck through and is NOT an active request. The sheet 'Rev 1' is hidden and superseded; items there are not included. No quoted history or other needs-review triggers. Only lines R3, R4, R6, and R7 from the 'BOM Rev 2' sheet are current requests, with the default applying to R3, R4, and R6. Pipe line (R7) states all its own specs and overrides the default. Totals and the hidden sheet are left out per instructions.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "1\" 90 elbow, black malleable iron 150# threaded",
+        "qty": 24,
+        "raw": "1 | 24 | EA | 1\" 90 elbow",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" tee, black malleable iron 150# threaded",
+        "qty": 12,
+        "raw": "2 | 12 | EA | 1\" tee",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/4\" x 1\" reducing coupling, black malleable iron 150# threaded",
+        "qty": 10,
+        "raw": "4 | 10 | EA | 1-1/4\" x 1\" reducing coupling",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" pipe SCH 40 A53B T&C",
+        "qty": 40,
+        "raw": "5 | 40 | FT | 1\" pipe SCH 40 A53B T&C",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "FT"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "61176aa0382697447e3fb72be0e07e6062149380f5cbccb42e6d2c822b8cc0b1",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2343,
+    "output_tokens": 462
+  }
+}

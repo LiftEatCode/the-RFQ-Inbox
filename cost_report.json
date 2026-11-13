@@ -1,208 +1,208 @@
 {
   "model": "gpt-4.1",
-  "prompt_version": "v2",
+  "prompt_version": "v3",
   "price_known": true,
   "totals": {
     "emails": 24,
     "calls": 24,
-    "new_calls": 0,
-    "input_tokens": 64675,
-    "output_tokens": 18736,
-    "cost_usd": 0.279238,
-    "new_cost_usd": 0
+    "new_calls": 24,
+    "input_tokens": 66139,
+    "output_tokens": 19913,
+    "cost_usd": 0.291582,
+    "new_cost_usd": 0.291582
   },
   "emails": {
     "E001": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2204,
-      "output_tokens": 382,
-      "cost_usd": 0.007464,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2265,
+      "output_tokens": 404,
+      "cost_usd": 0.007762,
+      "new_cost_usd": 0.007762
     },
     "E002": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2019,
-      "output_tokens": 354,
-      "cost_usd": 0.00687,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2080,
+      "output_tokens": 307,
+      "cost_usd": 0.006616,
+      "new_cost_usd": 0.006616
     },
     "E003": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2121,
-      "output_tokens": 489,
-      "cost_usd": 0.008154,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2182,
+      "output_tokens": 528,
+      "cost_usd": 0.008588,
+      "new_cost_usd": 0.008588
     },
     "E004": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2271,
-      "output_tokens": 643,
-      "cost_usd": 0.009686,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2332,
+      "output_tokens": 553,
+      "cost_usd": 0.009088,
+      "new_cost_usd": 0.009088
     },
     "E005": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2555,
-      "output_tokens": 697,
-      "cost_usd": 0.010686,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2616,
+      "output_tokens": 688,
+      "cost_usd": 0.010736,
+      "new_cost_usd": 0.010736
     },
     "E006": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2933,
-      "output_tokens": 2931,
-      "cost_usd": 0.029314,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2994,
+      "output_tokens": 2975,
+      "cost_usd": 0.029788,
+      "new_cost_usd": 0.029788
     },
     "E007": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2798,
-      "output_tokens": 472,
-      "cost_usd": 0.009372,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2859,
+      "output_tokens": 436,
+      "cost_usd": 0.009206,
+      "new_cost_usd": 0.009206
     },
     "E008": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2944,
-      "output_tokens": 2864,
-      "cost_usd": 0.0288,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 3005,
+      "output_tokens": 3610,
+      "cost_usd": 0.03489,
+      "new_cost_usd": 0.03489
     },
     "E009": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 9601,
-      "output_tokens": 1996,
-      "cost_usd": 0.03517,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 9662,
+      "output_tokens": 1977,
+      "cost_usd": 0.03514,
+      "new_cost_usd": 0.03514
     },
     "E010": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2491,
-      "output_tokens": 428,
-      "cost_usd": 0.008406,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2552,
+      "output_tokens": 446,
+      "cost_usd": 0.008672,
+      "new_cost_usd": 0.008672
     },
     "E011": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2322,
-      "output_tokens": 395,
-      "cost_usd": 0.007804,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2383,
+      "output_tokens": 130,
+      "cost_usd": 0.005806,
+      "new_cost_usd": 0.005806
     },
     "E012": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2241,
-      "output_tokens": 133,
-      "cost_usd": 0.005546,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2302,
+      "output_tokens": 97,
+      "cost_usd": 0.00538,
+      "new_cost_usd": 0.00538
     },
     "E013": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2267,
-      "output_tokens": 151,
-      "cost_usd": 0.005742,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2328,
+      "output_tokens": 128,
+      "cost_usd": 0.00568,
+      "new_cost_usd": 0.00568
     },
     "E014": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2194,
-      "output_tokens": 150,
-      "cost_usd": 0.005588,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2255,
+      "output_tokens": 137,
+      "cost_usd": 0.005606,
+      "new_cost_usd": 0.005606
     },
     "E015": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2425,
-      "output_tokens": 582,
-      "cost_usd": 0.009506,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2486,
+      "output_tokens": 556,
+      "cost_usd": 0.00942,
+      "new_cost_usd": 0.00942
     },
     "E016": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2328,
-      "output_tokens": 571,
-      "cost_usd": 0.009224,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2389,
+      "output_tokens": 540,
+      "cost_usd": 0.009098,
+      "new_cost_usd": 0.009098
     },
     "E017": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2172,
-      "output_tokens": 155,
-      "cost_usd": 0.005584,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2233,
+      "output_tokens": 137,
+      "cost_usd": 0.005562,
+      "new_cost_usd": 0.005562
     },
     "E018": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2141,
-      "output_tokens": 541,
-      "cost_usd": 0.00861,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2202,
+      "output_tokens": 483,
+      "cost_usd": 0.008268,
+      "new_cost_usd": 0.008268
     },
     "E019": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2189,
-      "output_tokens": 605,
-      "cost_usd": 0.009218,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2250,
+      "output_tokens": 604,
+      "cost_usd": 0.009332,
+      "new_cost_usd": 0.009332
     },
     "E020": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2347,
+      "new_calls": 1,
+      "input_tokens": 2408,
       "output_tokens": 389,
-      "cost_usd": 0.007806,
-      "new_cost_usd": 0
+      "cost_usd": 0.007928,
+      "new_cost_usd": 0.007928
     },
     "E021": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 3131,
-      "output_tokens": 2967,
-      "cost_usd": 0.029998,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 3192,
+      "output_tokens": 3948,
+      "cost_usd": 0.037968,
+      "new_cost_usd": 0.037968
     },
     "E022": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2054,
-      "output_tokens": 133,
-      "cost_usd": 0.005172,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2115,
+      "output_tokens": 154,
+      "cost_usd": 0.005462,
+      "new_cost_usd": 0.005462
     },
     "E023": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2828,
-      "output_tokens": 275,
-      "cost_usd": 0.007856,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2889,
+      "output_tokens": 246,
+      "cost_usd": 0.007746,
+      "new_cost_usd": 0.007746
     },
     "E024": {
       "calls": 1,
-      "new_calls": 0,
-      "input_tokens": 2099,
-      "output_tokens": 433,
-      "cost_usd": 0.007662,
-      "new_cost_usd": 0
+      "new_calls": 1,
+      "input_tokens": 2160,
+      "output_tokens": 440,
+      "cost_usd": 0.00784,
+      "new_cost_usd": 0.00784
     }
   }
 }

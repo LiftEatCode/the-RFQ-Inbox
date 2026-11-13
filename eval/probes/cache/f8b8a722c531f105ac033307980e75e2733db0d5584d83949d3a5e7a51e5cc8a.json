@@ -1,0 +1,47 @@
+{
+  "email": "P07",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Omar Reyes from Northgate Mechanical is resending an RFQ, stating that nothing has changed from the previous attempt and attaching the same BOM spreadsheet. The items to quote are on 'BOM Rev 2'. The default heading confirms that all fittings are black malleable iron 150# threaded; this applies to the first three items, as the fourth is pipe which has its own spec. Line 3 is struck through, so omit it. The hidden sheet 'Rev 1' is a superseded revision and is not part of the request. Totals are not to be quoted. The needed lines are R3, R4, R6, and R7 of 'BOM Rev 2', with spec and descriptions built as per instructions.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "1\" 90 elbow, black malleable iron 150# threaded",
+        "qty": 24,
+        "raw": "1 | 24 | EA | 1\" 90 elbow",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" tee, black malleable iron 150# threaded",
+        "qty": 12,
+        "raw": "2 | 12 | EA | 1\" tee",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/4\" x 1\" reducing coupling, black malleable iron 150# threaded",
+        "qty": 10,
+        "raw": "4 | 10 | EA | 1-1/4\" x 1\" reducing coupling",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" pipe SCH 40 A53B T&C",
+        "qty": 40,
+        "raw": "5 | 40 | FT | 1\" pipe SCH 40 A53B T&C",
+        "source": "BOM_NG-7730.xlsx",
+        "uom": "FT"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "e1d257d04b9c92f1386f5aab095e298a60888b01976ac257fd729c5f0ebee2a7",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2357,
+    "output_tokens": 404
+  }
+}

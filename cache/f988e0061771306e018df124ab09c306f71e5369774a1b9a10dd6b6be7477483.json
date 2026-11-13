@@ -1,0 +1,61 @@
+{
+  "email": "E018",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender, Dale Thibodeaux from Pelican Bay Utilities, is requesting a quotation for several specified items for a lift station rebuild. The message body contains a pasted table with columns for Qty, Description, and Size, where each line is a distinct item. There are no other applicable defaults or attached files. All items are clearly listed in the body; no lines are omitted except for headings and the timing preference. No quoted history or special notes apply and there is no ambiguity or reason for manual review.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "Weld neck flange, 150# RF, A105, STD bore, 4\"",
+        "qty": 8,
+        "raw": "8\tWeld neck flange, 150# RF, A105, STD bore\t4\"",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "90 deg elbow, LR, BW, SCH 40, A234 WPB, 4\"",
+        "qty": 12,
+        "raw": "12\t90 deg elbow, LR, BW, SCH 40, A234 WPB\t4\"",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "Spiral wound gasket, 304/graphite, 150#, 4\"",
+        "qty": 8,
+        "raw": "8\tSpiral wound gasket, 304/graphite, 150#\t4\"",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "Stud bolt, B7, 4-1/2\" long, with 2 heavy hex nuts, 3/4\"",
+        "qty": 32,
+        "raw": "32\tStud bolt, B7, 4-1/2\" long, w/ 2 heavy hex nuts\t3/4\"",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "Eccentric reducer, BW, SCH 40, A234 WPB, 6\" x 4\"",
+        "qty": 6,
+        "raw": "6\tEccentric reducer, BW, SCH 40, A234 WPB\t6\" x 4\"",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "PTFE thread tape, white, heavy duty",
+        "qty": 12,
+        "raw": "12 rolls\tPTFE thread tape, white, heavy duty\tN/A",
+        "source": "body",
+        "uom": "RL"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "76e8ab7cc8fa53ead2ad1576cc2aece1cfff952b2505bfce527f1f4e0d74080e",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2202,
+    "output_tokens": 483
+  }
+}

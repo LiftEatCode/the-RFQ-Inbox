@@ -1,0 +1,68 @@
+{
+  "email": "E007",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender, Cody Landry from Landry Oilfield, provides a handwritten list for a price quote, to be picked up Friday. The list is attached as a readable image. There are no relevant notes, defaults, or revisions. One line (3/4\" bronze ball valve) is clearly struck through and should not be quoted. Ditto marks are used (\" or ,) on several lines, referring to items above. Quantities, descriptions, and specs are clearly stated except for '5 jts - 2\" galv pipe', which is standard trade practice for 'joint', not a unique unit. All items are extracted from the image only; no quoted history, sheet or hidden content to disregard.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "2\" galvanized 90 degree elbow",
+        "qty": 8,
+        "raw": "8 - 2\" galv 90 elbow",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" galvanized tee",
+        "qty": 4,
+        "raw": "4 - ,, tee",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" x 3\" galvanized nipple",
+        "qty": 6,
+        "raw": "6 - 1\" x 3\" galv nipple",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" x 4\" galvanized nipple",
+        "qty": 6,
+        "raw": "6 - 1\" x 4\" ,,",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" galvanized coupling",
+        "qty": 12,
+        "raw": "12 - 2\" galv coupling",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" galvanized union",
+        "qty": 2,
+        "raw": "2 - 2\" galv union",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" galvanized pipe, supplied in 5 joints",
+        "qty": 5,
+        "raw": "5 jts - 2\" galv pipe",
+        "source": "IMG_4172.jpeg",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "b7d88df4ffed484812241d9203b59dcd870fa01c50071248a9f6b366c689793b",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2859,
+    "output_tokens": 436
+  }
+}

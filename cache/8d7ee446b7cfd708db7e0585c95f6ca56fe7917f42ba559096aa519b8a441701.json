@@ -1,0 +1,18 @@
+{
+  "email": "E012",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Gwen Aldridge is writing to request a status update on a previous quote for the Skid 14 piping package (our quote Q-26-04417). The NEW MESSAGE is a status inquiry and does not request new pricing, revisions, or place an order. All actual line item requests were made in the quoted history, which does not count for this classification.",
+    "classification": "status_inquiry",
+    "line_items": [],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "e5605aae61b3aaa191961799336f38d95f0002eb623db138877e7bbf80544519",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2302,
+    "output_tokens": 97
+  }
+}

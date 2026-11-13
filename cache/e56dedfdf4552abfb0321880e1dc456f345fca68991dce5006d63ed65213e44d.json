@@ -1,0 +1,54 @@
+{
+  "email": "E002",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This is an RFQ email sent by Danny Ruiz requesting pricing and availability for specific stainless steel threaded fittings. The specs (316 SS, threaded) come from the subject line and apply to all items mentioned in the body. The body lists size and type for each item, with quantities for most except 'a couple caps,' which is interpreted as a quantity of 2. No additional instructions, attachments, or notes apply, and there are no items to leave out; everything is from the message body.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "1/2\" 316 stainless steel threaded 90 degree elbow",
+        "qty": 10,
+        "raw": "10 of the 1/2 90s",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "1/2\" 316 stainless steel threaded tee",
+        "qty": 6,
+        "raw": "6 tees same size",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "1/2\" 316 stainless steel threaded cap",
+        "qty": 2,
+        "raw": "a couple caps",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "3/4\" 316 stainless steel threaded coupling",
+        "qty": 12,
+        "raw": "12 of the 3/4 couplings",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "3/4\" 316 stainless steel threaded close nipple",
+        "qty": 20,
+        "raw": "20 of the 3/4 close nipples",
+        "source": "body",
+        "uom": null
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "ddb7004b59eb9d35140fc610e5232d90a293a1f08559232c98c6e7ae1454f01b",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2080,
+    "output_tokens": 307
+  }
+}

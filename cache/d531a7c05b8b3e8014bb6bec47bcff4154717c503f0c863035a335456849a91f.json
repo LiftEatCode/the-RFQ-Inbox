@@ -1,0 +1,75 @@
+{
+  "email": "E004",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Terrence Bailey is submitting a revised RFQ email. He updates the quantity on line 2 from 10 to 14 jts (3\" pipe), removes line 6 (unions), and adds a new ball valve line under valves. The quoted history provides all original lines, and the original defaults and headings should apply: all pipe is SCH 40 A53B ERW, T&C; all fittings are 150# malleable iron black; valves have individual specs as shown. The revised RFQ is built by copying everything from the earlier list, except for the changes as directed. The removed item (unions) does not appear. No quoted history lines are copied except as specified in the revision process. Totals, contact info and schedule requests are not included. No lines are hidden, struck, or ambiguous. No review is needed.",
+    "classification": "rfq_revision",
+    "line_items": [
+      {
+        "description": "2\" SCH 40 A53B ERW, T&C pipe",
+        "qty": 20,
+        "raw": "1) 20 jts - 2\"",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "3\" SCH 40 A53B ERW, T&C pipe",
+        "qty": 14,
+        "raw": "2) 14 jts - 3\"",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "4\" SCH 40 A53B ERW, T&C pipe",
+        "qty": 6,
+        "raw": "3) 6 jts - 4\"",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" 90 ell, 150# malleable iron, black",
+        "qty": 12,
+        "raw": "4) 12 ea - 2\" 90 ell",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" tee, 150# malleable iron, black",
+        "qty": 8,
+        "raw": "5) 8 ea - 2\" tee",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" gate valve, bronze, 125#",
+        "qty": 4,
+        "raw": "7) 4 ea - 2\" gate, bronze, 125#",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" swing check valve, bronze, 125#",
+        "qty": 2,
+        "raw": "8) 2 ea - 2\" check, swing, bronze, 125#",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" ball valve, bronze, 125#",
+        "qty": 4,
+        "raw": "9) 4 ea - 2\" ball, bronze, 125#",
+        "source": "body",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "73a955ebbe57cf5f4843b4aa791681b1a9a0fe4025eb4b5b0fb9b47767b11c9a",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2332,
+    "output_tokens": 553
+  }
+}

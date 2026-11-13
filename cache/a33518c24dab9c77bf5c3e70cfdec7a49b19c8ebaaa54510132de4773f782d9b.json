@@ -1,0 +1,18 @@
+{
+  "email": "E017",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The email from Dwayne Okafor requests pricing for items listed in a Bill of Materials (BOM) that is supposed to be attached. The only attachment present is a logo image and not the actual BOM file with the item details. As a result, there are no line items to extract or describe, and the request cannot be fulfilled without the missing BOM attachment. Nothing from quoted history or the logo image is a line item or relevant to the material request.",
+    "classification": "rfq",
+    "line_items": [],
+    "needs_review": true,
+    "review_reason": "Customer references an attached BOM, but the actual BOM attachment with the item list is missing; only a logo was attached."
+  },
+  "prompt_version": "v3",
+  "request": "5c2bcece6822c1547777d2faf94808697cc3ef21f0d7cce794f53d6e82dcd96d",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2233,
+    "output_tokens": 137
+  }
+}

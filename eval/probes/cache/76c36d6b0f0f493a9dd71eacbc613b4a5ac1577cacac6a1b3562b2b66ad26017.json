@@ -1,0 +1,18 @@
+{
+  "email": "P04",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender, Theo Lindqvist from Prairie Wind Ethanol, is following up on Ridgeline's quote Q-26-1187. The new message is asking for an update, specifically about the lead time on the basket strainers. There are no new items requested; the email is seeking a status update and does not quote or forward a supplier's response. No items are listed in the body, and there are no attachments. No action is required on line items.",
+    "classification": "status_inquiry",
+    "line_items": [],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "4ddb1212794b78da4b84d98ce5557f238a2016abea0943f17a62c1db0b761d93",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2050,
+    "output_tokens": 119
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "email": "E001",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Walt Pruitt at Pruitt Mechanical Contractors is requesting a quote (RFQ) for several specified pipe and fitting items to be delivered to their Mobile yard. The message body contains all requested items, each on a separate line, with no referenced attachments or defaults apart from line-specific notes (pipe ends PE, TBE; material A53B, A105; ratings and finishes specified per line). The request refers to their internal Ref# but this does not affect the items. No lines are to be omitted: no quoted history or hidden/struck content. Totals are not listed, only individual lines; all UOM and specs are as stated.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "2\" schedule 40 A53B ERW black pipe, plain end",
+        "qty": 12,
+        "raw": "12 jts - 2\" SCH 40 A53B ERW black pipe, PE",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" 3000# forged threaded 90 degree elbow, A105",
+        "qty": 30,
+        "raw": "(30) 2\" 3000# forged threaded 90 elbow, A105",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" 3000# forged threaded coupling, A105",
+        "qty": 30,
+        "raw": "(30) 2\" 3000# forged threaded coupling, A105",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "3/4\" schedule 40 galvanized pipe, threaded both ends",
+        "qty": 200,
+        "raw": "200 ft - 3/4\" SCH 40 galvanized pipe, TBE",
+        "source": "body",
+        "uom": "FT"
+      },
+      {
+        "description": "4\" 150# raised face slip-on flange, A105",
+        "qty": 6,
+        "raw": "4\" 150# RF slip-on flange, A105 x 6",
+        "source": "body",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "5f0298084ec8c3f67532222d25f04296aa3cde35f75ab28b04bcb66b8759dc82",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2265,
+    "output_tokens": 404
+  }
+}

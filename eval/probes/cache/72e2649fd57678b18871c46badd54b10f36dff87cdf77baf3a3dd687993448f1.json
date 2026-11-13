@@ -1,0 +1,33 @@
+{
+  "email": "P09",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Hal Brennan (the customer) is replying to Ridgeline's quote Q-26-1191 and is issuing a purchase order for only lines 1 and 3 from the quoted items. The quoted history details three line items with full specs and quantities. The new message instructs to proceed with lines 1 and 3 only, holding off on the Y-strainer (line 2). No changes to quantities or specs are stated. Only the specified line items from the quote are included. No hidden, struck, or excluded content applies; only requested items from the quote are included. No review is required, as all referenced information is present and clear.",
+    "classification": "purchase_order",
+    "line_items": [
+      {
+        "description": "4\" butterfly valve, lug style, 150#, ductile iron body",
+        "qty": 6,
+        "raw": "1) 6 ea 4\" butterfly valve, lug style, 150#, ductile iron body - $212.00 ea",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "4\" full face gasket, 1/8\" EPDM",
+        "qty": 12,
+        "raw": "3) 12 ea 4\" full face gasket, 1/8\" EPDM - $6.40 ea",
+        "source": "body",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "6adb7411eac4d6b5105afc6db3e0571b3411a8afcf99965023118ebdec5e73f4",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2227,
+    "output_tokens": 274
+  }
+}

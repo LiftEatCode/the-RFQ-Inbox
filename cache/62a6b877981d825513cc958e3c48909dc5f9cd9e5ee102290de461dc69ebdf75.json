@@ -1,0 +1,18 @@
+{
+  "email": "E011",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This is a vendor responding to an RFQ from Ridgeline with a quote listing pricing, lead times, and terms for specific items. The new message is a vendor quote (pricing and lead times for items previously requested), not a new request for quotation. All item lines are in the body of the message, with descriptions and quantities clearly stated. No additional notes, defaults, or instructions affect the line items. No items are left out; quoted history is not included because it was already handled. No attachment or hidden content is present.",
+    "classification": "vendor_quote",
+    "line_items": [],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "f799024ed03a05c96cfa60de62c9d69e434df713ad274c6160e5ae2940d70521",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2383,
+    "output_tokens": 130
+  }
+}

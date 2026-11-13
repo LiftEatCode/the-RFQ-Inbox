@@ -1,0 +1,26 @@
+{
+  "email": "P12",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Curt Maddox is requesting a quote for four pressure regulators identical to the type shown in the attached image (IMG_2291.jpg). The tag in the image provides all identifying details: Delmar Controls brand, pressure regulator, model DR-250-B, 1\" NPT size, 300 PSI max inlet, spring range 25-75 PSI, brass body. Curt asks for lead time as well, but does not provide any information beyond the tag, nor does he reference any earlier order or external spec. All item details are fully readable in the tag image. Only the new message and its attachment are relevant; there are no hidden or quoted/forwarded lines to process.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "Delmar Controls pressure regulator, model DR-250-B, 1 inch NPT, max inlet 300 PSI, spring range 25-75 PSI, body brass",
+        "qty": 4,
+        "raw": "DELMA CONTROLS PRESSURE REGULATOR MODEL DR-250-B SIZE 1 IN NPT INLET MAX 300 PSI SPRING RANGE 25-75 PSI BODY BRASS",
+        "source": "IMG_2291.jpg",
+        "uom": null
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "90201fafaea7c2f9faa554f30dcc706115aa78512b69e18cc7c7df4ac8e758a7",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2855,
+    "output_tokens": 256
+  }
+}

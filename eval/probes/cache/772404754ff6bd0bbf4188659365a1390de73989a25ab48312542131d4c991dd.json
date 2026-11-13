@@ -1,0 +1,54 @@
+{
+  "email": "P16",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Ruth Calloway from Elm Fork Utilities is requesting a quote for several ductile iron (DI) piping materials for use in a lift station. The email body lists the items explicitly, and all items are clearly stated and legible. Default notes ('enough to run about 60 ft') have been interpreted as an unspecified (null) quantity for the pipe. Vague amounts ('a couple') have the quantity null per instructions. No quantities are inferred where not given, and no additional specs are assumed beyond what Ruth writes. There are no attachments, pictures, hidden or struck-through text, or referenced documents missing from this thread. Only the five properly written lines are included. No history or other content involved.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "6\" resilient wedge gate valve, MJ ends",
+        "qty": 2,
+        "raw": "two 6\" resilient wedge gate valves, MJ ends",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "6\" MJ accessory kit",
+        "qty": 12,
+        "raw": "twelve 6\" MJ accessory kits",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "6\" DI pipe, class 350",
+        "qty": null,
+        "raw": "6\" DI pipe, class 350 - enough to run about 60 ft",
+        "source": "body",
+        "uom": "FT"
+      },
+      {
+        "description": "6\" MJ 45 bend",
+        "qty": null,
+        "raw": "a couple 6\" MJ 45 bends",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "6\" x 4\" MJ reducer",
+        "qty": 1,
+        "raw": "1 - 6\" x 4\" MJ reducer",
+        "source": "body",
+        "uom": null
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "b5aef5f67efd4707b7dd1421e29537aa95521c308d4cc3b8519d9475adaee326",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2108,
+    "output_tokens": 353
+  }
+}

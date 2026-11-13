@@ -1,0 +1,18 @@
+{
+  "email": "P11",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender, Ines Varga from Harborline Marine, is requesting pricing for material needed for a dock repair. The new message states the material list is attached and requests pricing by Friday. However, the only attachment present is an image that appears to be a company logo; there is no material list attached that would specify the items required. No line items can be extracted from this email, as there is no information about the required products included in the body or attachments.",
+    "classification": "rfq",
+    "line_items": [],
+    "needs_review": true,
+    "review_reason": "Customer states a material list is attached, but only a logo is attached and no list of items is present."
+  },
+  "prompt_version": "v3",
+  "request": "45e02ca3a51ff93c79bccaf99cf603cf29437fdfc0d6358e711353a191039eb9",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2197,
+    "output_tokens": 136
+  }
+}

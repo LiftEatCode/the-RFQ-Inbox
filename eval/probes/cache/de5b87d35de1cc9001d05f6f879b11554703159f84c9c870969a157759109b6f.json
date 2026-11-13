@@ -1,0 +1,18 @@
+{
+  "email": "P14",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender, Joanne Pruitt from Red Clay Brick, is asking Ridgeline to provide a quotation for the same items and quantities they purchased for the 'north kiln line' in August. No list of items is provided in this email; the only information is a reference to a previous order. The request depends entirely on a previous order record that is not included in the message.",
+    "classification": "rfq",
+    "line_items": [],
+    "needs_review": true,
+    "review_reason": "The items requested are identified only by reference to a prior order from August, which is not included in this email."
+  },
+  "prompt_version": "v3",
+  "request": "b32019cb54570a6c84e7495abc170a745eeb73d75e142dd7446adca66f70d135",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2046,
+    "output_tokens": 120
+  }
+}

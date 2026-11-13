@@ -1,0 +1,61 @@
+{
+  "email": "E010",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender, Tom Hargrove from Delta Mechanical, is requesting pricing for several items needed for a plant shutdown. All requested items are listed in a readable attached image (image002.png), which shows a table of items with quantity, unit of measure, and description. The note 'Please price everything on this sheet' applies, and there are no additional instructions, defaults, or overrides stated. The other attachment (image001.png) appears to be a logo and contains no actionable information. No quantities are vague, and all requested items are clearly specified in the table. Nothing needs to be omitted except the logo attachment and email signature lines.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "1/2\"-13 x 2\" hex cap screw, Grade 5 zinc",
+        "qty": 40,
+        "raw": "40 EA 1/2\"-13 x 2\" hex cap screw, Gr 5 zinc",
+        "source": "image002.png",
+        "uom": "EA"
+      },
+      {
+        "description": "1/2\"-13 hex nut, zinc",
+        "qty": 40,
+        "raw": "40 EA 1/2\"-13 hex nut, zinc",
+        "source": "image002.png",
+        "uom": "EA"
+      },
+      {
+        "description": "1-5/8\" strut channel, 12 gauge, pre-galvanized",
+        "qty": 200,
+        "raw": "200 FT 1-5/8\" strut channel, 12 ga, pre-galv",
+        "source": "image002.png",
+        "uom": "FT"
+      },
+      {
+        "description": "1/2\" channel spring nuts, galvanized",
+        "qty": 3,
+        "raw": "3 BX 1/2\" channel spring nuts, galv",
+        "source": "image002.png",
+        "uom": "BX"
+      },
+      {
+        "description": "2\" pipe clamp, galvanized",
+        "qty": 24,
+        "raw": "24 EA 2\" pipe clamp, galv",
+        "source": "image002.png",
+        "uom": "EA"
+      },
+      {
+        "description": "3/4\"-10 all-thread rod, 6 feet",
+        "qty": 12,
+        "raw": "12 EA 3/4\"-10 all-thread rod, 6 ft",
+        "source": "image002.png",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "a1f22dd84667c7723011d88905e7de0096dda5a33dc6539a18ae89362da5ac3d",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2552,
+    "output_tokens": 446
+  }
+}

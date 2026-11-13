@@ -1,0 +1,40 @@
+{
+  "email": "P03",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This email is from Lena Ortiz at Coastal Forge & Fitting in response to an RFQ from Ridgeline, providing pricing and lead time for the requested forged fittings. The new message contains pricing for three lines that exactly match the quantities and specs from the previous RFQ in the thread. This message is a quote from a supplier to Ridgeline, thus classifies as vendor_quote. The prices and stock/lead time info are included but not required for line capture. There are no attachments and no lines in hidden or quoted sections that must be brought in; all items are presented in the body of the new message. No need for review as everything needed is present and clear.",
+    "classification": "vendor_quote",
+    "line_items": [
+      {
+        "description": "1\" 3000# socket weld 90 degree elbow A105",
+        "qty": 150,
+        "raw": "1) 150 ea 1\" 3000# SW 90 ell A105 - $4.12 ea - stock",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" 3000# socket weld tee A105",
+        "qty": 80,
+        "raw": "2) 80 ea 1\" 3000# SW tee A105 - $5.60 ea - stock",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" 3000# socket weld coupling A105",
+        "qty": 40,
+        "raw": "3) 40 ea 2\" 3000# SW coupling A105 - $7.95 ea - 2 weeks",
+        "source": "body",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "198e658d7bad86117c63c99307dd0a0c9c1b10ecb0de054d3cd668a94d08c298",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2250,
+    "output_tokens": 329
+  }
+}

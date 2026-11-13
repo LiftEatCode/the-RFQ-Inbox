@@ -1,0 +1,26 @@
+{
+  "email": "E023",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Walt from Kessler Mill & Timber is requesting a quote for 3 valves identical to the one shown in the attached image. The image is a readable nameplate for a Halvorsen Valve Co. forged steel gate valve with detailed specifications: model HV-800-FGS, 2 inch, 800 LB class, NPT ends, A105 body, and 13CR trim. The request specifies needing the 'same trim.' There are no other items mentioned, and the request is clear. No lines from quoted history or hidden/struck content. All details needed for quoting are present in the attachment.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "Halvorsen Valve Co. forged steel gate valve, model HV-800-FGS, 2 inch, 800 LB class, NPT ends, body material A105, trim 13CR",
+        "qty": 3,
+        "raw": "MODEL: HV-800-FGS\nSIZE: 2 IN\nCLASS: 800 LB\nENDS: NPT\nBODY: A105 TRIM: 13CR",
+        "source": "IMG_4417.jpg",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "643025ae9082c2356c2695da5d0bdd4a181c31d1995105fd07332a1f297122ce",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2889,
+    "output_tokens": 246
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "email": "E020",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender, Janelle Okoye from Brannock Industrial, is replying to a previous quote Q-26-04418 sent by Ridgeline's Tara Linscott. In the NEW MESSAGE, Janelle gives approval to proceed with Items 1, 2, and 4 from the quote, specifying that a formal PO will arrive later and requesting that the remaining items (3, 5, 6) are to be held. The quoted history contains the original explicit item list with full descriptions and quantities, making it straightforward to reference and copy the relevant, accepted items as they appear in Tara's quote. No additional notes or changes override any line; only specific acceptance of certain original quote lines. Lines for declined or held items (3, 5, 6) are not included. No information is missing, nothing is hidden or unreadable, and the customer's request is clear and fully actionable.",
+    "classification": "purchase_order",
+    "line_items": [
+      {
+        "description": "3\" 150# RF weld neck flange, A105, STD bore",
+        "qty": 8,
+        "raw": "8 EA - 3\" 150# RF weld neck flange, A105, STD bore - $38.60 ea",
+        "source": "body",
+        "uom": "EA"
+      },
+      {
+        "description": "3\" SCH 40 A53B ERW pipe, PE",
+        "qty": 120,
+        "raw": "120 FT - 3\" SCH 40 A53B ERW pipe, PE - $7.95/ft",
+        "source": "body",
+        "uom": "FT"
+      },
+      {
+        "description": "3\" 90 deg LR elbow, BW, SCH 40, A234 WPB",
+        "qty": 16,
+        "raw": "16 EA - 3\" 90 deg LR elbow, BW, SCH 40, A234 WPB - $9.35 ea",
+        "source": "body",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "48ee32db9759207123e667c1c35ea878caa0a91f35ff4d6c8ccd1698d2611233",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2408,
+    "output_tokens": 389
+  }
+}

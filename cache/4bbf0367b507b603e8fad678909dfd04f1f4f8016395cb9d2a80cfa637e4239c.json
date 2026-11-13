@@ -1,0 +1,61 @@
+{
+  "email": "E024",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This is a direct customer request from Ben Szymanski at Oak Hollow Brewing, asking for a quote on several 316 stainless steel, threaded, 3000# fittings for a glycol line. The table includes one heading ('316 SS – THREADED – 3000#'), which sets the default material, end connection, and pressure class for all line items beneath it. Each line states quantity, type of fitting, and size; no lines override the defaults. There are no attachments nor quoted/forwarded content. All lines are clearly structured; no lines are excluded. No review is needed as all details are provided.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "90° elbow, 1/2\", 316 SS, threaded, 3000#",
+        "qty": 10,
+        "raw": "10 | 90° elbow | 1/2″",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "45° elbow, 1/2\", 316 SS, threaded, 3000#",
+        "qty": 6,
+        "raw": "6 | 45° elbow | 1/2″",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "Tee, 3/4\", 316 SS, threaded, 3000#",
+        "qty": 8,
+        "raw": "8 | Tee | 3/4″",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "Coupling, full, 1/2\", 316 SS, threaded, 3000#",
+        "qty": 12,
+        "raw": "12 | Coupling, full | 1/2″",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "Union, 1/2\", 316 SS, threaded, 3000#",
+        "qty": 4,
+        "raw": "4 | Union | 1/2″",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "Hex head plug, 3/4\", 316 SS, threaded, 3000#",
+        "qty": 6,
+        "raw": "6 | Hex head plug | 3/4″",
+        "source": "body",
+        "uom": null
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "6eabde6c95e605d30b50c35ce20ca8cac34c5d1a253b3f8cb5c624d7c9c34493",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2160,
+    "output_tokens": 440
+  }
+}

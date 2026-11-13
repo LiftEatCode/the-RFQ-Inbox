@@ -1,0 +1,96 @@
+{
+  "email": "P13",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender, Bao Tran from Ridgecrest Foods, is submitting an RFQ using a scanned handwritten/typed form attached as a PDF. The attached scan is readable and contains clearly-typed itemized requests under distinct headers: 'BALL VALVES - 2 PC BRASS, 600 WOG, THREADED', 'Y-STRAINERS - CAST IRON, 125#, THREADED', and 'HOSE - EPDM, 150 PSI'. Each line provides quantity, unit, size, and a short description. All specs and lines, including required descriptions and quantities, are present in the attachment. The customer explicitly requests no substitutions. There are no items in the email body, quoted history, or hidden sections; all lines are taken from the scanned attachment, and only items in the visible rows are included. Totals and non-item info (such as the request for price and delivery, and the no substitutions note) are not included as line items. No review is needed as everything is present and readable.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "1/2\" 2 piece brass ball valve, 600 WOG, threaded",
+        "qty": 14,
+        "raw": "1 14 EA 1/2\" ball valve",
+        "source": "scan_rfq_0412.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "3/4\" 2 piece brass ball valve, 600 WOG, threaded",
+        "qty": 9,
+        "raw": "2 9 EA 3/4\" ball valve",
+        "source": "scan_rfq_0412.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" 2 piece brass ball valve, 600 WOG, threaded",
+        "qty": 22,
+        "raw": "3 22 EA 1\" ball valve",
+        "source": "scan_rfq_0412.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/4\" 2 piece brass ball valve, 600 WOG, threaded",
+        "qty": 7,
+        "raw": "4 7 EA 1-1/4\" ball valve",
+        "source": "scan_rfq_0412.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/2\" 2 piece brass ball valve, 600 WOG, threaded",
+        "qty": 11,
+        "raw": "5 11 EA 1-1/2\" ball valve",
+        "source": "scan_rfq_0412.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" 2 piece brass ball valve, 600 WOG, threaded",
+        "qty": 3,
+        "raw": "6 3 EA 2\" ball valve",
+        "source": "scan_rfq_0412.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" cast iron Y-strainer, 125#, threaded",
+        "qty": 5,
+        "raw": "7 5 EA 1\" Y-strainer",
+        "source": "scan_rfq_0412.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/2\" cast iron Y-strainer, 125#, threaded",
+        "qty": 8,
+        "raw": "8 8 EA 1-1/2\" Y-strainer",
+        "source": "scan_rfq_0412.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" cast iron Y-strainer, 125#, threaded",
+        "qty": 13,
+        "raw": "9 13 EA 2\" Y-strainer",
+        "source": "scan_rfq_0412.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "3/4\" EPDM water hose, 150 PSI",
+        "qty": 75,
+        "raw": "10 75 FT 3/4\" water hose",
+        "source": "scan_rfq_0412.pdf",
+        "uom": "FT"
+      },
+      {
+        "description": "1\" EPDM water hose, 150 PSI",
+        "qty": 120,
+        "raw": "11 120 FT 1\" water hose",
+        "source": "scan_rfq_0412.pdf",
+        "uom": "FT"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "7a73a3723c7c80d20471d68340f40525a3fb4cd055d191164914dd27655fa58a",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 5840,
+    "output_tokens": 789
+  }
+}

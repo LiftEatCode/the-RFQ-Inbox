@@ -1,0 +1,243 @@
+{
+  "email": "E009",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender Rae Okonkwo from Sable Creek Manufacturing is requesting a quote (RFQ) for multiple flanges, gaskets, and stud bolts as specified on the attached scanned RFQ form. The list is clearly laid out with quantities, units, sizes, and descriptions. The only defaults or notes are that substitutions require written approval and to quote firm price and lead time for each item. The items are grouped under FLANGES, GASKETS, and STUD BOLTS headings, which only apply to the lines beneath each. There are no quantities or notes outside the table. Nothing is taken from quoted history. Sheet names, subtotals, and totals are not present and nothing is hidden or struck out. All lines from both pages of the attachment are included; each row corresponds directly to a requested item.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "1\" WN 150# RF flange",
+        "qty": 6,
+        "raw": "6 EA 1\" WN 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/2\" WN 150# RF flange",
+        "qty": 4,
+        "raw": "4 EA 1-1/2\" WN 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" WN 150# RF flange",
+        "qty": 10,
+        "raw": "10 EA 2\" WN 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "3\" WN 150# RF flange",
+        "qty": 8,
+        "raw": "8 EA 3\" WN 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "4\" WN 150# RF flange",
+        "qty": 12,
+        "raw": "12 EA 4\" WN 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "6\" WN 150# RF flange",
+        "qty": 4,
+        "raw": "4 EA 6\" WN 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "8\" WN 150# RF flange",
+        "qty": 4,
+        "raw": "4 EA 8\" WN 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" SO 150# RF flange",
+        "qty": 4,
+        "raw": "4 EA 2\" SO 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "3\" SO 150# RF flange",
+        "qty": 4,
+        "raw": "4 EA 3\" SO 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "4\" SO 150# RF flange",
+        "qty": 6,
+        "raw": "6 EA 4\" SO 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "6\" SO 150# RF flange",
+        "qty": 4,
+        "raw": "4 EA 6\" SO 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" BL 150# RF flange",
+        "qty": 2,
+        "raw": "2 EA 2\" BL 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "4\" BL 150# RF flange",
+        "qty": 2,
+        "raw": "2 EA 4\" BL 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "6\" BL 150# RF flange",
+        "qty": 2,
+        "raw": "2 EA 6\" BL 150# RF",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" Spiral wound gasket, 304/graphite, 150#",
+        "qty": 10,
+        "raw": "10 EA 1\" Spiral wound, 304/graphite, 150#",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "1-1/2\" Spiral wound gasket, 304/graphite, 150#",
+        "qty": 6,
+        "raw": "6 EA 1-1/2\" Spiral wound, 304/graphite, 150#",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "2\" Spiral wound gasket, 304/graphite, 150#",
+        "qty": 20,
+        "raw": "20 EA 2\" Spiral wound, 304/graphite, 150#",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "3\" Spiral wound gasket, 304/graphite, 150#",
+        "qty": 12,
+        "raw": "12 EA 3\" Spiral wound, 304/graphite, 150#",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "4\" Spiral wound gasket, 304/graphite, 150#",
+        "qty": 16,
+        "raw": "16 EA 4\" Spiral wound, 304/graphite, 150#",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "6\" Spiral wound gasket, 304/graphite, 150#",
+        "qty": 8,
+        "raw": "8 EA 6\" Spiral wound, 304/graphite, 150#",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "8\" Spiral wound gasket, 304/graphite, 150#",
+        "qty": 4,
+        "raw": "4 EA 8\" Spiral wound, 304/graphite, 150#",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "10\" Spiral wound gasket, 304/graphite, 150#",
+        "qty": 2,
+        "raw": "2 EA 10\" Spiral wound, 304/graphite, 150#",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "1/2\" x 3\" B7 stud bolts with 2 heavy hex nuts",
+        "qty": 32,
+        "raw": "32 EA 1/2\" x 3\" B7 w/ 2 heavy hex nuts",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "5/8\" x 3-1/4\" B7 stud bolts with 2 heavy hex nuts",
+        "qty": 24,
+        "raw": "24 EA 5/8\" x 3-1/4\" B7 w/ 2 heavy hex nuts",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "5/8\" x 3-1/2\" B7 stud bolts with 2 heavy hex nuts",
+        "qty": 16,
+        "raw": "16 EA 5/8\" x 3-1/2\" B7 w/ 2 heavy hex nuts",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "3/4\" x 4\" B7 stud bolts with 2 heavy hex nuts",
+        "qty": 48,
+        "raw": "48 EA 3/4\" x 4\" B7 w/ 2 heavy hex nuts",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "3/4\" x 4-1/4\" B7 stud bolts with 2 heavy hex nuts",
+        "qty": 24,
+        "raw": "24 EA 3/4\" x 4-1/4\" B7 w/ 2 heavy hex nuts",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "3/4\" x 4-1/2\" B7 stud bolts with 2 heavy hex nuts",
+        "qty": 32,
+        "raw": "32 EA 3/4\" x 4-1/2\" B7 w/ 2 heavy hex nuts",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "7/8\" x 5\" B7 stud bolts with 2 heavy hex nuts",
+        "qty": 16,
+        "raw": "16 EA 7/8\" x 5\" B7 w/ 2 heavy hex nuts",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "7/8\" x 5-1/4\" B7 stud bolts with 2 heavy hex nuts",
+        "qty": 16,
+        "raw": "16 EA 7/8\" x 5-1/4\" B7 w/ 2 heavy hex nuts",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" x 5-3/4\" B7 stud bolts with 2 heavy hex nuts",
+        "qty": 16,
+        "raw": "16 EA 1\" x 5-3/4\" B7 w/ 2 heavy hex nuts",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "1\" x 6\" B7 stud bolts with 2 heavy hex nuts",
+        "qty": 8,
+        "raw": "8 EA 1\" x 6\" B7 w/ 2 heavy hex nuts",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "318229dae2fc6004aea63c6d1aa2d9abaabf5898adf1b005245809e0540e3ecd",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 9662,
+    "output_tokens": 1977
+  }
+}

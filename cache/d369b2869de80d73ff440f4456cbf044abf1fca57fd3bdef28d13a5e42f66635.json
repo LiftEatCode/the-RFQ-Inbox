@@ -1,0 +1,75 @@
+{
+  "email": "E005",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Priya Raman from Gulf Terminals is requesting a quote for items listed in the attached 'Tank14_Piping_RevB.xlsx' spreadsheet, Sheet 'Rev B'. The stated default at the top of the sheet ('ALL FITTINGS BW SCH 40 A234 WPB UNLESS NOTED') applies to all listed items unless a line specifies otherwise. Each group (elbows, tees & reducers, caps) is separated by headings, but these are for organization only. Only the lines with item numbers (R5-R11, R13-R14) are customer requests. Line 6 requests a SCH 80 item, overriding the default for that line. The total is not an item. Hidden sheet 'Rev A' is explicitly marked as an old revision and does not apply. No review needed: the file is readable, present, and all items and specs are accessible.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "6 inch 90 degree long radius elbow, butt weld, schedule 40, ASTM A234 WPB",
+        "qty": 12,
+        "raw": "1 | 12 | EA | 6\" | 90 LR elbow",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "6 inch 45 degree elbow, butt weld, schedule 40, ASTM A234 WPB",
+        "qty": 6,
+        "raw": "2 | 6 | EA | 6\" | 45 elbow",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "8 inch 90 degree long radius elbow, butt weld, schedule 40, ASTM A234 WPB",
+        "qty": 4,
+        "raw": "3 | 4 | EA | 8\" | 90 LR elbow",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "6 inch straight tee, butt weld, schedule 40, ASTM A234 WPB",
+        "qty": 4,
+        "raw": "4 | 4 | EA | 6\" | Tee, straight",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "8 inch x 6 inch concentric reducer, butt weld, schedule 40, ASTM A234 WPB",
+        "qty": 3,
+        "raw": "5 | 3 | EA | 8\" x 6\" | Reducer, concentric",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "6 inch x 4 inch concentric reducer, butt weld, schedule 80, ASTM A234 WPB",
+        "qty": 2,
+        "raw": "6 | 2 | EA | 6\" x 4\" | Reducer, concentric, SCH 80",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "8 inch cap, butt weld, schedule 40, ASTM A234 WPB",
+        "qty": 2,
+        "raw": "7 | 2 | EA | 8\" | Cap",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "6 inch cap, butt weld, schedule 40, ASTM A234 WPB",
+        "qty": 2,
+        "raw": "8 | 2 | EA | 6\" | Cap",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "2cc7e9927682762eadf376636f970fa75c97cc2ddde10504129c09c631cccfd8",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2616,
+    "output_tokens": 688
+  }
+}

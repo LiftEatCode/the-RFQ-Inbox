@@ -1,0 +1,18 @@
+{
+  "email": "E022",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Marisol Vega (Alden Marine Services) is submitting an RFQ for the pier 7 fire water repair project. She notes that the attached PDF contains the RFQ details. The PDF is password-protected and currently unreadable; the password will be sent separately. No item lines or specifications are provided in the email body, and the attachment cannot be opened at this time. There is nothing in quoted history. The rep cannot act on this RFQ until the password or the readable version of the attachment is received.",
+    "classification": "rfq",
+    "line_items": [],
+    "needs_review": true,
+    "review_reason": "The attachment with the requested items is password-protected and cannot be read; cannot review or quote until the password is provided or the file is accessible."
+  },
+  "prompt_version": "v3",
+  "request": "bfd4a678b5df623174ac275a24cb783e840897a727e8610ef98c1ed43d476274",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2115,
+    "output_tokens": 154
+  }
+}

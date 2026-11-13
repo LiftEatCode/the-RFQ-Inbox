@@ -1,0 +1,33 @@
+{
+  "email": "P10",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This email is a forwarded request from a customer (Sam at Glenrock Dairy), sent via our rep Priya Nair. Priya adds a revision in the note: the customer called and now wants two more check valves, for a total of 5. This means Priya's note overrides the original line item quantity. The original customer email gives two line items, each on their own line, with all necessary details for description. There are no attachments or tables—just simple lines in the body. No lines are being left out, and the rep's revision is applied. Nothing references any unavailable files or ambiguous items, so no review is needed.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "2\" swing check valve, 316SS, 150# flanged",
+        "qty": 5,
+        "raw": "3 - 2\" swing check valve, 316SS, 150# flanged",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "2\" 150# ring gaskets, PTFE",
+        "qty": 10,
+        "raw": "10 - 2\" 150# ring gaskets, PTFE",
+        "source": "body",
+        "uom": null
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v3",
+  "request": "da63e8551a9d79063b3e1d04c16337747ef15abc10428acd493548d921399a8d",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2180,
+    "output_tokens": 250
+  }
+}

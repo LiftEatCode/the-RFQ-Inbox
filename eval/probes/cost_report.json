@@ -1,152 +1,152 @@
 {
   "model": "gpt-4.1",
-  "prompt_version": "v2",
+  "prompt_version": "v3",
   "price_known": true,
   "totals": {
     "emails": 17,
     "calls": 17,
-    "new_calls": 17,
-    "input_tokens": 40424,
-    "output_tokens": 4892,
-    "cost_usd": 0.119984,
-    "new_cost_usd": 0.119984
+    "new_calls": 0,
+    "input_tokens": 41461,
+    "output_tokens": 4986,
+    "cost_usd": 0.12281,
+    "new_cost_usd": 0
   },
   "emails": {
     "P01": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2106,
-      "output_tokens": 479,
-      "cost_usd": 0.008044,
-      "new_cost_usd": 0.008044
+      "new_calls": 0,
+      "input_tokens": 2167,
+      "output_tokens": 439,
+      "cost_usd": 0.007846,
+      "new_cost_usd": 0
     },
     "P02": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2097,
-      "output_tokens": 138,
-      "cost_usd": 0.005298,
-      "new_cost_usd": 0.005298
+      "new_calls": 0,
+      "input_tokens": 2158,
+      "output_tokens": 148,
+      "cost_usd": 0.0055,
+      "new_cost_usd": 0
     },
     "P03": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2189,
-      "output_tokens": 183,
-      "cost_usd": 0.005842,
-      "new_cost_usd": 0.005842
+      "new_calls": 0,
+      "input_tokens": 2250,
+      "output_tokens": 329,
+      "cost_usd": 0.007132,
+      "new_cost_usd": 0
     },
     "P04": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 1989,
-      "output_tokens": 126,
-      "cost_usd": 0.004986,
-      "new_cost_usd": 0.004986
+      "new_calls": 0,
+      "input_tokens": 2050,
+      "output_tokens": 119,
+      "cost_usd": 0.005052,
+      "new_cost_usd": 0
     },
     "P05": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2004,
-      "output_tokens": 103,
-      "cost_usd": 0.004832,
-      "new_cost_usd": 0.004832
+      "new_calls": 0,
+      "input_tokens": 2065,
+      "output_tokens": 100,
+      "cost_usd": 0.00493,
+      "new_cost_usd": 0
     },
     "P06": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2282,
-      "output_tokens": 393,
-      "cost_usd": 0.007708,
-      "new_cost_usd": 0.007708
+      "new_calls": 0,
+      "input_tokens": 2343,
+      "output_tokens": 462,
+      "cost_usd": 0.008382,
+      "new_cost_usd": 0
     },
     "P07": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2296,
-      "output_tokens": 409,
-      "cost_usd": 0.007864,
-      "new_cost_usd": 0.007864
+      "new_calls": 0,
+      "input_tokens": 2357,
+      "output_tokens": 404,
+      "cost_usd": 0.007946,
+      "new_cost_usd": 0
     },
     "P08": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2243,
-      "output_tokens": 543,
-      "cost_usd": 0.00883,
-      "new_cost_usd": 0.00883
+      "new_calls": 0,
+      "input_tokens": 2304,
+      "output_tokens": 552,
+      "cost_usd": 0.009024,
+      "new_cost_usd": 0
     },
     "P09": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2166,
-      "output_tokens": 293,
-      "cost_usd": 0.006676,
-      "new_cost_usd": 0.006676
+      "new_calls": 0,
+      "input_tokens": 2227,
+      "output_tokens": 274,
+      "cost_usd": 0.006646,
+      "new_cost_usd": 0
     },
     "P10": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2119,
-      "output_tokens": 271,
-      "cost_usd": 0.006406,
-      "new_cost_usd": 0.006406
+      "new_calls": 0,
+      "input_tokens": 2180,
+      "output_tokens": 250,
+      "cost_usd": 0.00636,
+      "new_cost_usd": 0
     },
     "P11": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2136,
-      "output_tokens": 133,
-      "cost_usd": 0.005336,
-      "new_cost_usd": 0.005336
+      "new_calls": 0,
+      "input_tokens": 2197,
+      "output_tokens": 136,
+      "cost_usd": 0.005482,
+      "new_cost_usd": 0
     },
     "P12": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2794,
-      "output_tokens": 223,
-      "cost_usd": 0.007372,
-      "new_cost_usd": 0.007372
+      "new_calls": 0,
+      "input_tokens": 2855,
+      "output_tokens": 256,
+      "cost_usd": 0.007758,
+      "new_cost_usd": 0
     },
     "P13": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 5779,
-      "output_tokens": 774,
-      "cost_usd": 0.01775,
-      "new_cost_usd": 0.01775
+      "new_calls": 0,
+      "input_tokens": 5840,
+      "output_tokens": 789,
+      "cost_usd": 0.017992,
+      "new_cost_usd": 0
     },
     "P14": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 1985,
-      "output_tokens": 149,
-      "cost_usd": 0.005162,
-      "new_cost_usd": 0.005162
+      "new_calls": 0,
+      "input_tokens": 2046,
+      "output_tokens": 120,
+      "cost_usd": 0.005052,
+      "new_cost_usd": 0
     },
     "P15": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2183,
+      "new_calls": 0,
+      "input_tokens": 2244,
       "output_tokens": 135,
-      "cost_usd": 0.005446,
-      "new_cost_usd": 0.005446
+      "cost_usd": 0.005568,
+      "new_cost_usd": 0
     },
     "P16": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2047,
-      "output_tokens": 379,
-      "cost_usd": 0.007126,
-      "new_cost_usd": 0.007126
+      "new_calls": 0,
+      "input_tokens": 2108,
+      "output_tokens": 353,
+      "cost_usd": 0.00704,
+      "new_cost_usd": 0
     },
     "P17": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 2009,
-      "output_tokens": 161,
-      "cost_usd": 0.005306,
-      "new_cost_usd": 0.005306
+      "new_calls": 0,
+      "input_tokens": 2070,
+      "output_tokens": 120,
+      "cost_usd": 0.0051,
+      "new_cost_usd": 0
     }
   }
 }
