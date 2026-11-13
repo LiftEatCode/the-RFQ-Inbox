@@ -72,6 +72,23 @@ def cmd_score(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_inspect(args: argparse.Namespace) -> int:
+    from rfqinbox import reader
+
+    path = Path(args.eml)
+    if not path.is_file():
+        print(f"error: {path} is not a file", file=sys.stderr)
+        return 2
+    pk = reader.read_email(path)
+    print(reader.render(pk))
+    imgs = reader.images_for_model(pk)
+    if imgs:
+        print("\n=== IMAGES SENT TO THE MODEL ===")
+        for label, data, detail in imgs:
+            print(f"- {label}: {len(data):,} bytes, detail={detail}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     for stream in (sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
@@ -89,5 +106,8 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("--json", help="also write the full report as JSON here")
     s.add_argument("--quiet", action="store_true", help="headline numbers only")
     s.set_defaults(func=cmd_score)
+    i = sub.add_parser("inspect", help="print what the model will see for one email")
+    i.add_argument("eml", help="path to one .eml file")
+    i.set_defaults(func=cmd_inspect)
     args = ap.parse_args(argv)
     return args.func(args)

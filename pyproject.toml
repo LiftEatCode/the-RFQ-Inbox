@@ -3,10 +3,16 @@ name = "rfqinbox"
 version = "0.1.0"
 description = "Reads Ridgeline's RFQ inbox: classifies each email and extracts self-contained line items."
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "openpyxl>=3.1",
+    "python-docx>=1.1",
+    "pypdf>=4.0",
+    "pypdfium2>=4.25",
+    "pillow>=10.0",
+]
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = ["pytest>=8", "reportlab>=4.0"]
 
 [project.scripts]
 rfqinbox = "rfqinbox.cli:main"
