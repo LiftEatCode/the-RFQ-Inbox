@@ -32,8 +32,8 @@ PROMPT_NORM = norm(PROMPT)
 
 # ------------------------------------------------------------------ it is v1, and affordable
 
-def test_prompt_version_is_v2():
-    assert model.PROMPT_VERSION == "v2"
+def test_prompt_version_is_v3():
+    assert model.PROMPT_VERSION == "v3"
 
 
 def test_prompt_is_short_enough_to_send_with_every_email():
@@ -93,6 +93,9 @@ PROPERTIES = {
     "sales mail nobody asked for is not a vendor quote": ["unsolicited"],
     "raw is one line of the source, never several joined": ["never join", "do not join", "not several lines"],
     "on a tag or plate, raw is the line that identifies the item": ["identifies the item", "identifying line"],
+    # v3 (found by the probe inbox, not by dev)
+    "an override replaces only what it restates; the rest of the default still applies":
+        ["rest of the default", "only that attribute", "only the attribute"],
 }
 
 
@@ -141,7 +144,8 @@ def dev_texts() -> dict[str, str]:
     """Everything a dev email says: subject, new text, quoted history and attachment
     text - the customers' words only, without the reader's own section titles."""
     out = {}
-    for path in sorted(DEV_EMAILS.glob("*.eml")):
+    # The probe inbox is measurement data too: quoting it in the prompt would fit it.
+    for path in sorted([*DEV_EMAILS.glob("*.eml"), *(ROOT / "eval" / "probes" / "emails").glob("*.eml")]):
         pk = reader.read_email(path)
         text = "\n".join([pk.subject, pk.body_new, *(q.text for q in pk.quoted),
                           *(a.text for a in pk.attachments)])
@@ -179,7 +183,7 @@ def test_prompt_names_no_person_company_or_part_number_from_dev():
     generic = {"sales", "purchasing", "supply", "pipe", "valve", "flange", "industrial", "team",
                "desk", "warehouse", "company", "service", "services", "group", "steel", "mill"}
     names, identifiers = set(), set()
-    for path in sorted(DEV_EMAILS.glob("*.eml")):
+    for path in sorted([*DEV_EMAILS.glob("*.eml"), *(ROOT / "eval" / "probes" / "emails").glob("*.eml")]):
         pk = reader.read_email(path)
         display, _, address = pk.sender.rpartition("<")
         domain = address.strip("> ").split("@")[-1]

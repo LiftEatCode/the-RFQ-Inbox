@@ -642,3 +642,63 @@ def test_a_changed_quantity_is_never_mistaken_for_a_different_reading(tmp_path, 
 
     assert data["B"]["duplicate_of"] is None
     assert data["B"]["line_items"][0]["qty"] == 12
+
+
+# ================================================================== raw is one line: tags and nameplates
+
+# README: raw is "the line's text as it appears where you found it". A tag or nameplate
+# has several printed lines, and the model tends to return all of them joined. The prompt
+# says not to; this is the code-side backstop. It keeps the line that carries the model,
+# part, catalog or figure number. The description is not touched.
+
+PHOTO = ("tag.jpg", "image/jpeg", fx.picture(900, 700, "a tag", fmt="JPEG"))
+
+
+def tag_line(raw, qty=2):
+    return line(raw, qty, source="tag.jpg", description="Orbex centrifugal pump CX-40-2, 6.5 in impeller, 3500 rpm")
+
+
+@pytest.mark.parametrize("raw, expected", [
+    ("ORBEX PUMP CO\nCENTRIFUGAL PUMP\nMODEL CX-40-2\nIMPELLER 6.5 IN\n3500 RPM", "MODEL CX-40-2"),
+    ("ORBEX PUMP CO. CENTRIFUGAL PUMP MODEL: CX-40-2 IMPELLER: 6.5 IN SPEED: 3500 RPM", "MODEL: CX-40-2"),
+    ("KELTON\nP/N 7741-KX\n1/2 NPT", "P/N 7741-KX"),
+    ("STEAM TRAP\nCAT. NO. 88-204A\n150 PSI", "CAT. NO. 88-204A"),
+    ("BRONZE GATE VALVE\nFIG. 1140B\nSIZE 2", "FIG. 1140B"),
+    ("Type: gear pump Part No: GP-3310 Rating: 150 PSI", "Part No: GP-3310"),
+], ids=["lines", "labelled-fields", "part-number", "catalog-number", "figure-number", "mixed-case"])
+def test_a_tag_read_as_several_lines_keeps_only_the_identifying_one(tmp_path, raw, expected):
+    out = checked(tmp_path, "Need two like the one in the picture.", [tag_line(raw)], attachments=[PHOTO])
+
+    item = out["line_items"][0]
+    assert item["raw"] == expected
+    assert item["description"] == tag_line(raw)["description"] and item["qty"] == 2
+    assert item["source"] == "tag.jpg" and out["needs_review"] is False
+
+
+@pytest.mark.parametrize("raw", [
+    "STEAM TRAP\n1/2 IN\n150 PSI",                    # several lines, but none identifies the item
+    "MODEL YEAR\nUNKNOWN",                             # a label with no number after it
+    "S/N 44817-22\nMFG 2019",                          # a serial number is this unit, not the item
+], ids=["no-identifier", "label-without-number", "serial-only"])
+def test_a_tag_with_no_identifying_line_is_left_as_the_model_read_it(tmp_path, raw):
+    out = checked(tmp_path, "Need two like the one in the picture.", [tag_line(raw)], attachments=[PHOTO])
+    assert out["line_items"][0]["raw"] == raw
+
+
+@pytest.mark.parametrize("raw", [
+    "12 EA 2in tee",                                    # one line of a handwritten list
+    "Qty: 4  2in ball valve model BV-22",               # one line that happens to mention a model
+    '3 | 22 | EA | 1" | ball valve',                    # one row of a scanned form
+    "6 - model 4410 hose clamps",
+])
+def test_an_ordinary_line_from_a_picture_is_not_cut_down(tmp_path, raw):
+    out = checked(tmp_path, "List attached.", [line(raw, 4, source="tag.jpg")], attachments=[PHOTO])
+    assert out["line_items"][0]["raw"] == raw
+
+
+def test_only_lines_read_from_pictures_are_cut_down(tmp_path):
+    """Text the reader extracted can be checked against the email; it is never rewritten."""
+    body = "Please quote:\nPump tag reads: Type: gear pump Part No: GP-3310 Rating: 150 PSI\n"
+    raw = "Pump tag reads: Type: gear pump Part No: GP-3310 Rating: 150 PSI"
+    out = checked(tmp_path, body, [line(raw, 1)])
+    assert out["line_items"][0]["raw"] == raw
