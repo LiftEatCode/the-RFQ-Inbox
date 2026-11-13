@@ -1,0 +1,16 @@
+# Secrets: the OpenAI key is read from the environment only, never written to disk.
+.env
+.env.*
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Scratch output (parsed.json for dev IS committed; the model cache will be too)
+*.tmp
+/scratch/
