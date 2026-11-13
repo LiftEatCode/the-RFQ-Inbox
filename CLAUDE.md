@@ -64,6 +64,11 @@ Done (each with tests):
 5a. Prompt v1 (`model.SYSTEM_PROMPT`, `tests/test_prompt.py`): teaches the general properties,
    contains nothing from dev (tested). The reply starts with an `analysis` field (the model's
    reading, kept in the cache, never in parsed.json).
+5c. Prompt v2: vendor_quote must answer something we asked for (unsolicited sales mail is
+   `other`); `raw` is one source line, never several joined (on a tag/nameplate: the identifying
+   line). v1 quoted three dev phrases as examples; v2 has none, and `tests/test_prompt.py` now
+   fails on any 5-word run, name, identifier or quoted example taken from a dev email.
+   **Prompt examples must be invented - never copy wording from the section below.**
 5b. Dev recorded in `cache/` (24 answers, gpt-4.1, $0.26). Replays byte-identical with no key.
 6. Code-side checks (`rfqinbox/checks.py`, `tests/test_checks.py`). Per email: a line not found
    in the email text is dropped + flagged (kept if the email has pictures); lines only in

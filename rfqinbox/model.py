@@ -33,7 +33,7 @@ from pathlib import Path
 from rfqinbox.record import CLASSES, UOMS
 
 DEFAULT_MODEL = "gpt-4.1"
-PROMPT_VERSION = "v1"
+PROMPT_VERSION = "v2"
 API_URL = "https://api.openai.com/v1/chat/completions"
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
@@ -70,23 +70,29 @@ HOW THE EMAIL IS LAID OUT
 CLASSIFICATION (exactly one)
 - rfq: asks us to price or check availability of items.
 - rfq_revision: changes a request made earlier in the same thread (quantities, additions, removals).
-- purchase_order: commits to buy - a PO, "please process", "go ahead with items 1 and 3".
-- vendor_quote: a supplier quoting or answering US, however much it looks like a list of items.
-  Our own quotes are numbered Q-26-...; a document pricing items for Ridgeline is a vendor's.
+- purchase_order: commits to buy - a PO, "please process", or a go-ahead on all or part of
+  a quote we sent.
+- vendor_quote: a supplier answering something WE asked for - a reply to our request for
+  pricing, or a quote addressed to us for items we asked about - however much it looks like a
+  customer's list. Our own quotes are numbered Q-26-...; a document pricing items for Ridgeline
+  is a vendor's. Unsolicited sales mail is not a vendor quote: see other.
 - status_inquiry: asks about an existing quote or order (any update? ETA? tracking?).
 - auto_reply: machine-generated - out-of-office, bounce / undeliverable notice, read receipt.
   A bounce that carries our own outgoing message, even one full of items, is still auto_reply.
-- other: everything else - marketing, promo price lists, newsletters, invoices, remittances,
-  job applications, internal chatter, "we went with someone else".
+- other: everything else - unsolicited marketing (a sale flyer, promo price list, stock list or
+  newsletter sent to many, even when it lists items and prices), invoices, remittances, job
+  applications, internal chatter, "we went with someone else".
 Only rfq, rfq_revision and purchase_order have line_items and needs_review. For the other four
 return line_items [] and needs_review false.
 
 LINE ITEMS - one per thing the customer is asking for
 Not lines: headings, notes, totals and subtotals, prices, signatures, contact details, hidden or
 struck-through rows, old revisions, examples of what they do not want, items in quoted history.
-- raw: the line verbatim, as it appears where you found it (a table row's cells on one line,
-  in order). For a picture or scan, your careful reading of that line. Do not tidy, expand or
-  correct it.
+- raw: ONE line of the source, verbatim, as it appears where you found it (a table row's cells
+  on one line, in order). For a picture or scan, your careful reading of that one line. Do not
+  tidy, expand or correct it, and never join separate lines or fields into one raw. On a tag,
+  nameplate or label, raw is the single line that identifies the item (its model or part number
+  line); everything else printed on it goes in description.
 - description: the item made self-contained - the line's own words plus everything written
   elsewhere that applies to it, and nothing that does not:
   - a heading applies only to the lines in its own block; the next heading ends it;
@@ -109,15 +115,17 @@ struck-through rows, old revisions, examples of what they do not want, items in 
   null when no unit is stated.
 - source: "body" for the email text (including forwarded or quoted text), otherwise the exact
   filename of the attachment or picture the line came from.
-A photo, nameplate or screenshot of a single item with "quote 3 of these" in the body is one
-line: describe the item from the picture, qty from the body, source the picture's filename.
+A photo, nameplate or screenshot of a single item, with the body saying how many are wanted,
+is one line: describe the item from the picture, qty from the body, source the picture's
+filename.
 
 THREADS
 - rfq_revision: return the COMPLETE order as the customer now intends it, not just the changes.
   Rebuild it from the original request in the quoted history plus the changes in the new message
-  ("line 2 is now 14", "drop line 6", "add ..."). Unchanged lines keep their original raw text;
+  (a new quantity for one item, an item cancelled, an item added). Unchanged lines keep their
+  original raw text;
   removed lines disappear; a changed line carries the new value.
-- purchase_order that refers to our quote ("go ahead with items 1, 2 and 4"): take exactly those
+- purchase_order that accepts only some lines of our quote, by number: take exactly those
   items from the quoted quote, with its quantities unless the customer changes them.
 If the earlier message these depend on is not in the email, set needs_review.
 
