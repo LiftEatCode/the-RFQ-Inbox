@@ -1,0 +1,18 @@
+{
+  "email": "E012",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Gwen Aldridge is writing to ask for an update on a previous quote request (your Q-26-04417) for a piping package for Skid 14. The current email does not request pricing or order anything; it is simply inquiring about the status of a quote previously requested. All line items only appear in the quoted history section and are not part of the new message, so none are included. No attachments or referenced lists are missing or unreadable, and there are no customer instructions to act on—all is a status inquiry.",
+    "classification": "status_inquiry",
+    "line_items": [],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v2",
+  "request": "1d424efdc9eb7278f7f149d20d3ca7fe1e49921823762e3f4fa293f93901956d",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2241,
+    "output_tokens": 133
+  }
+}

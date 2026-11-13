@@ -1,0 +1,18 @@
+{
+  "email": "E013",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This is an auto-reply message from the Mail Delivery System notifying us that our outgoing RFQ could not be delivered to the vendor due to an invalid recipient address. The new message simply details the failed delivery and technical details, with the original outgoing message attached for reference. The attached original message was sent BY a Ridgeline rep, not a customer or vendor, and only contains a forwarded copy of an RFQ sent out. There are no customer requests in this email; the attached message and its contents are not new business requests but rather our own sent-out inquiry. No line items should be extracted; only the bounce-back itself is relevant.",
+    "classification": "auto_reply",
+    "line_items": [],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v2",
+  "request": "7b01075c626219950ca66bbdcf2b31c6013755a72475a7ed1df133ef07afd331",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2267,
+    "output_tokens": 151
+  }
+}

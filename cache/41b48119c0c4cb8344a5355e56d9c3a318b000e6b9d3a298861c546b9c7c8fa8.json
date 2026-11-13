@@ -1,0 +1,47 @@
+{
+  "email": "E011",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "This reply comes from Raul Medina at Sabine Valve & Fitting in response to Ridgeline's RFQ. The new message provides pricing, terms, and lead times for the items Ridgeline requested. This is a vendor quote (Sabine Valve is not a direct customer), as the pricing is clearly being supplied to Ridgeline, not requested from them. The only item lines come from the new message body in the table. Unit prices and lead times are not needed for quoting, so they are not in the line items. The quoted history and any subtotals/notes are not to be included. No items are hidden, struck, or ambiguous, and all requests are legible and complete.",
+    "classification": "vendor_quote",
+    "line_items": [
+      {
+        "description": "2\" 316L socket weld 3000# 90 degree elbow, ASTM A182 F316L",
+        "qty": 50,
+        "raw": "50   2\" 316L SW 3000# 90 elbow, A182 F316L",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "2\" 316L socket weld 3000# coupling, ASTM A182 F316L",
+        "qty": 40,
+        "raw": "40   2\" 316L SW 3000# coupling, A182 F316L",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "4\" 150# raised face slip-on flange, ASTM A182 F316L",
+        "qty": 16,
+        "raw": "16   4\" 150# RF slip-on flange, A182 F316L",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "2\" 316 stainless steel ball valve, 1000 WOG, threaded ends",
+        "qty": 8,
+        "raw": "8    2\" 316 SS ball valve, 1000 WOG, threaded",
+        "source": "body",
+        "uom": null
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v2",
+  "request": "72c7a7352b304b1e10148920cb309b94a58407620511b37048cc60bb33f5cf8e",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2322,
+    "output_tokens": 395
+  }
+}

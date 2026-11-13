@@ -19,6 +19,7 @@ in `rfqinbox/score.py`); the graders' own numbers may differ in detail.
 | code checks | duplicates, revises links, invented/hidden lines, source, vague and size-as-quantity rules, attachment review rules; same cached answers, no new calls | 0 | 1 | 0 | 0 | 95.8% | 99.5% (209/210) | 99.5% (209/210) | 94.3% | 100% | 100% | 100% | 100% | 100% / 100% |
 | checks v2 | size-as-quantity nulls without a review flag; duplicates also match when the content is the same but the model read it differently; no change on dev | 0 | 1 | 0 | 0 | 95.8% | 99.5% (209/210) | 99.5% (209/210) | 94.3% | 100% | 100% | 100% | 100% | 100% / 100% |
 | page bands | large page images sent as a reduced overview plus full-resolution bands (the provider shrinks images to 768 px on the short side); one email re-read | 0 | 1 | 0 | 0 | 95.8% | 99.5% (209/210) | 99.5% (209/210) | 100% | 100% | 100% | 100% | 100% | 100% / 100% |
+| prompt v2 | vendor quote must answer our request (promo now `other`); raw is one source line; dev wording removed from the prompt; full re-run $0.28. The nameplate raw is still joined: rule stated, model did not follow it | 0 | 1 | 0 | 0 | 100% | 99.5% (209/210) | 99.5% (209/210) | 100% | 100% | 100% | 100% | 100% | 100% / 100% |
 
 Reading the baseline: flagging everything already gives zero silent losses —
 which is why silent losses alone can't be the target. Every later change has to

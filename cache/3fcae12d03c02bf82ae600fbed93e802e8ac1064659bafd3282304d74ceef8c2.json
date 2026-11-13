@@ -2,7 +2,7 @@
   "email": "E007",
   "model": "gpt-4.1",
   "output": {
-    "analysis": "The sender, Cody Landry, is requesting prices for a list of galvanized fittings and pipe to be picked up Friday. The list is entirely in the attached, clearly legible image. The items are all described on the handwritten note. Ditto marks ('') are used, meaning values like 'galv' and the size from the line above should be repeated. One item (3 - 3/4\" bronze ball valve) is fully struck through and should not be included. Descriptions have been expanded to be self-contained, with repeated size/material as needed. Units of measure are inferred from common usage where stated (e.g., 'jts' means joints = EA). No lines are excluded except the struck line, and no quoted history or other content is present. No review is required as all items are fully readable in the attachment.",
+    "analysis": "The sender, Cody Landry, supplied a handwritten list as an image attachment for items he needs priced promptly for pickup on Friday. The items are all visible and readable in the attached image. Ditto marks (,,) refer to the item immediately above, so in context of this list and standard quotation practice in this industry, 'tee' means '2\" galv tee', and the nipples should be understood as 'galv' to match context. The struck-through line for bronze ball valves is ignored and not quoted. The '5 jts - 2\" galv pipe' specifies joints (lengths) of galvanized pipe. No quantities or units are ambiguous, and there are no missing attachments or notes that need clarification. No quoted history or hidden portions are provided, so only the visible lines from the image are included. Pricing/totals are not requested at this stage, just line items for quotation.",
     "classification": "rfq",
     "line_items": [
       {
@@ -48,7 +48,7 @@
         "uom": "EA"
       },
       {
-        "description": "2\" galvanized pipe",
+        "description": "2\" galvanized pipe, joint length",
         "qty": 5,
         "raw": "5 jts - 2\" galv pipe",
         "source": "IMG_4172.jpeg",
@@ -58,11 +58,11 @@
     "needs_review": false,
     "review_reason": null
   },
-  "prompt_version": "v1",
-  "request": "47033424045b4c533e909ad6541c1584f90c09716709f7807f78172865bf1f8a",
+  "prompt_version": "v2",
+  "request": "f3f5c816ca1c5a2ff75e0235ae7da7f7a4cd4db8c49ccfaf795ed461076a01f7",
   "usage": {
     "calls": 1,
-    "input_tokens": 2684,
-    "output_tokens": 455
+    "input_tokens": 2798,
+    "output_tokens": 472
   }
 }

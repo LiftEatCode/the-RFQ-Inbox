@@ -1,0 +1,18 @@
+{
+  "email": "E017",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The email is from Dwayne Okafor at Cobalt Ridge Fabrication requesting pricing for a BOM related to Job 2291. The new message states that the BOM is attached and requests pricing by Thursday. However, the only attachment is 'image001.png', which is identified by the unpacker as a logo or signature graphic. No actual BOM or list of items to quote is included or readable in the provided content. There are no line items present in the email body or in attachments. No information is carried over from any quoted history or forwarded content.",
+    "classification": "rfq",
+    "line_items": [],
+    "needs_review": true,
+    "review_reason": "Customer refers to an attached BOM which is missing; only a logo is attached, so no items can be quoted."
+  },
+  "prompt_version": "v2",
+  "request": "8c857dd93ede7f6ec0f3209bbacf1d54f2a1fee21a91e3f73a8f2af69be74988",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2172,
+    "output_tokens": 155
+  }
+}

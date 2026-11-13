@@ -1,207 +1,207 @@
 {
   "model": "gpt-4.1",
-  "prompt_version": "v1",
+  "prompt_version": "v2",
   "price_known": true,
   "totals": {
     "emails": 24,
     "calls": 24,
-    "new_calls": 1,
-    "input_tokens": 61939,
-    "output_tokens": 18822,
-    "cost_usd": 0.274454,
-    "new_cost_usd": 0.035318
+    "new_calls": 0,
+    "input_tokens": 64675,
+    "output_tokens": 18736,
+    "cost_usd": 0.279238,
+    "new_cost_usd": 0
   },
   "emails": {
     "E001": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2090,
-      "output_tokens": 387,
-      "cost_usd": 0.007276,
+      "input_tokens": 2204,
+      "output_tokens": 382,
+      "cost_usd": 0.007464,
       "new_cost_usd": 0
     },
     "E002": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 1905,
-      "output_tokens": 370,
-      "cost_usd": 0.00677,
+      "input_tokens": 2019,
+      "output_tokens": 354,
+      "cost_usd": 0.00687,
       "new_cost_usd": 0
     },
     "E003": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2007,
-      "output_tokens": 578,
-      "cost_usd": 0.008638,
+      "input_tokens": 2121,
+      "output_tokens": 489,
+      "cost_usd": 0.008154,
       "new_cost_usd": 0
     },
     "E004": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2157,
-      "output_tokens": 587,
-      "cost_usd": 0.00901,
+      "input_tokens": 2271,
+      "output_tokens": 643,
+      "cost_usd": 0.009686,
       "new_cost_usd": 0
     },
     "E005": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2441,
-      "output_tokens": 700,
-      "cost_usd": 0.010482,
+      "input_tokens": 2555,
+      "output_tokens": 697,
+      "cost_usd": 0.010686,
       "new_cost_usd": 0
     },
     "E006": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2819,
-      "output_tokens": 2886,
-      "cost_usd": 0.028726,
+      "input_tokens": 2933,
+      "output_tokens": 2931,
+      "cost_usd": 0.029314,
       "new_cost_usd": 0
     },
     "E007": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2684,
-      "output_tokens": 455,
-      "cost_usd": 0.009008,
+      "input_tokens": 2798,
+      "output_tokens": 472,
+      "cost_usd": 0.009372,
       "new_cost_usd": 0
     },
     "E008": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2830,
-      "output_tokens": 2880,
-      "cost_usd": 0.0287,
+      "input_tokens": 2944,
+      "output_tokens": 2864,
+      "cost_usd": 0.0288,
       "new_cost_usd": 0
     },
     "E009": {
       "calls": 1,
-      "new_calls": 1,
-      "input_tokens": 9487,
-      "output_tokens": 2043,
-      "cost_usd": 0.035318,
-      "new_cost_usd": 0.035318
+      "new_calls": 0,
+      "input_tokens": 9601,
+      "output_tokens": 1996,
+      "cost_usd": 0.03517,
+      "new_cost_usd": 0
     },
     "E010": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2377,
-      "output_tokens": 449,
-      "cost_usd": 0.008346,
+      "input_tokens": 2491,
+      "output_tokens": 428,
+      "cost_usd": 0.008406,
       "new_cost_usd": 0
     },
     "E011": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2208,
-      "output_tokens": 160,
-      "cost_usd": 0.005696,
+      "input_tokens": 2322,
+      "output_tokens": 395,
+      "cost_usd": 0.007804,
       "new_cost_usd": 0
     },
     "E012": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2127,
-      "output_tokens": 158,
-      "cost_usd": 0.005518,
+      "input_tokens": 2241,
+      "output_tokens": 133,
+      "cost_usd": 0.005546,
       "new_cost_usd": 0
     },
     "E013": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2153,
-      "output_tokens": 122,
-      "cost_usd": 0.005282,
+      "input_tokens": 2267,
+      "output_tokens": 151,
+      "cost_usd": 0.005742,
       "new_cost_usd": 0
     },
     "E014": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2080,
-      "output_tokens": 190,
-      "cost_usd": 0.00568,
+      "input_tokens": 2194,
+      "output_tokens": 150,
+      "cost_usd": 0.005588,
       "new_cost_usd": 0
     },
     "E015": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2311,
-      "output_tokens": 593,
-      "cost_usd": 0.009366,
+      "input_tokens": 2425,
+      "output_tokens": 582,
+      "cost_usd": 0.009506,
       "new_cost_usd": 0
     },
     "E016": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2214,
-      "output_tokens": 559,
-      "cost_usd": 0.0089,
+      "input_tokens": 2328,
+      "output_tokens": 571,
+      "cost_usd": 0.009224,
       "new_cost_usd": 0
     },
     "E017": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2058,
-      "output_tokens": 137,
-      "cost_usd": 0.005212,
+      "input_tokens": 2172,
+      "output_tokens": 155,
+      "cost_usd": 0.005584,
       "new_cost_usd": 0
     },
     "E018": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2027,
-      "output_tokens": 497,
-      "cost_usd": 0.00803,
+      "input_tokens": 2141,
+      "output_tokens": 541,
+      "cost_usd": 0.00861,
       "new_cost_usd": 0
     },
     "E019": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2075,
-      "output_tokens": 696,
-      "cost_usd": 0.009718,
+      "input_tokens": 2189,
+      "output_tokens": 605,
+      "cost_usd": 0.009218,
       "new_cost_usd": 0
     },
     "E020": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2233,
-      "output_tokens": 429,
-      "cost_usd": 0.007898,
+      "input_tokens": 2347,
+      "output_tokens": 389,
+      "cost_usd": 0.007806,
       "new_cost_usd": 0
     },
     "E021": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 3017,
-      "output_tokens": 3064,
-      "cost_usd": 0.030546,
+      "input_tokens": 3131,
+      "output_tokens": 2967,
+      "cost_usd": 0.029998,
       "new_cost_usd": 0
     },
     "E022": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 1940,
-      "output_tokens": 177,
-      "cost_usd": 0.005296,
+      "input_tokens": 2054,
+      "output_tokens": 133,
+      "cost_usd": 0.005172,
       "new_cost_usd": 0
     },
     "E023": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 2714,
-      "output_tokens": 288,
-      "cost_usd": 0.007732,
+      "input_tokens": 2828,
+      "output_tokens": 275,
+      "cost_usd": 0.007856,
       "new_cost_usd": 0
     },
     "E024": {
       "calls": 1,
       "new_calls": 0,
-      "input_tokens": 1985,
-      "output_tokens": 417,
-      "cost_usd": 0.007306,
+      "input_tokens": 2099,
+      "output_tokens": 433,
+      "cost_usd": 0.007662,
       "new_cost_usd": 0
     }
   }

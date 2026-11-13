@@ -1,0 +1,61 @@
+{
+  "email": "E024",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "The sender, Ben Szymanski, is requesting pricing (rfq) for several stainless steel threaded fittings for a new glycol line. All the items are in a table in the email body, under a common heading: '316 SS – THREADED – 3000#', which applies to all lines. Each row clearly states a quantity, description, and size. There are no vague references, hidden or struck-through rows, headings that apply to only some lines, or missing/ambiguous specs. No need to leave out any items; lines not in the table are not line items (e.g., signature). All requested items are included below.",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "316 SS 90° elbow, threaded, 3000#, 1/2″",
+        "qty": 10,
+        "raw": "10 | 90° elbow | 1/2″",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "316 SS 45° elbow, threaded, 3000#, 1/2″",
+        "qty": 6,
+        "raw": "6 | 45° elbow | 1/2″",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "316 SS tee, threaded, 3000#, 3/4″",
+        "qty": 8,
+        "raw": "8 | Tee | 3/4″",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "316 SS full coupling, threaded, 3000#, 1/2″",
+        "qty": 12,
+        "raw": "12 | Coupling, full | 1/2″",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "316 SS union, threaded, 3000#, 1/2″",
+        "qty": 4,
+        "raw": "4 | Union | 1/2″",
+        "source": "body",
+        "uom": null
+      },
+      {
+        "description": "316 SS hex head plug, threaded, 3000#, 3/4″",
+        "qty": 6,
+        "raw": "6 | Hex head plug | 3/4″",
+        "source": "body",
+        "uom": null
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v2",
+  "request": "7f621fd58519130be0fb6ae0c3f190200f3d05252c4672d73ecd2f841ba05885",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2099,
+    "output_tokens": 433
+  }
+}

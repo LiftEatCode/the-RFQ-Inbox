@@ -2,11 +2,11 @@
   "email": "E015",
   "model": "gpt-4.1",
   "output": {
-    "analysis": "The sender, Renee Castillo from Tidewater Process Systems, is issuing a purchase order for items previously quoted by Ridgeline last week. The itemized list is fully detailed in the attached PDF, each with a clear quantity, unit, and description. No additional notes or constraints are present in the body beyond a request for shipment confirmation. The POS covers pipe, fittings, flanges, gaskets, bolting and valves, matching Ridgeline's product lines. There are no ambiguous references, hidden or struck out content, or unreadable sections. No items have been left out: only subtotal, freight, tax and total, which are not line items, have been omitted; likewise, the quoted history is not present, so all details come from the current PO attachment.",
+    "analysis": "This is a purchase order email from Renee Castillo at Tidewater Process Systems, committing to purchase the items listed in the attached PO_TPS-88213.pdf. The email requests processing of this order against a previous quote (which is not needed for line_items extraction in this case) and requests confirmation of ship date. The items are listed in a clear table in the PDF attachment, each with well-defined quantity, description, and UOM. Heading details like material or schedule given in each line override any defaults. The subtotal, freight, and tax lines are not items and are omitted. No quoted history items are referenced. All item lines are clear and readable. No needs_review is required as all information is present and clear.",
     "classification": "purchase_order",
     "line_items": [
       {
-        "description": "2\" SCH 80 seamless A106B pipe, plain end, random lengths",
+        "description": "2\" SCH 80 seamless A106B pipe, PE, random lengths",
         "qty": 210,
         "raw": "1 210 FT 2\" SCH 80 SMLS A106B pipe, PE, random lengths",
         "source": "PO_TPS-88213.pdf",
@@ -51,11 +51,11 @@
     "needs_review": false,
     "review_reason": null
   },
-  "prompt_version": "v1",
-  "request": "8163ce85d910098789c839da288b4a403584dbd198a24252d6636f0ad1a58c93",
+  "prompt_version": "v2",
+  "request": "dd50a9a38b59ad5a6f7a414a0b753cf8654f0282c780a1cf2d2cc897eb513c23",
   "usage": {
     "calls": 1,
-    "input_tokens": 2311,
-    "output_tokens": 593
+    "input_tokens": 2425,
+    "output_tokens": 582
   }
 }

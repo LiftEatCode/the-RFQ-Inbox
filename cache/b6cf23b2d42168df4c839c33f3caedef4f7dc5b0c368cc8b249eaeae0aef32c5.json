@@ -2,11 +2,11 @@
   "email": "E010",
   "model": "gpt-4.1",
   "output": {
-    "analysis": "Tom Hargrove from Delta Mechanical Services is requesting pricing for several shutdown materials, as listed in the attached sheet (image002.png). The attachment is a clear, readable table with columns QTY, UOM, and DESCRIPTION. There are no overriding defaults, additional specs, or notes that alter the meaning of each line. The second attachment is a logo and contains no line items. Nothing is sourced from quoted history, and all items requested are present in the visible, unhidden portion of the table in image002.png. Totals, subtotals, and any hidden/struck entries are not present so nothing needs to be left out.",
+    "analysis": "Tom Hargrove from Delta Mechanical Services is requesting a price quote for a list of shutdown materials, with items listed in the attached and clearly readable image 'image002.png.' The image is an extract of a table with QTY, UOM, and DESCRIPTION columns; all lines provide a specific quantity and description, with the unit of measure given for each. No lines should be excluded. The second attachment 'image001.png' is just a company logo, not relevant to the request. No content is taken from quoted history or other sources.",
     "classification": "rfq",
     "line_items": [
       {
-        "description": "1/2\"-13 x 2\" hex cap screw, Gr 5 zinc",
+        "description": "1/2\"-13 x 2\" hex cap screw, Grade 5 zinc",
         "qty": 40,
         "raw": "40 EA 1/2\"-13 x 2\" hex cap screw, Gr 5 zinc",
         "source": "image002.png",
@@ -20,28 +20,28 @@
         "uom": "EA"
       },
       {
-        "description": "1-5/8\" strut channel, 12 ga, pre-galv",
+        "description": "1-5/8\" strut channel, 12 gauge, pre-galvanized",
         "qty": 200,
         "raw": "200 FT 1-5/8\" strut channel, 12 ga, pre-galv",
         "source": "image002.png",
         "uom": "FT"
       },
       {
-        "description": "1/2\" channel spring nuts, galv",
+        "description": "1/2\" channel spring nuts, galvanized",
         "qty": 3,
         "raw": "3 BX 1/2\" channel spring nuts, galv",
         "source": "image002.png",
         "uom": "BX"
       },
       {
-        "description": "2\" pipe clamp, galv",
+        "description": "2\" pipe clamp, galvanized",
         "qty": 24,
         "raw": "24 EA 2\" pipe clamp, galv",
         "source": "image002.png",
         "uom": "EA"
       },
       {
-        "description": "3/4\"-10 all-thread rod, 6 ft",
+        "description": "3/4\"-10 all-thread rod, 6 ft length",
         "qty": 12,
         "raw": "12 EA 3/4\"-10 all-thread rod, 6 ft",
         "source": "image002.png",
@@ -51,11 +51,11 @@
     "needs_review": false,
     "review_reason": null
   },
-  "prompt_version": "v1",
-  "request": "0f81e745cb0d172a7c2977479e8489f6c985bb8ecba14edacde798deae4b918e",
+  "prompt_version": "v2",
+  "request": "3051753ec147db13877763197055842a11643086d137d7b8d95c90a7febca2a1",
   "usage": {
     "calls": 1,
-    "input_tokens": 2377,
-    "output_tokens": 449
+    "input_tokens": 2491,
+    "output_tokens": 428
   }
 }

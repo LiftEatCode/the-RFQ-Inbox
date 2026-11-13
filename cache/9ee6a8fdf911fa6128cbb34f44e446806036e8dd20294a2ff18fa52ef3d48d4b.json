@@ -1,0 +1,75 @@
+{
+  "email": "E005",
+  "model": "gpt-4.1",
+  "output": {
+    "analysis": "Priya Raman at Gulf Terminals is sending a new RFQ for Tank 14, with the item list in an attached spreadsheet (Tank14_Piping_RevB.xlsx). The relevant content is in the visible 'Rev B' sheet. The sheet specifies that all fittings are 'BW SCH 40 A234 WPB UNLESS NOTED', and this default applies to all items except those with a different specification (e.g. concurrent SCH 80 on item 6). Each line lists item number, quantity, unit, size, and type. Only the lines on the visible Rev B sheet are valid; the Rev A sheet is hidden/old revision and not a request. Heading rows, totals, and merged/hidden content are not counted. All line_items are taken from rows 5-11 and 13-14. Details unique to each item override the default where noted (e.g., SCH 80).",
+    "classification": "rfq",
+    "line_items": [
+      {
+        "description": "90-degree long radius elbow, butt-weld, 6\" SCH 40 A234 WPB",
+        "qty": 12,
+        "raw": "1 | 12 | EA | 6\" | 90 LR elbow",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "45-degree elbow, butt-weld, 6\" SCH 40 A234 WPB",
+        "qty": 6,
+        "raw": "2 | 6 | EA | 6\" | 45 elbow",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "90-degree long radius elbow, butt-weld, 8\" SCH 40 A234 WPB",
+        "qty": 4,
+        "raw": "3 | 4 | EA | 8\" | 90 LR elbow",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "Straight tee, butt-weld, 6\" SCH 40 A234 WPB",
+        "qty": 4,
+        "raw": "4 | 4 | EA | 6\" | Tee, straight",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "Reducer, concentric, butt-weld, 8\" x 6\" SCH 40 A234 WPB",
+        "qty": 3,
+        "raw": "5 | 3 | EA | 8\" x 6\" | Reducer, concentric",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "Reducer, concentric, butt-weld, 6\" x 4\" SCH 80 A234 WPB",
+        "qty": 2,
+        "raw": "6 | 2 | EA | 6\" x 4\" | Reducer, concentric, SCH 80",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "Cap, butt-weld, 8\" SCH 40 A234 WPB",
+        "qty": 2,
+        "raw": "7 | 2 | EA | 8\" | Cap",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      },
+      {
+        "description": "Cap, butt-weld, 6\" SCH 40 A234 WPB",
+        "qty": 2,
+        "raw": "8 | 2 | EA | 6\" | Cap",
+        "source": "Tank14_Piping_RevB.xlsx",
+        "uom": "EA"
+      }
+    ],
+    "needs_review": false,
+    "review_reason": null
+  },
+  "prompt_version": "v2",
+  "request": "23e3c966df14d00934560f2cff6cb7d7a5af4a649f3295f44e3d955002ca4a90",
+  "usage": {
+    "calls": 1,
+    "input_tokens": 2555,
+    "output_tokens": 697
+  }
+}

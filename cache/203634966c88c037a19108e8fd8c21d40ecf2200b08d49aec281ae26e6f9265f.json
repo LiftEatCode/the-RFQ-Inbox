@@ -2,102 +2,102 @@
   "email": "E009",
   "model": "gpt-4.1",
   "output": {
-    "analysis": "This is an RFQ email from Rae Okonkwo at Sable Creek Manufacturing. The actual item list is supplied entirely on the attached scanned PDF form (Scan_RFQ_SC-4418.pdf), which is clearly readable. The form is headed with the request to quote firm price and lead time for each item and specifies that substitutions require written approval. The list is divided under three section headings: FLANGES, GASKETS, and STUD BOLTS. Each section provides a table with item numbers, quantities, UOM, sizes, and descriptions. There are no default values outside of these lines, and all specifications needed are clearly on the table. No lines are hidden, struck through, or part of earlier quoted history, and all lines are unique. Totals and subtotals are absent, so every table row is an individual line item request. There are no exclusions or ambiguous references; everything requested is specified on the attachment.",
+    "analysis": "This email is from Rae Okonkwo at Sable Creek Manufacturing, requesting a quote on numerous items. The request is contained entirely in the scanned attached form (two pages) with all items visually legible. The form is organized by line item, with headings indicating separate groups (FLANGES, GASKETS, STUD BOLTS). Each block applies to only its included items. There are no instructions, notes, or defaults carrying across blocks except where specs are repeated. All items are clearly and fully identified. No quoted history, forwarded content, or hidden rows are present. The quantities and specs are explicit. Totals, signature, and contact details were not included as line items. All listed lines are included below.",
     "classification": "rfq",
     "line_items": [
       {
-        "description": "1\" weld neck flange, 150# raised face",
+        "description": "1\" weld neck flange, 150# RF",
         "qty": 6,
         "raw": "6 EA 1\" WN 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "1-1/2\" weld neck flange, 150# raised face",
+        "description": "1-1/2\" weld neck flange, 150# RF",
         "qty": 4,
         "raw": "4 EA 1-1/2\" WN 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "2\" weld neck flange, 150# raised face",
+        "description": "2\" weld neck flange, 150# RF",
         "qty": 10,
         "raw": "10 EA 2\" WN 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "3\" weld neck flange, 150# raised face",
+        "description": "3\" weld neck flange, 150# RF",
         "qty": 8,
         "raw": "8 EA 3\" WN 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "4\" weld neck flange, 150# raised face",
+        "description": "4\" weld neck flange, 150# RF",
         "qty": 12,
         "raw": "12 EA 4\" WN 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "6\" weld neck flange, 150# raised face",
+        "description": "6\" weld neck flange, 150# RF",
         "qty": 6,
         "raw": "6 EA 6\" WN 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "8\" weld neck flange, 150# raised face",
+        "description": "8\" weld neck flange, 150# RF",
         "qty": 4,
         "raw": "4 EA 8\" WN 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "2\" slip-on flange, 150# raised face",
+        "description": "2\" slip-on flange, 150# RF",
         "qty": 4,
         "raw": "4 EA 2\" SO 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "3\" slip-on flange, 150# raised face",
+        "description": "3\" slip-on flange, 150# RF",
         "qty": 4,
         "raw": "4 EA 3\" SO 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "4\" slip-on flange, 150# raised face",
+        "description": "4\" slip-on flange, 150# RF",
         "qty": 6,
         "raw": "6 EA 4\" SO 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "6\" slip-on flange, 150# raised face",
+        "description": "6\" slip-on flange, 150# RF",
         "qty": 4,
         "raw": "4 EA 6\" SO 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "2\" blind flange, 150# raised face",
+        "description": "2\" blind flange, 150# RF",
         "qty": 2,
         "raw": "2 EA 2\" BL 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "4\" blind flange, 150# raised face",
+        "description": "4\" blind flange, 150# RF",
         "qty": 2,
         "raw": "2 EA 4\" BL 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "6\" blind flange, 150# raised face",
+        "description": "6\" blind flange, 150# RF",
         "qty": 2,
         "raw": "2 EA 6\" BL 150# RF",
         "source": "Scan_RFQ_SC-4418.pdf",
@@ -132,23 +132,23 @@
         "uom": "EA"
       },
       {
-        "description": "6\" spiral wound gasket, 304/graphite, 150#",
+        "description": "4\" spiral wound gasket, 304/graphite, 150#",
         "qty": 16,
-        "raw": "16 EA 6\" Spiral wound, 304/graphite, 150#",
+        "raw": "16 EA 4\" Spiral wound, 304/graphite, 150#",
+        "source": "Scan_RFQ_SC-4418.pdf",
+        "uom": "EA"
+      },
+      {
+        "description": "6\" spiral wound gasket, 304/graphite, 150#",
+        "qty": 8,
+        "raw": "8 EA 6\" Spiral wound, 304/graphite, 150#",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
         "description": "8\" spiral wound gasket, 304/graphite, 150#",
-        "qty": 8,
-        "raw": "8 EA 8\" Spiral wound, 304/graphite, 150#",
-        "source": "Scan_RFQ_SC-4418.pdf",
-        "uom": "EA"
-      },
-      {
-        "description": "10\" spiral wound gasket, 304/graphite, 150#",
         "qty": 4,
-        "raw": "4 EA 10\" Spiral wound, 304/graphite, 150#",
+        "raw": "4 EA 8\" Spiral wound, 304/graphite, 150#",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
@@ -160,70 +160,70 @@
         "uom": "EA"
       },
       {
-        "description": "1/2\" x 3\" stud bolt, B7 with 2 heavy hex nuts",
+        "description": "Stud bolts, 1/2\" x 3\", B7 with 2 heavy hex nuts",
         "qty": 32,
         "raw": "32 EA 1/2\" x 3\" B7 w/ 2 heavy hex nuts",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "5/8\" x 3-1/4\" stud bolt, B7 with 2 heavy hex nuts",
+        "description": "Stud bolts, 5/8\" x 3-1/4\", B7 with 2 heavy hex nuts",
         "qty": 24,
         "raw": "24 EA 5/8\" x 3-1/4\" B7 w/ 2 heavy hex nuts",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "5/8\" x 3-1/2\" stud bolt, B7 with 2 heavy hex nuts",
+        "description": "Stud bolts, 5/8\" x 3-1/2\", B7 with 2 heavy hex nuts",
         "qty": 16,
         "raw": "16 EA 5/8\" x 3-1/2\" B7 w/ 2 heavy hex nuts",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "3/4\" x 4\" stud bolt, B7 with 2 heavy hex nuts",
+        "description": "Stud bolts, 3/4\" x 4\", B7 with 2 heavy hex nuts",
         "qty": 48,
         "raw": "48 EA 3/4\" x 4\" B7 w/ 2 heavy hex nuts",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "3/4\" x 4-1/4\" stud bolt, B7 with 2 heavy hex nuts",
+        "description": "Stud bolts, 3/4\" x 4-1/4\", B7 with 2 heavy hex nuts",
         "qty": 24,
         "raw": "24 EA 3/4\" x 4-1/4\" B7 w/ 2 heavy hex nuts",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "3/4\" x 4-1/2\" stud bolt, B7 with 2 heavy hex nuts",
+        "description": "Stud bolts, 3/4\" x 4-1/2\", B7 with 2 heavy hex nuts",
         "qty": 32,
         "raw": "32 EA 3/4\" x 4-1/2\" B7 w/ 2 heavy hex nuts",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "7/8\" x 5\" stud bolt, B7 with 2 heavy hex nuts",
+        "description": "Stud bolts, 7/8\" x 5\", B7 with 2 heavy hex nuts",
         "qty": 16,
         "raw": "16 EA 7/8\" x 5\" B7 w/ 2 heavy hex nuts",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "7/8\" x 5-1/4\" stud bolt, B7 with 2 heavy hex nuts",
+        "description": "Stud bolts, 7/8\" x 5-1/4\", B7 with 2 heavy hex nuts",
         "qty": 16,
         "raw": "16 EA 7/8\" x 5-1/4\" B7 w/ 2 heavy hex nuts",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "1\" x 5-3/4\" stud bolt, B7 with 2 heavy hex nuts",
+        "description": "Stud bolts, 1\" x 5-3/4\", B7 with 2 heavy hex nuts",
         "qty": 16,
         "raw": "16 EA 1\" x 5-3/4\" B7 w/ 2 heavy hex nuts",
         "source": "Scan_RFQ_SC-4418.pdf",
         "uom": "EA"
       },
       {
-        "description": "1\" x 6\" stud bolt, B7 with 2 heavy hex nuts",
+        "description": "Stud bolts, 1\" x 6\", B7 with 2 heavy hex nuts",
         "qty": 8,
         "raw": "8 EA 1\" x 6\" B7 w/ 2 heavy hex nuts",
         "source": "Scan_RFQ_SC-4418.pdf",
@@ -233,11 +233,11 @@
     "needs_review": false,
     "review_reason": null
   },
-  "prompt_version": "v1",
-  "request": "723980947e5a9e6d4530b67b5c5349352cb20a93dd80fc97a0d71c838a45eb9c",
+  "prompt_version": "v2",
+  "request": "857674cebef38555a48a5d113ee0622d3106e2ee1c6bb0cdd6e4e965fd13ee96",
   "usage": {
     "calls": 1,
-    "input_tokens": 9487,
-    "output_tokens": 2043
+    "input_tokens": 9601,
+    "output_tokens": 1996
   }
 }
