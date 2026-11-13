@@ -1,7 +1,7 @@
 # Running
 
-> Model layer stage: the client, cache and cost report work; the prompt is a placeholder and
-> no answers are recorded yet, so every email currently comes back flagged for review.
+> Prompt v1 stage: the prompt is written but no answers are recorded yet, so without a key
+> every email currently comes back flagged for review.
 
 Requires Python 3.11+. Works natively on Windows, macOS and Linux.
 
@@ -49,5 +49,6 @@ python -m pytest
 
 ## API key
 
-`parse` reads `OPENAI_API_KEY` from the environment. Never put the key in a file
-in this repository; `.env` files are git-ignored as a backstop.
+`parse` reads `OPENAI_API_KEY` from the environment. For local runs it also loads a `.env`
+file from the current folder if there is one (`OPENAI_API_KEY=...`); a variable already set
+in the environment wins. `.env` is git-ignored: never commit the key.

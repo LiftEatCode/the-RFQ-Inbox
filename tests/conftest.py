@@ -37,8 +37,9 @@ def check_format():
 @pytest.fixture(autouse=True)
 def _no_key_no_shared_cache(monkeypatch, tmp_path):
     """No test may spend money or touch the committed cache: the key is removed from
-    the environment and the default cache folder points into the test's temp dir."""
+    the environment, .env loading is switched off, and the default cache folder points into the test's temp dir."""
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    monkeypatch.setenv("RFQINBOX_NO_DOTENV", "1")   # never load a developer's real .env
     monkeypatch.setenv("RFQINBOX_CACHE_DIR", str(tmp_path / "default-cache"))
 
 

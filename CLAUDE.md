@@ -14,8 +14,10 @@ calls on a second run, never crash on a bad email, and report calls/tokens/$ per
 
 ## Hard rules
 
-- **The API key never touches the repo or the session logs.** Read `OPENAI_API_KEY`
-  from the environment only. Never print it, never write it, never `cat .env`.
+- **The API key never touches the repo or the session logs.** Code reads `OPENAI_API_KEY`
+  from the environment only; `cli.load_env()` loads a git-ignored `.env` into the environment
+  first (python-dotenv, real environment wins, off under tests via `RFQINBOX_NO_DOTENV`).
+  Never print it, never write it, never `cat .env`.
 - **Default model path is OpenAI.** Another provider may be an opt-in switch only.
 - **No outbound calls except the model provider.** No email, no webhooks.
 - **Runs on Windows natively.** pathlib, explicit UTF-8, no shell-outs, wheels-only deps.
@@ -57,8 +59,11 @@ Done (each with tests):
    docx (headings in order with tables), PDF (text, form fields, scans -> page images,
    encrypted, capped at 40 text / 6 scan pages), images (logo detection, downscale),
    CSV, HTML tables (colspan), attached .eml recursively. `python -m rfqinbox inspect <eml>`.
-4. Model layer (`rfqinbox/model.py`, `tests/test_model.py`), as specified below. Prompt is a
-   placeholder (`PROMPT_VERSION = "v0"`); nothing has been recorded yet.
+4. Model layer (`rfqinbox/model.py`, `tests/test_model.py`), as specified below.
+5a. Prompt v1 (`model.SYSTEM_PROMPT`, `tests/test_prompt.py`): teaches the general properties,
+   contains nothing from dev (tested). The reply starts with an `analysis` field (the model's
+   reading, kept in the cache, never in parsed.json). **Not recorded yet** — the human runs
+   `parse` on dev once with the key, then we score and add the eval/history.md row.
 
 Model layer as built (tests use a fake client / fake urlopen; no key needed):
    - OpenAI client over stdlib `urllib` (no SDK dependency), Chat Completions with
@@ -68,7 +73,7 @@ Model layer as built (tests use a fake client / fake urlopen; no key needed):
      packet, sha256 of each image's *original attachment bytes* — not the re-encoded image,
      which can differ between Pillow/pdfium builds). Committed to git. Hit → no call. Writes
      are atomic. With no key, an answer recorded with any model is replayed.
-     **Editing SYSTEM_PROMPT without bumping PROMPT_VERSION replays stale answers.**
+     The prompt text itself is hashed into the key, so any prompt edit means a fresh paid run.
    - Cost ledger: calls, input/output tokens, $ per email (price table in code), written
      to `cost_report.json` (next to `--out`) and summarised on stderr. `calls`/`cost_usd` =
      what the answer cost when made or recorded; `new_*` = spent in this run.
@@ -79,7 +84,7 @@ Model layer as built (tests use a fake client / fake urlopen; no key needed):
      failure mode degrades to a flagged record; cost totals add up.
 
 Next:
-5. Prompt v1 + recorded cache for dev (the human runs `parse` once with the key).
+5b. Record the cache for dev (the human runs `parse` once with the key), score, commit cache/.
 6. Code-side checks: duplicate detection (later Date = duplicate), revises via
    In-Reply-To/References/subject, every `raw` must appear in the source text, sizes are
    never quantities, needs_review rules (attachment mentioned but missing/unreadable/

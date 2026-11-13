@@ -13,6 +13,22 @@ from rfqinbox import model, pipeline
 from rfqinbox.record import review_record
 
 
+def load_env() -> None:
+    """Load a .env file from the current folder (or a parent) into the environment.
+
+    A convenience for local runs: variables already set in the environment win, and a
+    missing file or missing python-dotenv is not an error. Tests set RFQINBOX_NO_DOTENV
+    so that a developer's real key can never be picked up by a test run.
+    """
+    if os.environ.get("RFQINBOX_NO_DOTENV"):
+        return
+    try:
+        from dotenv import find_dotenv, load_dotenv
+    except ImportError:
+        return
+    load_dotenv(find_dotenv(usecwd=True))
+
+
 def parse_inbox(emails_dir: Path, engine: model.Engine | None = None) -> dict[str, dict]:
     """Process every .eml in the folder. One bad email never stops the run."""
     engine = engine or pipeline.default_engine()
@@ -132,4 +148,5 @@ def main(argv: list[str] | None = None) -> int:
     i.add_argument("eml", help="path to one .eml file")
     i.set_defaults(func=cmd_inspect)
     args = ap.parse_args(argv)
+    load_env()
     return args.func(args)

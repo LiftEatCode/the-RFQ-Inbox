@@ -639,3 +639,39 @@ def test_the_key_is_never_written_anywhere(tmp_path, monkeypatch, capsys):
     for path in tmp_path.rglob("*"):
         if path.is_file():
             assert KEY.encode() not in path.read_bytes(), f"API key written to {path.name}"
+
+
+# ================================================================== .env convenience
+
+def test_dotenv_in_the_current_folder_supplies_the_key(tmp_path, monkeypatch):
+    (tmp_path / ".env").write_text(f"OPENAI_API_KEY={KEY}\n", encoding="utf-8")
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.delenv("RFQINBOX_NO_DOTENV")
+
+    cli.load_env()
+
+    assert isinstance(model.make_client(), model.OpenAIClient)
+
+
+def test_the_real_environment_wins_over_dotenv(tmp_path, monkeypatch):
+    (tmp_path / ".env").write_text("RFQINBOX_MODEL=from-dotenv\n", encoding="utf-8")
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.delenv("RFQINBOX_NO_DOTENV")
+    monkeypatch.setenv("RFQINBOX_MODEL", "from-environment")
+    monkeypatch.setenv("OPENAI_API_KEY", KEY)
+
+    cli.load_env()
+
+    assert model.make_client().model == "from-environment"
+
+
+def test_no_dotenv_file_is_fine_and_tests_never_load_one(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.delenv("RFQINBOX_NO_DOTENV")
+    cli.load_env()                                   # no file: nothing happens
+    assert model.make_client() is None
+
+    (tmp_path / ".env").write_text(f"OPENAI_API_KEY={KEY}\n", encoding="utf-8")
+    monkeypatch.setenv("RFQINBOX_NO_DOTENV", "1")    # what conftest sets for every test
+    cli.load_env()
+    assert model.make_client() is None
