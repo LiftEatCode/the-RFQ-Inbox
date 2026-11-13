@@ -226,7 +226,9 @@ def test_a_vague_amount_is_null_whatever_the_model_guessed(tmp_path, raw):
 def test_a_number_that_is_only_a_size_or_rating_is_not_a_quantity(tmp_path, raw, qty):
     out = checked(tmp_path, f"Need:\n{raw}\n", [line(raw, qty)])
     assert out["line_items"][0]["qty"] is None
-    assert out["needs_review"] is True and "quantity" in out["review_reason"]
+    # Not a reason for review: README keeps needs_review for emails that cannot be fully
+    # read or resolved. The rep sees a blank quantity and fills it in.
+    assert out["needs_review"] is False and out["review_reason"] is None
 
 
 @pytest.mark.parametrize("raw, qty", [
@@ -315,7 +317,8 @@ def test_check_record_does_not_change_its_input(tmp_path):
 # ================================================================== across the inbox
 
 def eml(inbox, stem, body, *, sender="Pat Buyer <pat@customer.example>", subject="Quote request",
-        date="Mon, 05 Oct 2026 09:00:00 -0500", reply_to=None, references=None, message_id=None):
+        date="Mon, 05 Oct 2026 09:00:00 -0500", reply_to=None, references=None, message_id=None,
+        attachments=None):
     msg = EmailMessage()
     msg["From"], msg["To"] = sender, "rfq@ridgeline-supply.example"
     msg["Subject"], msg["Date"] = subject, date
@@ -325,6 +328,9 @@ def eml(inbox, stem, body, *, sender="Pat Buyer <pat@customer.example>", subject
     if references:
         msg["References"] = references
     msg.set_content(body)
+    for name, mime, data in attachments or []:
+        maintype, subtype = mime.split("/", 1)
+        msg.add_attachment(data, maintype=maintype, subtype=subtype, filename=name)
     inbox.mkdir(parents=True, exist_ok=True)
     (inbox / f"{stem}.eml").write_bytes(msg.as_bytes())
 
@@ -522,3 +528,115 @@ def test_checks_run_inside_parse(tmp_path, monkeypatch):
     data = parse(tmp_path, monkeypatch, {"[req]": answer("rfq", [ELBOW, invented])})
 
     assert raws(data["E1"]) == [ELBOW["raw"]] and data["E1"]["needs_review"] is True
+
+
+# ================================================================== duplicates the model read differently
+
+# The model reads each copy on its own, and two readings of the same content are not
+# always identical. Whether the *content* is the same is something code can check
+# without the model: the attached file is byte-for-byte the same, or the line is
+# written in the other email too.
+
+SHEET_LINES = [line('10 EA 2" 90 elbow sch 40', 10, source="rfq.xlsx"),
+               line('4 EA 3" gate valve 150#', 4, source="rfq.xlsx")]
+
+
+def sheet(name="rfq.xlsx"):
+    def build(wb):
+        wb.active.append([10, "EA", '2" 90 elbow sch 40'])
+        wb.active.append([4, "EA", '3" gate valve 150#'])
+    return (name, XLSX, fx.xlsx_bytes(build))
+
+
+def test_same_attachment_read_differently_the_second_time_is_still_a_duplicate(tmp_path, monkeypatch):
+    inbox = tmp_path / "inbox"
+    att = sheet()
+    eml(inbox, "A", "[first] RFQ attached.", date=MON, attachments=[att])
+    eml(inbox, "B", "[second] Resending, same file attached again.", date=TUE, attachments=[att])
+    second_reading = [SHEET_LINES[0], dict(SHEET_LINES[1], raw='4 EA 3" gate valve 150 lb')]
+
+    data = parse(tmp_path, monkeypatch, {"[first]": answer("rfq", SHEET_LINES),
+                                         "[second]": answer("rfq", second_reading)})
+
+    assert data["B"]["duplicate_of"] == "A" and data["B"]["line_items"] == []
+    assert len(data["A"]["line_items"]) == 2
+
+
+def test_a_copy_the_model_read_less_of_is_still_a_duplicate(tmp_path, monkeypatch):
+    inbox = tmp_path / "inbox"
+    eml(inbox, "A", "[first]\n" + BODY, date=MON)
+    eml(inbox, "B", "[second] sending again\n" + BODY, date=TUE)
+
+    data = parse(tmp_path, monkeypatch, {"[first]": answer("rfq", TWO_LINES),
+                                         "[second]": answer("rfq", [ELBOW])})      # missed the valve
+
+    assert data["B"]["duplicate_of"] == "A"
+
+
+def test_the_same_file_under_another_name_is_a_duplicate(tmp_path, monkeypatch):
+    inbox = tmp_path / "inbox"
+    eml(inbox, "A", "[first] RFQ attached.", date=MON, attachments=[sheet("rfq.xlsx")])
+    eml(inbox, "B", "[second] RFQ attached.", date=TUE, attachments=[sheet("rfq (1).xlsx")])
+    renamed = [dict(SHEET_LINES[0], source="rfq (1).xlsx")]                         # and one line short
+
+    data = parse(tmp_path, monkeypatch, {"[first]": answer("rfq", SHEET_LINES),
+                                         "[second]": answer("rfq", renamed)})
+
+    assert data["B"]["duplicate_of"] == "A"
+
+
+def test_a_re_saved_file_with_the_same_rows_is_a_duplicate(tmp_path, monkeypatch):
+    """Different bytes (line endings), same content."""
+    rows = 'QTY,UOM,DESCRIPTION\n10,EA,2" 90 elbow sch 40\n4,EA,3" gate valve 150#\n'
+    inbox = tmp_path / "inbox"
+    eml(inbox, "A", "[first] RFQ attached.", date=MON,
+        attachments=[("rfq.csv", "text/csv", rows.encode())])
+    eml(inbox, "B", "[second] RFQ attached.", date=TUE,
+        attachments=[("rfq.csv", "text/csv", rows.replace("\n", "\r\n").encode())])
+    lines = [dict(item, source="rfq.csv") for item in SHEET_LINES]
+
+    data = parse(tmp_path, monkeypatch, {"[first]": answer("rfq", lines),
+                                         "[second]": answer("rfq", lines[:1])})
+
+    assert data["B"]["duplicate_of"] == "A"
+
+
+def test_the_same_attachment_with_an_extra_item_in_the_body_is_a_new_request(tmp_path, monkeypatch):
+    inbox = tmp_path / "inbox"
+    att = sheet()
+    eml(inbox, "A", "[first] RFQ attached.", date=MON, attachments=[att])
+    eml(inbox, "B", "[second] RFQ attached again. Also add:\n6 ea 4in cap", date=TUE, attachments=[att])
+    more = [*SHEET_LINES, line("6 ea 4in cap", 6)]
+
+    data = parse(tmp_path, monkeypatch, {"[first]": answer("rfq", SHEET_LINES),
+                                         "[second]": answer("rfq", more)})
+
+    assert data["B"]["duplicate_of"] is None and len(data["B"]["line_items"]) == 3
+
+
+def test_a_resend_that_drops_an_item_is_a_new_request(tmp_path, monkeypatch):
+    inbox = tmp_path / "inbox"
+    eml(inbox, "A", "[first]\n" + BODY, date=MON)
+    eml(inbox, "B", '[second] corrected list\n10 ea 2" 90 elbow sch 40\nThanks, Pat', date=TUE)
+
+    data = parse(tmp_path, monkeypatch, {"[first]": answer("rfq", TWO_LINES),
+                                         "[second]": answer("rfq", [ELBOW])})
+
+    assert data["B"]["duplicate_of"] is None and len(data["B"]["line_items"]) == 1
+
+
+def test_a_changed_quantity_is_never_mistaken_for_a_different_reading(tmp_path, monkeypatch):
+    """The new number also appears on the neighbouring line; that must not hide the change."""
+    first = 'Please quote:\n10 ea 2" 90 elbow sch 40\n12 ea 3" gate valve 150#'
+    second = 'Please quote:\n12 ea 2" 90 elbow sch 40\n12 ea 3" gate valve 150#'
+    inbox = tmp_path / "inbox"
+    eml(inbox, "A", "[first]\n" + first, date=MON)
+    eml(inbox, "B", "[second]\n" + second, date=TUE)
+    valve = line('12 ea 3" gate valve 150#', 12)
+
+    data = parse(tmp_path, monkeypatch, {
+        "[first]": answer("rfq", [ELBOW, valve]),
+        "[second]": answer("rfq", [line('12 ea 2" 90 elbow sch 40', 12), valve])})
+
+    assert data["B"]["duplicate_of"] is None
+    assert data["B"]["line_items"][0]["qty"] == 12
