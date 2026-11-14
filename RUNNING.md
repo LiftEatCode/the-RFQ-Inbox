@@ -75,4 +75,4 @@ python -m rfqinbox score eval/probes/parsed.json --key eval/probes/answer_key.js
 
 ## Screen recording
 
-TODO: link.
+https://drive.google.com/file/d/1-T8-vitqAR0bmA1h8A4JjyT9Gd2EM4WX/view?usp=drive_link
