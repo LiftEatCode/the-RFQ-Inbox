@@ -150,6 +150,7 @@ def score(pred: dict, key: dict) -> dict:
     qty = [0, 0]; uom = [0, 0]; src = [0, 0]; ctx = [0, 0]
     links = [0, 0]
     nr_tp = nr_pred = nr_key = 0
+    m_rows = []          # (key line id, key match, key sku, our match or "none", our sku)
 
     for eid in sorted(set(key) | set(pred)):
         k, p = key.get(eid), pred.get(eid)
@@ -212,6 +213,9 @@ def score(pred: dict, key: dict) -> dict:
                     "uom": (kl.get("uom"), pl.get("uom")) if not u else None,
                     "source": (kl.get("source"), pl.get("source")) if not s else None,
                 })
+            if kl.get("match"):
+                m_rows.append((kl.get("id"), kl["match"], kl.get("sku"),
+                               pl.get("match") or "none", pl.get("sku")))
             missing, forbidden = context_check(kl, pl.get("description") or "")
             ctx[1] += 1
             ok = not missing and not forbidden
@@ -245,6 +249,38 @@ def score(pred: dict, key: dict) -> dict:
         "link_accuracy": _ratio(*links),
         "needs_review_precision": _ratio(nr_tp, nr_pred),
         "needs_review_recall": _ratio(nr_tp, nr_key),
+        "matcher": _matcher_report(m_rows),
+    }
+
+
+MATCH_KINDS = ("matched", "not_in_catalog", "ambiguous")
+
+
+def _matcher_report(rows: list[tuple]) -> dict | None:
+    """The optional matcher, on paired lines whose key has a catalog answer. None when we
+    emitted no match at all. A wrong sku (we named a part and it is not the key's) is the
+    expensive failure: it is a wrong quote."""
+    if not any(ours != "none" for _, _, _, ours, _ in rows):
+        return None
+    confusion = {k: {o: 0 for o in MATCH_KINDS + ("none",)} for k in MATCH_KINDS}
+    correct, wrong_sku, wrong = 0, [], []
+    for lid, k_match, k_sku, ours, sku in rows:
+        confusion.setdefault(k_match, {o: 0 for o in MATCH_KINDS + ("none",)})
+        confusion[k_match][ours] = confusion[k_match].get(ours, 0) + 1
+        ok = ours == k_match and (ours != "matched" or sku == k_sku)
+        correct += ok
+        if ours == "matched" and sku != k_sku:
+            wrong_sku.append(lid)
+        if not ok:
+            wrong.append({"id": lid, "key": (k_match, k_sku), "ours": (ours, sku)})
+    nic_tp = confusion["not_in_catalog"]["not_in_catalog"]
+    nic_pred = sum(confusion[k]["not_in_catalog"] for k in confusion)
+    nic_key = sum(confusion["not_in_catalog"].values())
+    return {
+        "lines": len(rows), "correct": correct, "accuracy": _ratio(correct, len(rows)),
+        "wrong_sku": wrong_sku, "confusion": confusion, "failures": wrong,
+        "not_in_catalog_precision": _ratio(nic_tp, nic_pred),
+        "not_in_catalog_recall": _ratio(nic_tp, nic_key),
     }
 
 
@@ -275,7 +311,23 @@ def format_report(r: dict, verbose: bool = True) -> str:
         f"  revises/duplicate_of {_pct(r['link_accuracy'])}",
         f"  needs_review P / R   {_pct(r['needs_review_precision'])} / {_pct(r['needs_review_recall'])}",
     ]
+    m = r.get("matcher")
+    if m:
+        out += [
+            "",
+            "MATCHER (optional; on paired lines)",
+            f"  wrong sku            {len(m['wrong_sku']):4d}  {' '.join(str(i) for i in m['wrong_sku'])}",
+            f"  match accuracy       {_pct(m['accuracy'])}  ({m['correct']}/{m['lines']})",
+            f"  not_in_catalog P / R {_pct(m['not_in_catalog_precision'])} / {_pct(m['not_in_catalog_recall'])}",
+            "  key \\ ours            matched  not_in_catalog  ambiguous  none",
+        ]
+        for k in MATCH_KINDS:
+            c = m["confusion"][k]
+            out.append(f"  {k:<20} {c['matched']:7d}  {c['not_in_catalog']:14d}  {c['ambiguous']:9d}  {c['none']:4d}")
     if verbose:
+        if m and m["failures"]:
+            out += ["", "MATCH ERRORS (key, ours)"]
+            out += [f"  {f['id']}: {f['key']} {f['ours']}" for f in m["failures"]]
         if r["hallucinated_detail"]:
             out += ["", "HALLUCINATED"] + [f"  {e}: {raw!r}" for e, raw in r["hallucinated_detail"]]
         if r["missed_lines"]:

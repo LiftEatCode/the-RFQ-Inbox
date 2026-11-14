@@ -52,3 +52,19 @@ After the first probe run, two things changed because of it: prompt v3 (partial 
 the code rule for tags. The tag rule was widened once more when the v3 run returned the tag in
 a third format. So the probes are no longer fully unseen for those two properties; they are
 still unseen for everything else they cover.
+
+## Matcher (optional)
+
+Code only, on cached answers, so every row below cost nothing. Extraction numbers are unchanged
+by it (the records are identical once the match fields are removed).
+
+| change | wrong sku | match accuracy | not_in_catalog P / R | matched -> not_in_catalog | matched -> ambiguous |
+|---|---|---|---|---|---|
+| dev, first run | 0 | 87.6% (184/210) | 47.1% / 100% | 18 | 8 |
+| dev, bore / flange codes / thread pitch / "long" / close nipple | 0 | 100% (210/210) | 100% / 100% | 0 | 0 |
+| dev, + confirmation rule, unstocked joints, class vs schedule (from the probes) | 0 | 100% (210/210) | 100% / 100% | 0 | 0 |
+
+Probe inbox (no catalog answers in its key, so checked by hand against `data/catalog.csv`):
+first run named one wrong part (a mechanical-joint waterworks valve matched to the only 6 in
+gate valve stocked). After the confirmation rule: 13 matched, all correct; 22 not in catalog;
+4 ambiguous (pipe with no end finish given).

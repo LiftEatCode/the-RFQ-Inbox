@@ -64,7 +64,7 @@ def test_abbreviations_and_word_order_do_not_matter(description):
 
 
 @pytest.mark.parametrize("description, sku", [
-    ("4 x 2 concentric reducer", "T-030"),             # only one such part: nothing to ask
+    ("4 x 2 concentric reducer, SCH 40", "T-030"),     # only one such part: nothing to ask
     ('3" spiral wound gasket, 150#', "T-060"),
     ('1-1/2" gate valve 800# socket weld', "T-070"),
 ])
@@ -122,6 +122,14 @@ def test_a_product_we_do_not_sell_is_not_in_catalog(description):
     assert (m["match"], m["sku"]) == ("not_in_catalog", None)
 
 
+def test_a_pressure_class_part_is_not_the_schedule_part_of_the_same_size():
+    # the only 4" elbow is a butt-weld SCH 40 one; a class 150 elbow is a different thing
+    m = match('4" 150# 90 elbow')
+    assert (m["match"], m["sku"]) == ("not_in_catalog", None)
+    # a flange names a bore schedule the catalog does not record: that is not a mismatch
+    assert match('2" 300# RF weld neck flange, A105, SCH 80 bore')["sku"] == "T-002"
+
+
 def test_the_nearest_part_is_never_offered_as_the_match():
     for description in ('2" 600# RF weld neck flange, A105', '1" 6000# 90 elbow A105 threaded'):
         assert match(description)["sku"] is None
@@ -139,6 +147,29 @@ def test_a_missing_attribute_that_changes_the_part_is_a_question(description, ca
     m = match(description)
     assert (m["match"], m["sku"]) == ("ambiguous", None)
     assert set(m["candidates"]) == candidates
+
+
+@pytest.mark.parametrize("description, only", [
+    ("4 x 2 concentric reducer", "T-030"),
+    ('1-1/2" resilient seat gate valve for potable water', "T-070"),
+])
+def test_the_only_part_on_the_shelf_is_not_a_match_when_nothing_about_it_was_confirmed(description, only):
+    """Product and size alone: whatever else the customer wrote was not understood, so the
+    single stocked part is offered as a candidate to confirm, never as the answer."""
+    m = match(description)
+    assert (m["match"], m["sku"]) == ("ambiguous", None)
+    assert m["candidates"] == [only]
+
+
+@pytest.mark.parametrize("description", [
+    '1-1/2" gate valve, mechanical joint ends',
+    '2" pipe SCH 40, grooved ends',
+    '1" 90 elbow 3000#, compression',
+    '2" SCH 40 ductile iron pipe',
+])
+def test_a_joint_or_material_nothing_in_the_catalog_has_is_not_in_catalog(description):
+    m = match(description)
+    assert (m["match"], m["sku"]) == ("not_in_catalog", None)
 
 
 def test_a_description_with_nothing_to_go_on_is_never_matched():
@@ -220,7 +251,7 @@ def results():
     return {
         "A1": rec("rfq", [ln('2" 300# RF weld neck flange, A105'), ln('2" pressure gauge')]),
         "A2": rec("vendor_quote", []),
-        "A3": rec("po", [ln('1" 3000# 90 elbow, A105')]),
+        "A3": rec("purchase_order", [ln('1" 3000# 90 elbow, A105')]),
     }
 
 

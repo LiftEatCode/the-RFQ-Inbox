@@ -495,7 +495,9 @@ def test_parse_uses_the_models_answer(tmp_path, monkeypatch, check_format):
     rec = data["E1"]
     assert rec["classification"] == "purchase_order"
     assert rec["needs_review"] is False and rec["review_reason"] is None
-    assert rec["line_items"] == json.loads(answer())["line_items"]
+    extracted = [{k: ln[k] for k in ("raw", "description", "qty", "uom", "source")}
+                 for ln in rec["line_items"]]          # the matcher adds sku / match beside these
+    assert extracted == json.loads(answer())["line_items"]
     # The model was shown the email as the reader renders it.
     assert "Ref E1" in json.dumps(client.calls[0])
 

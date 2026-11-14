@@ -100,5 +100,5 @@ or probe email. That guard caught three dev phrases I had used as examples in pr
 - **Known broken or unverified:** not run on Windows; replay with no key depends on the
   reader producing the same text with the graders' library versions (unpinned); the tag rule
   relies on a list of field names; the price table is not checked against the live price list.
-- **Next:** read scans twice and flag disagreements; pin versions; a queue; building the
-  matcher (designed in `MATCHER.md`).
+- **Next:** read scans twice and flag disagreements; pin versions; a queue. The optional
+  matcher is built: see `MATCHER.md`.

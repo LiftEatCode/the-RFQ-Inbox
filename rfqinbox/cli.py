@@ -9,7 +9,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from rfqinbox import checks, model, pipeline, reader
+from rfqinbox import checks, matcher, model, pipeline, reader
 from rfqinbox.record import review_record
 
 
@@ -62,6 +62,20 @@ def link_inbox(emails_dir: Path, results: dict[str, dict]) -> dict[str, dict]:
         return results
 
 
+def match_inbox(results: dict[str, dict], catalog_path: Path | None = None) -> dict[str, dict]:
+    """The optional matcher: add sku / match to every line from the catalog. No catalog
+    file, or any failure, leaves the records exactly as extracted."""
+    path = Path(catalog_path) if catalog_path else matcher.default_catalog_path()
+    if not path.is_file():
+        return results
+    try:
+        return matcher.add_matches(results, matcher.Catalog.load(path))
+    except Exception as exc:  # noqa: BLE001
+        print(f"warning: could not match lines to the catalog ({type(exc).__name__}: {exc})",
+              file=sys.stderr)
+        return results
+
+
 def write_json_atomic(data: dict, out: Path) -> None:
     """Write to a temp file and rename, so a crash never leaves half a parsed.json."""
     out = out.resolve()
@@ -89,6 +103,8 @@ def cmd_parse(args: argparse.Namespace) -> int:
     cache_dir = Path(args.cache) if args.cache else model.default_cache_dir()
     engine = model.Engine(client, model.Cache(cache_dir), model.Ledger())
     results = parse_inbox(emails_dir, engine)
+    if not args.no_match:
+        results = match_inbox(results, Path(args.catalog) if args.catalog else None)
     out = Path(args.out)
     write_json_atomic(results, out)
     flagged = sum(1 for r in results.values() if r["needs_review"])
@@ -154,6 +170,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--cache", help="model response cache folder (default: cache/ in the repo)")
     p.add_argument("--cost-report", help="where to write calls/tokens/$ per email "
                                          "(default: cost_report.json next to --out)")
+    p.add_argument("--catalog", help="catalog CSV for the matcher (default: data/catalog.csv in the repo)")
+    p.add_argument("--no-match", action="store_true", help="skip the catalog matcher (no sku / match fields)")
     p.set_defaults(func=cmd_parse)
     s = sub.add_parser("score", help="score a parsed.json against an answer key (README grading rules)")
     s.add_argument("parsed", help="parsed.json to score")

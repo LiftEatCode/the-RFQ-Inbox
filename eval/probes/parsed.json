@@ -11,49 +11,85 @@
         "description": "1-1/2\" SCH 80 A106B seamless pipe",
         "qty": 8,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": null,
+        "match": "ambiguous",
+        "match_reason": "pipe 1-1/2: ends not given (PE or T&C or TOE)",
+        "candidates": [
+          "RL-33397",
+          "RL-35728",
+          "RL-36024"
+        ]
       },
       {
         "raw": "5 lengths 2\"",
         "description": "2\" SCH 80 A106B seamless pipe",
         "qty": 5,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": "RL-35543",
+        "match": "matched",
+        "match_reason": "PIPE 2\" SCH 80 A106B SMLS PE: one part fits",
+        "candidates": []
       },
       {
         "raw": "3 lengths 3\" SCH 40",
         "description": "3\" SCH 40 A106B seamless pipe",
         "qty": 3,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": null,
+        "match": "ambiguous",
+        "match_reason": "pipe 3: ends not given (BE or PE or TBE)",
+        "candidates": [
+          "RL-12270",
+          "RL-29660",
+          "RL-43683"
+        ]
       },
       {
         "raw": "16 - 1-1/2\" 90 ell",
         "description": "1-1/2\" 90 degree elbow, 3000# forged steel, socket weld",
         "qty": 16,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": "RL-19189",
+        "match": "matched",
+        "match_reason": "90 ELL 1-1/2\" 3000# A105 SW: one part fits",
+        "candidates": []
       },
       {
         "raw": "6 - 2\" tee",
         "description": "2\" tee, 3000# forged steel, socket weld",
         "qty": 6,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": "RL-18486",
+        "match": "matched",
+        "match_reason": "TEE 2\" 3000# A105 SW: one part fits",
+        "candidates": []
       },
       {
         "raw": "four 1-1/2\" couplings",
         "description": "1-1/2\" coupling, 3000# forged steel, socket weld",
         "qty": 4,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": "RL-21520",
+        "match": "matched",
+        "match_reason": "CPLG 1-1/2\" 3000# A105 SW: one part fits",
+        "candidates": []
       },
       {
         "raw": "2 ea 2\" gate valve, class 800, SW ends",
         "description": "2\" gate valve, class 800, socket weld ends",
         "qty": 2,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": "RL-37467",
+        "match": "matched",
+        "match_reason": "VLV GATE 2\" 800# A105 SW 13CR: one part fits",
+        "candidates": []
       }
     ]
   },
@@ -101,28 +137,44 @@
         "description": "1\" 90 elbow, black malleable iron 150# threaded",
         "qty": 24,
         "uom": "EA",
-        "source": "BOM_NG-7730.xlsx"
+        "source": "BOM_NG-7730.xlsx",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "90 elbow 1: asked 150#, stocked 3000#, 6000#, SCH 10S, SCH 80S",
+        "candidates": []
       },
       {
         "raw": "2 | 12 | EA | 1\" tee",
         "description": "1\" tee, black malleable iron 150# threaded",
         "qty": 12,
         "uom": "EA",
-        "source": "BOM_NG-7730.xlsx"
+        "source": "BOM_NG-7730.xlsx",
+        "sku": "RL-21631",
+        "match": "matched",
+        "match_reason": "TEE 1\" 150# MI BLACK THD: one part fits",
+        "candidates": []
       },
       {
         "raw": "4 | 10 | EA | 1-1/4\" x 1\" reducing coupling",
         "description": "1-1/4\" x 1\" reducing coupling, black malleable iron 150# threaded",
         "qty": 10,
         "uom": "EA",
-        "source": "BOM_NG-7730.xlsx"
+        "source": "BOM_NG-7730.xlsx",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "coupling: asked size 1-1/4 x 1, stocked 1, 1-1/2, 1-1/4, 1/2, 2, 2-1/2, ...",
+        "candidates": []
       },
       {
         "raw": "5 | 40 | FT | 1\" pipe SCH 40 A53B T&C",
         "description": "1\" pipe SCH 40 A53B T&C",
         "qty": 40,
         "uom": "FT",
-        "source": "BOM_NG-7730.xlsx"
+        "source": "BOM_NG-7730.xlsx",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "pipe 1: asked A53B, stocked A106B SMLS, A312 TP304L, A53 GALV",
+        "candidates": []
       }
     ]
   },
@@ -146,49 +198,85 @@
         "description": "1-1/2\" SCH 80 A106B seamless pipe, 8 lengths",
         "qty": 8,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": null,
+        "match": "ambiguous",
+        "match_reason": "pipe 1-1/2: ends not given (PE or T&C or TOE)",
+        "candidates": [
+          "RL-33397",
+          "RL-35728",
+          "RL-36024"
+        ]
       },
       {
         "raw": "b) 5 lengths 2\"",
         "description": "2\" SCH 80 A106B seamless pipe, 7 lengths",
         "qty": 7,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": "RL-35543",
+        "match": "matched",
+        "match_reason": "PIPE 2\" SCH 80 A106B SMLS PE: one part fits",
+        "candidates": []
       },
       {
         "raw": "c) 3 lengths 3\" SCH 40",
         "description": "3\" SCH 40 A106B seamless pipe, 3 lengths",
         "qty": 3,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": null,
+        "match": "ambiguous",
+        "match_reason": "pipe 3: ends not given (BE or PE or TBE)",
+        "candidates": [
+          "RL-12270",
+          "RL-29660",
+          "RL-43683"
+        ]
       },
       {
         "raw": "d) 16 - 1-1/2\" 90 ell",
         "description": "1-1/2\" 90 degree elbow, 3000# forged steel, socket weld, 16 pieces",
         "qty": 16,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": "RL-19189",
+        "match": "matched",
+        "match_reason": "90 ELL 1-1/2\" 3000# A105 SW: one part fits",
+        "candidates": []
       },
       {
         "raw": "e) 6 - 2\" tee",
         "description": "2\" tee, 3000# forged steel, socket weld, 6 pieces",
         "qty": 6,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": "RL-18486",
+        "match": "matched",
+        "match_reason": "TEE 2\" 3000# A105 SW: one part fits",
+        "candidates": []
       },
       {
         "raw": "g) 2 ea 2\" gate valve, class 800, SW ends",
         "description": "2\" gate valve, class 800, socket weld ends, 2 each",
         "qty": 2,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": "RL-37467",
+        "match": "matched",
+        "match_reason": "VLV GATE 2\" 800# A105 SW 13CR: one part fits",
+        "candidates": []
       },
       {
         "raw": "4 ea 3\" 150# RF weld neck flanges, A105",
         "description": "3\" 150# RF weld neck flange, A105, 4 each",
         "qty": 4,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": "RL-27477",
+        "match": "matched",
+        "match_reason": "FLG WN 3\" 150# A105 RF: one part fits",
+        "candidates": []
       }
     ]
   },
@@ -204,14 +292,22 @@
         "description": "4\" butterfly valve, lug style, 150#, ductile iron body",
         "qty": 6,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "butterfly valve 4: asked DUCTILE, stocked CAST IRON",
+        "candidates": []
       },
       {
         "raw": "3) 12 ea 4\" full face gasket, 1/8\" EPDM - $6.40 ea",
         "description": "4\" full face gasket, 1/8\" EPDM",
         "qty": 12,
         "uom": "EA",
-        "source": "body"
+        "source": "body",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "no stocked product recognised in the description",
+        "candidates": []
       }
     ]
   },
@@ -227,14 +323,22 @@
         "description": "2\" swing check valve, 316SS, 150# flanged",
         "qty": 5,
         "uom": null,
-        "source": "body"
+        "source": "body",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "swing check valve 2: asked 150#, stocked 125#, 200 WOG, 300#, 600 WOG",
+        "candidates": []
       },
       {
         "raw": "10 - 2\" 150# ring gaskets, PTFE",
         "description": "2\" 150# ring gaskets, PTFE",
         "qty": 10,
         "uom": null,
-        "source": "body"
+        "source": "body",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "no stocked product recognised in the description",
+        "candidates": []
       }
     ]
   },
@@ -258,7 +362,11 @@
         "description": "Delmar Controls pressure regulator, model DR-250-B, 1 inch NPT, max inlet 300 PSI, spring range 25-75 PSI, body brass",
         "qty": 4,
         "uom": null,
-        "source": "IMG_2291.jpg"
+        "source": "IMG_2291.jpg",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "no stocked product recognised in the description",
+        "candidates": []
       }
     ]
   },
@@ -274,77 +382,121 @@
         "description": "1/2\" 2 piece brass ball valve, 600 WOG, threaded",
         "qty": 14,
         "uom": "EA",
-        "source": "scan_rfq_0412.pdf"
+        "source": "scan_rfq_0412.pdf",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "ball valve 1/2: asked BRASS, stocked 304 SS, 316 SS, BRONZE",
+        "candidates": []
       },
       {
         "raw": "2 9 EA 3/4\" ball valve",
         "description": "3/4\" 2 piece brass ball valve, 600 WOG, threaded",
         "qty": 9,
         "uom": "EA",
-        "source": "scan_rfq_0412.pdf"
+        "source": "scan_rfq_0412.pdf",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "ball valve 3/4: asked BRASS, stocked 304 SS, 316 SS, BRONZE, WCB",
+        "candidates": []
       },
       {
         "raw": "3 22 EA 1\" ball valve",
         "description": "1\" 2 piece brass ball valve, 600 WOG, threaded",
         "qty": 22,
         "uom": "EA",
-        "source": "scan_rfq_0412.pdf"
+        "source": "scan_rfq_0412.pdf",
+        "sku": "RL-26515",
+        "match": "matched",
+        "match_reason": "VLV BALL 1\" 600 WOG BRASS THD STD PORT: one part fits",
+        "candidates": []
       },
       {
         "raw": "4 7 EA 1-1/4\" ball valve",
         "description": "1-1/4\" 2 piece brass ball valve, 600 WOG, threaded",
         "qty": 7,
         "uom": "EA",
-        "source": "scan_rfq_0412.pdf"
+        "source": "scan_rfq_0412.pdf",
+        "sku": "RL-38207",
+        "match": "matched",
+        "match_reason": "VLV BALL 1-1/4\" 600 WOG BRASS THD STD PORT: one part fits",
+        "candidates": []
       },
       {
         "raw": "5 11 EA 1-1/2\" ball valve",
         "description": "1-1/2\" 2 piece brass ball valve, 600 WOG, threaded",
         "qty": 11,
         "uom": "EA",
-        "source": "scan_rfq_0412.pdf"
+        "source": "scan_rfq_0412.pdf",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "ball valve 1-1/2: asked BRASS, stocked 304 SS, 316 SS",
+        "candidates": []
       },
       {
         "raw": "6 3 EA 2\" ball valve",
         "description": "2\" 2 piece brass ball valve, 600 WOG, threaded",
         "qty": 3,
         "uom": "EA",
-        "source": "scan_rfq_0412.pdf"
+        "source": "scan_rfq_0412.pdf",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "ball valve 2: asked BRASS, stocked 304 SS, 316 SS",
+        "candidates": []
       },
       {
         "raw": "7 5 EA 1\" Y-strainer",
         "description": "1\" cast iron Y-strainer, 125#, threaded",
         "qty": 5,
         "uom": "EA",
-        "source": "scan_rfq_0412.pdf"
+        "source": "scan_rfq_0412.pdf",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "y-strainer: asked size 1, stocked 1-1/2",
+        "candidates": []
       },
       {
         "raw": "8 8 EA 1-1/2\" Y-strainer",
         "description": "1-1/2\" cast iron Y-strainer, 125#, threaded",
         "qty": 8,
         "uom": "EA",
-        "source": "scan_rfq_0412.pdf"
+        "source": "scan_rfq_0412.pdf",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "y-strainer 1-1/2: asked 125#, stocked 1500#",
+        "candidates": []
       },
       {
         "raw": "9 13 EA 2\" Y-strainer",
         "description": "2\" cast iron Y-strainer, 125#, threaded",
         "qty": 13,
         "uom": "EA",
-        "source": "scan_rfq_0412.pdf"
+        "source": "scan_rfq_0412.pdf",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "y-strainer: asked size 2, stocked 1-1/2",
+        "candidates": []
       },
       {
         "raw": "10 75 FT 3/4\" water hose",
         "description": "3/4\" EPDM water hose, 150 PSI",
         "qty": 75,
         "uom": "FT",
-        "source": "scan_rfq_0412.pdf"
+        "source": "scan_rfq_0412.pdf",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "no stocked product recognised in the description",
+        "candidates": []
       },
       {
         "raw": "11 120 FT 1\" water hose",
         "description": "1\" EPDM water hose, 150 PSI",
         "qty": 120,
         "uom": "FT",
-        "source": "scan_rfq_0412.pdf"
+        "source": "scan_rfq_0412.pdf",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "no stocked product recognised in the description",
+        "candidates": []
       }
     ]
   },
@@ -376,35 +528,55 @@
         "description": "6\" resilient wedge gate valve, MJ ends",
         "qty": 2,
         "uom": null,
-        "source": "body"
+        "source": "body",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "gate valve 6: asked MJ, stocked RF",
+        "candidates": []
       },
       {
         "raw": "twelve 6\" MJ accessory kits",
         "description": "6\" MJ accessory kit",
         "qty": 12,
         "uom": null,
-        "source": "body"
+        "source": "body",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "no stocked product recognised in the description",
+        "candidates": []
       },
       {
         "raw": "6\" DI pipe, class 350 - enough to run about 60 ft",
         "description": "6\" DI pipe, class 350",
         "qty": null,
         "uom": "FT",
-        "source": "body"
+        "source": "body",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "pipe 6: asked 350#, stocked SCH 10, SCH 10S, SCH 40, SCH 40S, SCH 80, SCH 80S",
+        "candidates": []
       },
       {
         "raw": "a couple 6\" MJ 45 bends",
         "description": "6\" MJ 45 bend",
         "qty": null,
         "uom": null,
-        "source": "body"
+        "source": "body",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "no stocked product recognised in the description",
+        "candidates": []
       },
       {
         "raw": "1 - 6\" x 4\" MJ reducer",
         "description": "6\" x 4\" MJ reducer",
         "qty": 1,
         "uom": null,
-        "source": "body"
+        "source": "body",
+        "sku": null,
+        "match": "not_in_catalog",
+        "match_reason": "concentric reducer / eccentric reducer 6 x 4: asked MJ, stocked BW",
+        "candidates": []
       }
     ]
   },

@@ -20,6 +20,9 @@ python -m rfqinbox parse --emails <dir> --out parsed.json
 - Reads `OPENAI_API_KEY` from the environment. For local runs a `.env` file in the current
   folder is also loaded (`OPENAI_API_KEY=...`); a variable already set in the environment wins.
   `.env` is git-ignored.
+- Each line also gets the optional catalog answer (`sku`, `match`, `match_reason`,
+  `candidates`) from `data/catalog.csv`: code only, no model call. `--catalog <csv>` uses
+  another catalog; `--no-match` leaves the fields out. See `MATCHER.md`.
 - With **no key** it replays recorded answers from `cache/` and flags any email it has no
   answer for (`rfq` + `needs_review`). It never crashes on a missing key or a failed call.
 - A second run on the same inbox makes **no model calls**: answers are cached under a hash of
@@ -51,7 +54,7 @@ python -m rfqinbox score parsed.json
 
 ```
 python -m rfqinbox inspect data/dev/emails/E005.eml     # what the model is shown for one email
-python -m rfqinbox score parsed.json --gate             # exit 1 on any silent loss
+python -m rfqinbox score parsed.json --gate             # exit 1 on any silent loss; also prints the matcher numbers
 ```
 
 ## Tests (no key, no network)
