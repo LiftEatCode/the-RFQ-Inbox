@@ -1,9 +1,9 @@
 # Decisions
 
 Time spent: about 3 hours hands-on on 13 November for the required work (commits run
-09:59–11:34 and 15:38–16:48), plus reading the brief; then about an hour on 14 November for
-the optional matcher (03:40–05:00). One model call per email; everything checkable without
-judgment is code.
+09:59–11:34 and 15:38–16:48), plus reading the brief; then about an hour and a half on 14
+November for the optional matcher and web page (03:40–05:15). One model call per email;
+everything checkable without judgment is code.
 
 ## Something in the data that surprised me
 
@@ -102,4 +102,4 @@ or probe email. That guard caught three dev phrases I had used as examples in pr
   reader producing the same text with the graders' library versions (unpinned); the tag rule
   relies on a list of field names; the price table is not checked against the live price list.
 - **Next:** read scans twice and flag disagreements; pin versions; a queue. The optional
-  matcher is built: see `MATCHER.md`.
+  matcher (`MATCHER.md`) and a small local web page (`RUNNING.md`) are built.

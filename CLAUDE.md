@@ -47,6 +47,7 @@ rfqinbox/model.py     OpenAIClient (urllib), Cache, Ledger, Engine.extract (vali
 rfqinbox/reader.py    .eml -> Packet (body_new, quoted[], attachments[]) + render() for the model
 rfqinbox/record.py    output record helpers; review_record() = the safe default
 rfqinbox/matcher.py   optional: line -> sku / not_in_catalog / ambiguous from data/catalog.csv — no model
+rfqinbox/webapp.py    optional: `serve` — local read-only page per email; decisions -> review.json, never parsed.json
 rfqinbox/score.py     local scorer implementing data/README.md "What we grade" (+ matcher numbers)
 eval/history.md       dev score after each behaviour change
 tests/                pytest; no key needed
@@ -115,7 +116,8 @@ Next:
    runs after linking in `cli.cmd_parse` (`match_inbox`), only ever adds fields to lines.
    Never names the nearest part: stated attributes must agree exactly. Tests use an invented
    catalog; don't add rules that only make a dev line pass.
-Optional if time: small web app.
+10. Web app (`rfqinbox/webapp.py`, `tests/test_webapp.py`): done. `python -m rfqinbox serve`,
+   stdlib `http.server`, 127.0.0.1 only, never calls the model, escapes all email content.
 
 ## What the dev data taught us (the general properties, not answers)
 

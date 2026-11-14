@@ -158,6 +158,32 @@ def cmd_inspect(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_serve(args: argparse.Namespace) -> int:
+    from rfqinbox import webapp
+
+    emails_dir, parsed = Path(args.emails), Path(args.parsed)
+    if not emails_dir.is_dir():
+        print(f"error: --emails {emails_dir} is not a directory", file=sys.stderr)
+        return 2
+    if not parsed.is_file():
+        print(f"error: --parsed {parsed} not found; run `parse` first", file=sys.stderr)
+        return 2
+    app = webapp.App(emails_dir, parsed, review_path=args.review, catalog_path=args.catalog)
+    try:
+        server = webapp.make_server(app, port=args.port)
+    except OSError as exc:
+        print(f"error: could not listen on port {args.port}: {exc}", file=sys.stderr)
+        return 2
+    print(f"RFQ inbox viewer: http://127.0.0.1:{server.server_address[1]}/  (Ctrl+C to stop)", file=sys.stderr)
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        server.server_close()
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     for stream in (sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
@@ -183,6 +209,13 @@ def main(argv: list[str] | None = None) -> int:
     i = sub.add_parser("inspect", help="print what the model will see for one email")
     i.add_argument("eml", help="path to one .eml file")
     i.set_defaults(func=cmd_inspect)
+    w = sub.add_parser("serve", help="local web page: one email, its lines and catalog decisions (no model calls)")
+    w.add_argument("--emails", required=True, help="folder of .eml files")
+    w.add_argument("--parsed", default="parsed.json", help="parsed.json written by `parse`")
+    w.add_argument("--port", type=int, default=8000)
+    w.add_argument("--review", help="where a rep's accept / overturn is saved (default: review.json next to --parsed)")
+    w.add_argument("--catalog", help="catalog CSV (default: data/catalog.csv in the repo)")
+    w.set_defaults(func=cmd_serve)
     args = ap.parse_args(argv)
     load_env()
     return args.func(args)

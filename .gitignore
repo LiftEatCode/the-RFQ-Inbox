@@ -14,3 +14,7 @@ venv/
 # Scratch output (parsed.json for dev IS committed; the model cache will be too)
 *.tmp
 /scratch/
+
+# The web app: a rep's accept / overturn decisions, and local tool config
+review.json
+.claude/

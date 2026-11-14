@@ -57,6 +57,21 @@ python -m rfqinbox inspect data/dev/emails/E005.eml     # what the model is show
 python -m rfqinbox score parsed.json --gate             # exit 1 on any silent loss; also prints the matcher numbers
 ```
 
+## The web page (optional)
+
+```
+python -m rfqinbox serve --emails data/dev/emails --parsed parsed.json
+```
+
+Then open http://127.0.0.1:8000/. It lists the inbox; each email page shows the email and its
+attachments as the reader sees them, the extracted lines (click one to highlight where it was
+read from), and each line's catalog decision with Accept / Use this part / Not stocked.
+
+- It only reads `parsed.json` and the emails: no model calls, no key, no extra dependencies
+  (standard library), and it listens on this machine only. `--port` changes the port.
+- A rep's decisions are saved to `review.json` next to `parsed.json` (git-ignored; `--review`
+  moves it). `parsed.json` is never changed.
+
 ## Tests (no key, no network)
 
 ```
