@@ -1,7 +1,8 @@
 # Decisions
 
-Time spent: about 3 hours hands-on, all on 13 November (commits run 09:59–11:34 and
-15:38–16:48), plus reading the brief. One model call per email; everything checkable without
+Time spent: about 3 hours hands-on on 13 November for the required work (commits run
+09:59–11:34 and 15:38–16:48), plus reading the brief; then about an hour on 14 November for
+the optional matcher (03:40–05:00). One model call per email; everything checkable without
 judgment is code.
 
 ## Something in the data that surprised me
