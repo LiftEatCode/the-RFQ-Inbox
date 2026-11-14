@@ -262,3 +262,77 @@ def test_cli_score_prints_report_and_gates_on_silent_losses(tmp_path, capsys):
     assert cli.main(["score", str(good), "--key", str(key_path), "--gate"]) == 0
     assert "line recall" in capsys.readouterr().out.lower()
     assert cli.main(["score", str(bad), "--key", str(key_path), "--gate"]) != 0
+
+
+# ---------------------------------------------------------------- the optional matcher
+
+def matched_key(raw, sku=None, match="matched", lid="X-1"):
+    ln = key_line(raw, lid=lid)
+    ln.update({"sku": sku, "match": match, "candidates": []})
+    return ln
+
+
+def matched_pred(raw, sku=None, match="matched"):
+    ln = pred_line(raw)
+    ln.update({"sku": sku, "match": match, "match_reason": "because"})
+    return ln
+
+
+RAWS = ["2 in weld neck flange 300 class", "4 in gate valve 150 class", "six inch blind flange",
+        "one inch ball valve brass", "3 in pipe schedule 80 seamless"]
+
+
+def matcher_case(pairs):
+    """pairs: [((key sku, key match), (pred sku, pred match) or None)]."""
+    k_lines, p_lines = [], []
+    for i, (k, p) in enumerate(pairs):
+        k_lines.append(matched_key(RAWS[i], k[0], k[1], lid=f"A-{i + 1}"))
+        p_lines.append(pred_line(RAWS[i]) if p is None else matched_pred(RAWS[i], p[0], p[1]))
+    return score.score({"A": pred_email(lines=p_lines)}, {"A": key_email(lines=k_lines)})
+
+
+def test_no_matcher_section_when_no_line_carries_a_match():
+    r = matcher_case([(("RL-1", "matched"), None)])
+    assert r["matcher"] is None
+    assert "MATCHER" not in score.format_report(r)
+
+
+def test_matcher_counts_right_wrong_and_wrong_sku():
+    r = matcher_case([
+        (("RL-1", "matched"), ("RL-1", "matched")),                 # right
+        (("RL-2", "matched"), ("RL-9", "matched")),                 # wrong part quoted
+        ((None, "not_in_catalog"), ("RL-3", "matched")),            # quoted something we lack
+        ((None, "not_in_catalog"), (None, "not_in_catalog")),       # right
+        (("RL-5", "matched"), (None, "ambiguous")),                 # too cautious, not a wrong quote
+    ])["matcher"]
+    assert r["lines"] == 5
+    assert r["correct"] == 2 and r["accuracy"] == pytest.approx(0.4)
+    assert r["wrong_sku"] == ["A-2", "A-3"]
+    assert r["confusion"]["matched"]["ambiguous"] == 1
+    assert r["confusion"]["not_in_catalog"]["matched"] == 1
+    assert r["not_in_catalog_precision"] == 1.0
+    assert r["not_in_catalog_recall"] == 0.5
+
+
+def test_a_paired_line_we_did_not_match_counts_against_accuracy_but_is_not_a_wrong_sku():
+    r = matcher_case([
+        (("RL-1", "matched"), ("RL-1", "matched")),
+        (("RL-2", "matched"), None),
+    ])["matcher"]
+    assert r["lines"] == 2 and r["correct"] == 1
+    assert r["wrong_sku"] == []
+    assert r["confusion"]["matched"]["none"] == 1
+
+
+def test_matcher_report_puts_wrong_skus_first():
+    r = matcher_case([(("RL-2", "matched"), ("RL-9", "matched"))])
+    text = score.format_report(r)
+    assert "MATCHER" in text and "wrong sku" in text.lower() and "A-1" in text
+
+
+def test_matcher_numbers_do_not_change_the_extraction_numbers():
+    with_m = matcher_case([(("RL-2", "matched"), ("RL-9", "matched"))])
+    without = matcher_case([(("RL-2", "matched"), None)])
+    for k in with_m:
+        if k != "matcher":
+            assert with_m[k] == without[k]
